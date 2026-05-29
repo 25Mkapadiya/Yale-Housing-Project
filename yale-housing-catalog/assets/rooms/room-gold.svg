@@ -1,0 +1,22 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 620" role="img" aria-label="Mock suite common room photo with gold accents">
+  <defs>
+    <linearGradient id="g" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#fff9eb"/>
+      <stop offset="1" stop-color="#e7eef5"/>
+    </linearGradient>
+  </defs>
+  <rect width="900" height="620" fill="url(#g)"/>
+  <path d="M0 405h900v215H0z" fill="#c9b99e"/>
+  <path d="M0 0h900v420H0z" fill="#fffaf0"/>
+  <path d="M94 345h297a44 44 0 0 1 44 44v90H50v-90a44 44 0 0 1 44-44z" fill="#f3f6f9" stroke="#c9d2dc" stroke-width="8"/>
+  <path d="M75 450h385v63H75z" fill="#00356b"/>
+  <path d="M556 325h245a32 32 0 0 1 32 32v154H524V357a32 32 0 0 1 32-32z" fill="#d29a2d" opacity=".86"/>
+  <path d="M555 330h246a30 30 0 0 1 30 30v30H525v-30a30 30 0 0 1 30-30z" fill="#f4d790"/>
+  <path d="M598 178h189v104H598z" fill="#ffffff" stroke="#d9c9aa" stroke-width="8"/>
+  <path d="M625 206h135v48H625z" fill="#d29a2d" opacity=".22"/>
+  <path d="M168 163h129v78H168z" fill="#00356b" opacity=".13"/>
+  <path d="M151 145h165v116H151z" fill="none" stroke="#c9d2dc" stroke-width="8"/>
+  <circle cx="472" cy="286" r="60" fill="#00356b" opacity=".09"/>
+  <path d="M472 226v120M412 286h120" stroke="#00356b" stroke-width="5" opacity=".16"/>
+  <text x="48" y="586" font-family="Inter, Arial" font-size="30" font-weight="800" fill="#8b641d" opacity=".48">MOCK SUITE PHOTO</text>
+</svg>

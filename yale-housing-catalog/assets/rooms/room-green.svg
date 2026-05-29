@@ -1,0 +1,21 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 620" role="img" aria-label="Mock dorm room photo with green accents">
+  <defs>
+    <linearGradient id="g" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#f2fff8"/>
+      <stop offset="1" stop-color="#dde9f1"/>
+    </linearGradient>
+  </defs>
+  <rect width="900" height="620" fill="url(#g)"/>
+  <path d="M0 410h900v210H0z" fill="#d7c9b4"/>
+  <path d="M0 0h900v420H0z" fill="#f9fcfb"/>
+  <path d="M117 358h270a26 26 0 0 1 26 26v130H91V384a26 26 0 0 1 26-26z" fill="#124b3a" opacity=".9"/>
+  <path d="M123 314h246a26 26 0 0 1 26 26v52H97v-52a26 26 0 0 1 26-26z" fill="#fff" stroke="#cbd6cf" stroke-width="7"/>
+  <path d="M608 230h133v284H608z" fill="#f6efe0" stroke="#bac8c0" stroke-width="8"/>
+  <path d="M633 255h82v184h-82z" fill="#7fb79d" opacity=".38"/>
+  <path d="M500 355h54v159h-54z" fill="#153b5f" opacity=".76"/>
+  <circle cx="527" cy="321" r="38" fill="#7fb79d" opacity=".34"/>
+  <path d="M127 138h191v112H127z" fill="#ffffff" stroke="#cbd6cf" stroke-width="8"/>
+  <path d="M151 166h143v57H151z" fill="#124b3a" opacity=".17"/>
+  <path d="M798 140c0 62-50 112-112 112 0-62 50-112 112-112z" fill="#124b3a" opacity=".13"/>
+  <text x="48" y="586" font-family="Inter, Arial" font-size="30" font-weight="800" fill="#124b3a" opacity=".45">MOCK ROOM PHOTO</text>
+</svg>

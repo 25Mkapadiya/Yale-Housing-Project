@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Searchable Yale residential college room catalog with filters for entrance and floor level." />
+  <title>Room Catalog | Yale Housing Catalog</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body class="catalog-page">
+  <header class="site-header">
+    <a class="brand-lockup" href="index.html" aria-label="Yale Housing Catalog home">
+      <span class="brand-mark">Y</span>
+      <span>
+        <strong>Yale Housing Catalog</strong>
+        <small>Room directory starter</small>
+      </span>
+    </a>
+    <nav class="header-nav" aria-label="Primary navigation">
+      <a href="index.html#colleges">Colleges</a>
+      <a href="catalog.html">Room Catalog</a>
+      <a href="#admin">Admin Upload</a>
+    </nav>
+  </header>
+
+  <main>
+    <section class="catalog-hero" id="catalogHero">
+      <div>
+        <p class="eyebrow">Room catalog</p>
+        <h1 id="catalogTitle">All rooms</h1>
+        <p id="catalogSubtitle">Search the starter room set by college, entrance, floor level, or room details.</p>
+      </div>
+      <div class="selected-college-card" id="selectedCollegeCard" aria-live="polite"></div>
+    </section>
+
+    <section class="filters-panel" aria-label="Room filters">
+      <label class="field wide">
+        <span>Search rooms</span>
+        <input type="search" id="searchInput" placeholder="Try B-312, double, sunny, common room..." autocomplete="off" />
+      </label>
+      <label class="field">
+        <span>Residential college</span>
+        <select id="collegeFilter"></select>
+      </label>
+      <label class="field">
+        <span>Entrance</span>
+        <select id="entranceFilter"></select>
+      </label>
+      <label class="field">
+        <span>Floor level</span>
+        <select id="floorFilter"></select>
+      </label>
+      <button class="button ghost reset-button" id="resetFilters" type="button">Reset</button>
+    </section>
+
+    <section class="catalog-summary" aria-live="polite">
+      <p id="resultCount">Showing rooms</p>
+      <div class="view-hint">Click a card for expanded room notes.</div>
+    </section>
+
+    <section class="room-grid" id="roomGrid" aria-live="polite"></section>
+
+    <section class="empty-state hidden" id="emptyState">
+      <h2>No rooms found</h2>
+      <p>Try clearing a filter or searching for a broader room detail.</p>
+      <button class="button primary" id="emptyReset" type="button">Clear filters</button>
+    </section>
+
+    <section class="admin-shell" id="admin">
+      <div class="admin-intro">
+        <p class="eyebrow">Future admin workflow</p>
+        <h2>Protected admin-only upload section</h2>
+        <p>This front-end prototype includes a demo gate and upload form structure. In production, this would connect to real authentication, file storage, and a housing database.</p>
+      </div>
+
+      <div class="admin-gate" id="adminGate">
+        <div>
+          <h3>Admin access</h3>
+          <p>Use the demo key <strong>YALE-ADMIN</strong> to preview the upload flow.</p>
+        </div>
+        <form id="adminLoginForm" class="admin-login-form">
+          <label class="field">
+            <span>Admin key</span>
+            <input type="password" id="adminKey" placeholder="Enter demo key" autocomplete="off" />
+          </label>
+          <button class="button primary" type="submit">Unlock upload</button>
+          <p class="form-message" id="adminMessage" role="status"></p>
+        </form>
+      </div>
+
+      <form class="upload-form hidden" id="uploadForm">
+        <div class="form-banner">
+          <div>
+            <h3>Add a room draft</h3>
+            <p>Saved locally in this browser as a mock admin draft. Replace this action with API/database logic later.</p>
+          </div>
+          <button class="button ghost" id="lockAdmin" type="button">Lock admin</button>
+        </div>
+
+        <div class="form-grid">
+          <label class="field">
+            <span>Residential college</span>
+            <select id="uploadCollege" required></select>
+          </label>
+          <label class="field">
+            <span>Room number</span>
+            <input id="uploadRoomNumber" placeholder="Example: B-410" required />
+          </label>
+          <label class="field">
+            <span>Entrance</span>
+            <input id="uploadEntrance" placeholder="Example: Entry B" required />
+          </label>
+          <label class="field">
+            <span>Floor level</span>
+            <select id="uploadFloor" required>
+              <option value="Basement">Basement</option>
+              <option value="1">1</option>
+              <option value="2">2</option>
+              <option value="3">3</option>
+              <option value="4">4</option>
+              <option value="5">5</option>
+            </select>
+          </label>
+          <label class="field">
+            <span>Dimensions</span>
+            <input id="uploadDimensions" placeholder="Example: 18 ft × 12 ft" required />
+          </label>
+          <label class="field">
+            <span>Suite type</span>
+            <input id="uploadSuiteType" placeholder="Example: 4-person suite" required />
+          </label>
+          <label class="field">
+            <span>Occupancy</span>
+            <input id="uploadOccupancy" placeholder="Example: 4 students" required />
+          </label>
+          <label class="field">
+            <span>Bathrooms</span>
+            <input id="uploadBath" placeholder="Example: shared hall bath" required />
+          </label>
+          <label class="field wide">
+            <span>Suite details</span>
+            <textarea id="uploadSuiteDetails" placeholder="Bedrooms, common room, closet/storage notes..." required></textarea>
+          </label>
+          <label class="field wide">
+            <span>Notes</span>
+            <textarea id="uploadNotes" placeholder="Light, noise, accessibility, furniture, renovation notes..." required></textarea>
+          </label>
+          <label class="field wide">
+            <span>Pictures</span>
+            <input id="uploadPictures" type="file" accept="image/*" multiple />
+            <small>Prototype stores file names only. Use cloud storage in production.</small>
+          </label>
+        </div>
+        <button class="button primary" type="submit">Save room draft</button>
+        <p class="form-message" id="uploadMessage" role="status"></p>
+      </form>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <p>Prototype for student housing discovery. Mock data only.</p>
+    <a href="index.html">Back home</a>
+  </footer>
+
+  <dialog class="room-modal" id="roomModal" aria-labelledby="modalRoomTitle">
+    <button class="modal-close" id="modalClose" type="button" aria-label="Close room details">×</button>
+    <div id="modalContent"></div>
+  </dialog>
+
+  <script src="data.js"></script>
+  <script src="catalog.js"></script>
+</body>
+</html>

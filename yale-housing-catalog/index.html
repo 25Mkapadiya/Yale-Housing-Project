@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Yale Housing Catalog starter directory for browsing residential college rooms and suite details." />
+  <title>Yale Housing Catalog</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body class="home-page">
+  <header class="site-header">
+    <a class="brand-lockup" href="index.html" aria-label="Yale Housing Catalog home">
+      <span class="brand-mark">Y</span>
+      <span>
+        <strong>Yale Housing Catalog</strong>
+        <small>Room directory starter</small>
+      </span>
+    </a>
+    <nav class="header-nav" aria-label="Primary navigation">
+      <a href="#colleges">Colleges</a>
+      <a href="catalog.html">Room Catalog</a>
+      <a href="catalog.html#admin">Admin Upload</a>
+    </nav>
+  </header>
+
+  <main>
+    <section class="hero-shell hero-grid">
+      <div class="hero-copy">
+        <p class="eyebrow">Residential housing directory</p>
+        <h1>Explore Yale rooms by college, entrance, floor, and suite setup.</h1>
+        <p class="hero-text">A clean starter catalog for comparing rooms, viewing mock layouts, and preparing an admin-only upload flow for future login and database integration.</p>
+        <div class="hero-actions">
+          <a class="button primary" href="#colleges">Select a college</a>
+          <a class="button ghost" href="catalog.html">Browse all rooms</a>
+        </div>
+      </div>
+      <div class="hero-panel" aria-label="Featured catalog preview">
+        <div class="mini-window">
+          <div class="window-dots" aria-hidden="true"><span></span><span></span><span></span></div>
+          <div class="preview-card active">
+            <span class="pill">Berkeley College</span>
+            <h2>B-312</h2>
+            <p>4-person suite • 2 bedrooms • common room</p>
+            <div class="preview-grid">
+              <span>Entry B</span>
+              <span>Floor 3</span>
+              <span>560 sq ft</span>
+            </div>
+          </div>
+          <div class="preview-card muted">
+            <span class="pill">Grace Hopper</span>
+            <h2>GH-204</h2>
+            <p>Double • shared bath nearby</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section-wrap" id="colleges">
+      <div class="section-heading">
+        <p class="eyebrow">Start here</p>
+        <h2>Select a residential college</h2>
+        <p>Each college uses Yale-inspired styling with its own accent color once selected.</p>
+      </div>
+      <div class="college-grid" id="collegeGrid" aria-live="polite"></div>
+    </section>
+
+    <section class="section-wrap feature-strip">
+      <article>
+        <span class="feature-icon">⌕</span>
+        <h3>Fast room search</h3>
+        <p>Search by room number, notes, suite type, entrance, or college.</p>
+      </article>
+      <article>
+        <span class="feature-icon">▦</span>
+        <h3>Structured room cards</h3>
+        <p>Each card includes dimensions, photo placeholders, suite details, and notes.</p>
+      </article>
+      <article>
+        <span class="feature-icon">↥</span>
+        <h3>Admin upload ready</h3>
+        <p>A protected mock upload flow is included for future backend connection.</p>
+      </article>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <p>Prototype for student housing discovery. Mock data only.</p>
+    <a href="catalog.html#admin">Admin upload</a>
+  </footer>
+
+  <script src="data.js"></script>
+  <script src="home.js"></script>
+</body>
+</html>
