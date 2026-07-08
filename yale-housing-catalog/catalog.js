@@ -40,6 +40,27 @@ function escapeHtml(value = "") {
     .replace(/'/g, "&#039;");
 }
 
+function getCollegeLogo(college) {
+  return college?.logo || "";
+}
+
+function collegeLogoMarkup(college, className = "college-logo", size = 48, fallback = "") {
+  const logo = getCollegeLogo(college);
+  if (!logo) return fallback;
+
+  return `<img src="${escapeHtml(logo)}" alt="${escapeHtml(college?.name || "Residential College")} shield" class="${escapeHtml(className)}" width="${Number(size)}" height="${Number(size)}" loading="lazy" />`;
+}
+
+function collegeLogoStackMarkup() {
+  const logos = yaleHousingData.colleges
+    .filter((college) => getCollegeLogo(college))
+    .slice(0, 4)
+    .map((college) => collegeLogoMarkup(college, "mini-college-logo", 42))
+    .join("");
+
+  return logos ? `<div class="college-logo-stack" aria-hidden="true">${logos}</div>` : `<div class="accent-swatch" aria-hidden="true"></div>`;
+}
+
 function setAccent(collegeId) {
   const college = getCollegeById(collegeId);
   const root = document.documentElement;
@@ -105,9 +126,13 @@ function renderSelectedCollege() {
     elements.catalogTitle.textContent = "All rooms";
     elements.catalogSubtitle.textContent = "Search the starter room set by college, entrance, floor level, or room details.";
     elements.selectedCollegeCard.innerHTML = `
-      <div class="accent-swatch" aria-hidden="true"></div>
-      <h3>All residential colleges</h3>
-      <p>Browse the full starter set or use filters to narrow the catalog.</p>
+      <div class="selected-college-header">
+        ${collegeLogoStackMarkup()}
+        <div>
+          <h3>All residential colleges</h3>
+          <p>Browse the full starter set or use filters to narrow the catalog.</p>
+        </div>
+      </div>
     `;
     return;
   }
@@ -115,9 +140,13 @@ function renderSelectedCollege() {
   elements.catalogTitle.textContent = `${college.name} rooms`;
   elements.catalogSubtitle.textContent = `Browse mock room data for ${college.name}, including suite details, dimensions, and notes.`;
   elements.selectedCollegeCard.innerHTML = `
-    <div class="accent-swatch" aria-hidden="true"></div>
-    <h3>${escapeHtml(college.name)}</h3>
-    <p>${escapeHtml(college.description)}</p>
+    <div class="selected-college-header">
+      ${collegeLogoMarkup(college, "college-logo selected-logo", 56, `<div class="accent-swatch" aria-hidden="true"></div>`)}
+      <div>
+        <h3>${escapeHtml(college.name)}</h3>
+        <p>${escapeHtml(college.description)}</p>
+      </div>
+    </div>
   `;
 }
 
@@ -168,9 +197,12 @@ function renderRooms() {
         </div>
         <div class="room-body">
           <div class="room-topline">
-            <div>
-              <h3 class="room-number">${escapeHtml(room.roomNumber)}</h3>
-              <div class="room-college">${escapeHtml(college?.name || "Residential College")}</div>
+            <div class="room-title-lockup">
+              ${collegeLogoMarkup(college, "room-college-logo", 32)}
+              <div>
+                <h3 class="room-number">${escapeHtml(room.roomNumber)}</h3>
+                <div class="room-college">${escapeHtml(college?.name || "Residential College")}</div>
+              </div>
             </div>
             <span class="room-pill">${escapeHtml(room.suiteType)}</span>
           </div>
@@ -204,7 +236,10 @@ function openRoomModal(roomId) {
         <img src="${escapeHtml(secondImage)}" alt="Additional mock room photo for ${escapeHtml(room.roomNumber)}" />
       </div>
       <div class="modal-body">
-        <p class="eyebrow">${escapeHtml(college?.name || "Residential College")}</p>
+        <div class="modal-college-lockup">
+          ${collegeLogoMarkup(college, "modal-college-logo", 44)}
+          <p class="eyebrow">${escapeHtml(college?.name || "Residential College")}</p>
+        </div>
         <h2 id="modalRoomTitle">${escapeHtml(room.roomNumber)}</h2>
         <span class="room-pill">${escapeHtml(room.suiteType)}</span>
         <div class="modal-details">
