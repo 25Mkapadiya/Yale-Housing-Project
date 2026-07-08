@@ -1,5 +1,19 @@
 const collegeGrid = document.querySelector("#collegeGrid");
 
+function collegeLogoMarkup(college) {
+  if (!college.logo) return "";
+
+  return `
+    <img
+      src="${college.logo}"
+      alt=""
+      aria-hidden="true"
+      loading="lazy"
+      style="width:100%;height:100%;object-fit:contain;padding:0.35rem;"
+    />
+  `;
+}
+
 function renderCollegeCards() {
   if (!collegeGrid) return;
 
@@ -11,7 +25,7 @@ function renderCollegeCards() {
     return `
       <article class="college-card" style="--college-accent: ${college.accent}">
         <div>
-          <div class="accent-swatch" aria-hidden="true"></div>
+          <div class="accent-swatch" aria-hidden="true">${collegeLogoMarkup(college)}</div>
           <h3>${college.name}</h3>
           <p>${college.description}</p>
           <div class="college-meta" aria-label="College details">
