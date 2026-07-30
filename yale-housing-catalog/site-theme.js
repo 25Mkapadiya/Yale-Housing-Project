@@ -141,6 +141,18 @@ function initCatalogCollegeEnhancements() {
   const observer = new MutationObserver(() => window.setTimeout(enhanceSelectedCollege, 0));
   observer.observe(selectedCollegeCard, { childList: true });
 
+  document.addEventListener("click", (event) => {
+    if (event.target.closest(".room-card")) {
+      window.setTimeout(enhanceSelectedCollege, 0);
+    }
+  });
+
+  document.addEventListener("keydown", (event) => {
+    if ((event.key === "Enter" || event.key === " ") && event.target.closest(".room-card")) {
+      window.setTimeout(enhanceSelectedCollege, 0);
+    }
+  });
+
   window.setTimeout(enhanceSelectedCollege, 0);
 }
 
