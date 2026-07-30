@@ -9,6 +9,7 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="styles.css" />
+  <link rel="stylesheet" href="site-theme.css" />
 </head>
 <body class="home-page">
   <header class="site-header">
@@ -23,6 +24,7 @@
       <a href="#colleges">Colleges</a>
       <a href="catalog.html">Room Catalog</a>
       <a href="catalog.html#admin">Admin Upload</a>
+      <button class="theme-toggle" id="themeToggle" type="button" aria-label="Switch to dark mode">Dark mode</button>
     </nav>
   </header>
 
@@ -63,7 +65,7 @@
       <div class="section-heading">
         <p class="eyebrow">Start here</p>
         <h2>Select a residential college</h2>
-        <p>Each college uses Yale-inspired styling with its own accent color once selected.</p>
+        <p>Each college now uses a visual palette inspired by its shield and identity.</p>
       </div>
       <div class="college-grid" id="collegeGrid" aria-live="polite"></div>
     </section>
@@ -93,6 +95,7 @@
   </footer>
 
   <script src="data.js"></script>
+  <script src="site-theme.js"></script>
   <script src="home.js"></script>
 </body>
 </html>
