@@ -1,21 +1,21 @@
 const collegeThemeConfig = {
   berkeley: {
-    accent: "#c58b18",
-    accentDark: "#6d4308",
-    accentAlt: "#0a3a68",
-    surface: "#fff6df"
+    accent: "#ed1b2f",
+    accentDark: "#8f0d19",
+    accentAlt: "#ffffff",
+    surface: "#fff1f2"
   },
   branford: {
-    accent: "#b33234",
-    accentDark: "#65171a",
-    accentAlt: "#d8b36a",
-    surface: "#fff0ee"
+    accent: "#005da8",
+    accentDark: "#003f73",
+    accentAlt: "#f0c400",
+    surface: "#edf6ff"
   },
   "grace-hopper": {
-    accent: "#2f77b4",
-    accentDark: "#123f68",
-    accentAlt: "#86b9dd",
-    surface: "#ecf6ff"
+    accent: "#005da8",
+    accentDark: "#111111",
+    accentAlt: "#ffd21f",
+    surface: "#edf6ff"
   },
   "pauli-murray": {
     accent: "#005da8",
@@ -26,7 +26,7 @@ const collegeThemeConfig = {
 };
 
 const collegeLogoOverrides = {
-  "pauli-murray": "assets/colleges/pauli-murray-shield.svg?v=transparent-3"
+  "pauli-murray": "assets/colleges/pauli-murray-shield.svg?v=transparent-4"
 };
 
 function themeEscapeHtml(value = "") {
