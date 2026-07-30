@@ -1,24 +1,5 @@
 const collegeGrid = document.querySelector("#collegeGrid");
 
-const collegeLogoOverrides = {
-  "pauli-murray": "assets/colleges/pauli-murray-shield.svg?v=transparent-2"
-};
-
-function collegeLogoMarkup(college) {
-  const logo = collegeLogoOverrides[college.id] || college.logo;
-  if (!logo) return "";
-
-  return `
-    <img
-      src="${logo}"
-      alt=""
-      aria-hidden="true"
-      loading="lazy"
-      style="width:100%;height:100%;object-fit:contain;padding:0.35rem;background:transparent;"
-    />
-  `;
-}
-
 function renderCollegeCards() {
   if (!collegeGrid) return;
 
@@ -26,11 +7,19 @@ function renderCollegeCards() {
     const roomCount = getAllRooms().filter((room) => room.collegeId === college.id).length;
     const floors = college.floors.join(", ");
     const entrances = college.entrances.length;
+    const palette = typeof getCollegePalette === "function"
+      ? getCollegePalette(college.id, college)
+      : { accent: college.accent, accentDark: college.accentDark, accentAlt: college.accent };
+    const logo = typeof collegeLogoMarkup === "function" ? collegeLogoMarkup(college) : "";
 
     return `
-      <article class="college-card" style="--college-accent: ${college.accent}">
+      <article
+        class="college-card"
+        data-college-id="${college.id}"
+        style="--college-accent: ${palette.accent}; --college-accent-dark: ${palette.accentDark}; --college-accent-alt: ${palette.accentAlt};"
+      >
         <div>
-          <div class="accent-swatch" aria-hidden="true">${collegeLogoMarkup(college)}</div>
+          <div class="accent-swatch" aria-hidden="true">${logo}</div>
           <h3>${college.name}</h3>
           <p>${college.description}</p>
           <div class="college-meta" aria-label="College details">
