@@ -1,0 +1,164 @@
+.theme-toggle {
+  border: 0;
+  border-radius: 999px;
+  padding: 0.65rem 0.9rem;
+  color: var(--yale-blue);
+  background: rgba(0, 53, 107, 0.08);
+  font-weight: 800;
+  font-size: 0.9rem;
+  cursor: pointer;
+}
+
+.theme-toggle:hover,
+.theme-toggle:focus-visible {
+  background: color-mix(in srgb, var(--accent) 14%, white);
+  outline: none;
+}
+
+.college-card {
+  background:
+    linear-gradient(180deg, color-mix(in srgb, var(--college-accent) 8%, var(--paper)), var(--paper) 72%) !important;
+  border-color: color-mix(in srgb, var(--college-accent) 22%, var(--line)) !important;
+}
+
+.college-card::before {
+  width: 13rem;
+  height: 13rem;
+  background:
+    radial-gradient(circle, color-mix(in srgb, var(--college-accent-alt, var(--college-accent)) 62%, transparent), transparent 68%) !important;
+  opacity: 0.2 !important;
+}
+
+.accent-swatch {
+  display: grid;
+  place-items: center;
+  overflow: hidden;
+  position: relative;
+  background:
+    linear-gradient(135deg, var(--college-accent), var(--college-accent-alt, var(--college-accent-dark, var(--college-accent)))) !important;
+}
+
+.accent-swatch img,
+.college-logo-img,
+.selected-college-logo {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  padding: 0.35rem;
+  background: transparent !important;
+}
+
+.selected-college-card {
+  background:
+    linear-gradient(135deg, color-mix(in srgb, var(--college-accent, var(--accent)) 12%, var(--paper)), color-mix(in srgb, var(--college-accent-alt, var(--accent)) 8%, var(--paper))) !important;
+  border-color: color-mix(in srgb, var(--college-accent, var(--accent)) 24%, var(--line)) !important;
+}
+
+.selected-college-card .accent-swatch {
+  width: 4.4rem;
+  height: 4.4rem;
+  margin-bottom: 1rem;
+}
+
+.catalog-hero {
+  background:
+    linear-gradient(135deg, color-mix(in srgb, var(--accent) 10%, var(--paper)), rgba(255,255,255,0.76)) !important;
+}
+
+.room-card {
+  border-color: color-mix(in srgb, var(--accent) 12%, var(--line)) !important;
+}
+
+.room-pill {
+  background: color-mix(in srgb, var(--accent) 14%, var(--paper)) !important;
+  color: color-mix(in srgb, var(--accent-dark) 86%, var(--ink)) !important;
+}
+
+:root[data-theme="dark"] {
+  --ink: #f3f7ff;
+  --muted: #a8b7cc;
+  --line: rgba(232, 239, 250, 0.14);
+  --soft: #111d2f;
+  --paper: #101a2b;
+  --warm: #1a2231;
+  --gray: #9ba7b7;
+  --shadow: 0 22px 70px rgba(0, 0, 0, 0.38);
+}
+
+:root[data-theme="dark"] body {
+  color: var(--ink);
+  background:
+    radial-gradient(circle at top left, color-mix(in srgb, var(--accent) 26%, transparent), transparent 34rem),
+    linear-gradient(180deg, #07101d 0%, #0b1424 55%, #09111d 100%);
+}
+
+:root[data-theme="dark"] body::before {
+  background-image:
+    linear-gradient(rgba(232, 239, 250, 0.04) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(232, 239, 250, 0.04) 1px, transparent 1px);
+}
+
+:root[data-theme="dark"] .site-header::before,
+:root[data-theme="dark"] .hero-shell,
+:root[data-theme="dark"] .catalog-hero,
+:root[data-theme="dark"] .section-wrap,
+:root[data-theme="dark"] .admin-shell,
+:root[data-theme="dark"] .filters-panel,
+:root[data-theme="dark"] .empty-state {
+  background: rgba(16, 26, 43, 0.78);
+  border-color: rgba(232, 239, 250, 0.12);
+}
+
+:root[data-theme="dark"] .college-card,
+:root[data-theme="dark"] .room-card,
+:root[data-theme="dark"] .selected-college-card,
+:root[data-theme="dark"] .admin-gate,
+:root[data-theme="dark"] .upload-form {
+  background:
+    linear-gradient(180deg, color-mix(in srgb, var(--college-accent, var(--accent)) 12%, #101a2b), #101a2b 80%) !important;
+  border-color: color-mix(in srgb, var(--college-accent, var(--accent)) 24%, rgba(232, 239, 250, 0.12)) !important;
+}
+
+:root[data-theme="dark"] .feature-strip {
+  background: #061426;
+}
+
+:root[data-theme="dark"] input,
+:root[data-theme="dark"] select,
+:root[data-theme="dark"] textarea {
+  background: rgba(7, 16, 29, 0.76);
+  border-color: rgba(232, 239, 250, 0.13);
+  color: var(--ink);
+}
+
+:root[data-theme="dark"] .college-meta span,
+:root[data-theme="dark"] .fact {
+  background: rgba(232, 239, 250, 0.07);
+}
+
+:root[data-theme="dark"] .button.ghost,
+:root[data-theme="dark"] .theme-toggle {
+  color: var(--ink);
+  background: color-mix(in srgb, var(--accent) 18%, rgba(232, 239, 250, 0.08));
+}
+
+:root[data-theme="dark"] .button.primary {
+  background: linear-gradient(135deg, var(--accent), var(--accent-dark));
+  box-shadow: 0 12px 28px rgba(0, 0, 0, 0.32);
+}
+
+:root[data-theme="dark"] .room-modal {
+  background: #101a2b;
+  color: var(--ink);
+}
+
+:root[data-theme="dark"] .modal-close {
+  background: rgba(16, 26, 43, 0.92);
+  color: var(--ink);
+}
+
+@media (max-width: 820px) {
+  .theme-toggle {
+    width: 100%;
+  }
+}
