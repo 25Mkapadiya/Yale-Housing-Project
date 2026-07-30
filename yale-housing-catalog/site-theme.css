@@ -54,12 +54,14 @@
 }
 
 .accent-swatch {
-  width: 3.7rem;
-  height: 3.7rem;
-  border-radius: 1.15rem;
-  display: grid;
-  place-items: center;
-  overflow: hidden;
+  width: 4.25rem !important;
+  height: 4.25rem !important;
+  box-sizing: border-box !important;
+  padding: 0.9rem !important;
+  border-radius: 1.2rem;
+  display: grid !important;
+  place-items: center !important;
+  overflow: visible !important;
   position: relative;
   isolation: isolate;
   background:
@@ -72,8 +74,8 @@
 .accent-swatch::after {
   content: "";
   position: absolute;
-  inset: 0.38rem;
-  border-radius: 0.82rem;
+  inset: 0.42rem;
+  border-radius: 0.9rem;
   border: 1px solid rgba(255,255,255,0.24);
   pointer-events: none;
   z-index: -1;
@@ -82,10 +84,10 @@
 .accent-swatch img,
 .college-logo-img,
 .selected-college-logo {
-  width: 74% !important;
-  height: 74% !important;
-  max-width: 74% !important;
-  max-height: 74% !important;
+  width: 100% !important;
+  height: 100% !important;
+  max-width: 100% !important;
+  max-height: 100% !important;
   min-width: 0 !important;
   min-height: 0 !important;
   display: block !important;
@@ -100,24 +102,18 @@
   transform: none !important;
 }
 
-.college-card[data-college-id="berkeley"] .accent-swatch img,
-.college-card[data-college-id="branford"] .accent-swatch img,
-.college-card[data-college-id="grace-hopper"] .accent-swatch img,
-.selected-college-card[data-college-id="berkeley"] .accent-swatch img,
-.selected-college-card[data-college-id="branford"] .accent-swatch img,
-.selected-college-card[data-college-id="grace-hopper"] .accent-swatch img {
-  width: 70% !important;
-  height: 70% !important;
-  max-width: 70% !important;
-  max-height: 70% !important;
+.college-card[data-college-id="berkeley"] .accent-swatch,
+.college-card[data-college-id="branford"] .accent-swatch,
+.college-card[data-college-id="grace-hopper"] .accent-swatch,
+.selected-college-card[data-college-id="berkeley"] .accent-swatch,
+.selected-college-card[data-college-id="branford"] .accent-swatch,
+.selected-college-card[data-college-id="grace-hopper"] .accent-swatch {
+  padding: 1rem !important;
 }
 
-.college-card[data-college-id="pauli-murray"] .accent-swatch img,
-.selected-college-card[data-college-id="pauli-murray"] .accent-swatch img {
-  width: 76% !important;
-  height: 76% !important;
-  max-width: 76% !important;
-  max-height: 76% !important;
+.college-card[data-college-id="pauli-murray"] .accent-swatch,
+.selected-college-card[data-college-id="pauli-murray"] .accent-swatch {
+  padding: 0.85rem !important;
 }
 
 .selected-college-card {
@@ -127,15 +123,15 @@
 }
 
 .selected-college-card .accent-swatch {
-  width: 5rem;
-  height: 5rem;
-  border-radius: 1.35rem;
+  width: 5.5rem !important;
+  height: 5.5rem !important;
+  border-radius: 1.45rem;
   margin-bottom: 1rem;
 }
 
 .selected-college-card .accent-swatch::after {
-  inset: 0.46rem;
-  border-radius: 0.98rem;
+  inset: 0.52rem;
+  border-radius: 1.05rem;
 }
 
 .catalog-hero {
