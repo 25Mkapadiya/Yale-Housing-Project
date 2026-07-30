@@ -1,11 +1,16 @@
 const collegeGrid = document.querySelector("#collegeGrid");
 
+const collegeLogoOverrides = {
+  "pauli-murray": "assets/colleges/pauli-murray-shield.svg"
+};
+
 function collegeLogoMarkup(college) {
-  if (!college.logo) return "";
+  const logo = collegeLogoOverrides[college.id] || college.logo;
+  if (!logo) return "";
 
   return `
     <img
-      src="${college.logo}"
+      src="${logo}"
       alt=""
       aria-hidden="true"
       loading="lazy"
