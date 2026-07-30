@@ -57,7 +57,7 @@
   width: 4.35rem !important;
   height: 4.35rem !important;
   box-sizing: border-box !important;
-  padding: 0.7rem !important;
+  padding: 0.66rem !important;
   border-radius: 1.2rem;
   display: grid !important;
   place-items: center !important;
@@ -107,13 +107,20 @@
 .college-card[data-college-id="grace-hopper"] .accent-swatch,
 .selected-college-card[data-college-id="berkeley"] .accent-swatch,
 .selected-college-card[data-college-id="branford"] .accent-swatch,
-.selected-college-card[data-college-id="grace-hopper"] .accent-swatch {
-  padding: 0.72rem !important;
-}
-
+.selected-college-card[data-college-id="grace-hopper"] .accent-swatch,
 .college-card[data-college-id="pauli-murray"] .accent-swatch,
 .selected-college-card[data-college-id="pauli-murray"] .accent-swatch {
   padding: 0.66rem !important;
+}
+
+.college-card[data-college-id="berkeley"] .accent-swatch img,
+.college-card[data-college-id="branford"] .accent-swatch img,
+.college-card[data-college-id="grace-hopper"] .accent-swatch img,
+.selected-college-card[data-college-id="berkeley"] .accent-swatch img,
+.selected-college-card[data-college-id="branford"] .accent-swatch img,
+.selected-college-card[data-college-id="grace-hopper"] .accent-swatch img {
+  transform: scale(1.04) !important;
+  transform-origin: center center !important;
 }
 
 .selected-college-card {
