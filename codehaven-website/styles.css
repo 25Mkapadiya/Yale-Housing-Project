@@ -1,0 +1,288 @@
+/*
+  CodeHaven "About" page — redesigned clone.
+  Color palette pulled verbatim from the live site's Jekyll theme
+  (jekyll-text-theme, "orange" skin — _sass/skins/_orange.scss),
+  so any value below can be traced back to that source file.
+*/
+
+:root {
+  /* --- palette (unchanged from the live site) --- */
+  --color-accent-blue: rgb(97, 139, 241);   /* $main-color-1 */
+  --color-accent-gold: #fdb824;             /* $main-color-2 */
+  --color-accent-coral: #ff8a64;            /* $main-color-3 */
+
+  --color-bg: #fffdfa;                      /* $background-color */
+
+  --color-text-strong: rgba(0, 0, 0, 0.95); /* $text-color-theme-light-d */
+  --color-text: rgba(0, 0, 0, 0.85);        /* $text-color-theme-light */
+  --color-text-muted: rgba(0, 0, 0, 0.5);   /* $text-color-theme-light-l */
+
+  --gradient-header: linear-gradient(60deg, #ffa650 0%, #ff7b50 100%);
+  --color-on-gradient: #fff;
+
+  --color-border: #d9dfe6;                  /* mix($main-color-1, $background-color, 50%) */
+  --color-border-soft: #ece7de;             /* mix(#000, $background-color, 10%) */
+
+  /* --- type + spacing scale (same ratios as the theme's base map) --- */
+  --font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif;
+  --radius-lg: 0.8rem;
+  --radius: 0.4rem;
+  --radius-sm: 0.2rem;
+  --content-max-width: 950px;
+  --shadow-card: 0 1px 3px rgba(0, 0, 0, 0.06), 0 8px 24px rgba(0, 0, 0, 0.06);
+}
+
+* { box-sizing: border-box; }
+
+html { -webkit-text-size-adjust: 100%; }
+
+body {
+  margin: 0;
+  font-family: var(--font-family);
+  font-size: 16px;
+  line-height: 1.6;
+  color: var(--color-text);
+  background: var(--color-bg);
+}
+
+a { color: var(--color-accent-blue); text-decoration: none; }
+a:hover { text-decoration: underline; }
+
+.wrap {
+  max-width: var(--content-max-width);
+  margin: 0 auto;
+  padding: 0 1.5rem;
+}
+
+/* ---------- header ---------- */
+
+.site-header {
+  background: var(--gradient-header);
+  color: var(--color-on-gradient);
+  position: sticky;
+  top: 0;
+  z-index: 10;
+  box-shadow: 0 2px 10px rgba(255, 123, 80, 0.25);
+}
+
+.site-header .wrap {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: 4.5rem;
+  gap: 1.5rem;
+}
+
+.brand {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+  font-weight: 700;
+  font-size: 1.15rem;
+  color: var(--color-on-gradient);
+  white-space: nowrap;
+}
+
+.brand img {
+  width: 2.1rem;
+  height: 2.1rem;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.9);
+  padding: 2px;
+}
+
+.brand:hover { text-decoration: none; opacity: 0.92; }
+
+.site-nav ul {
+  list-style: none;
+  display: flex;
+  gap: 0.25rem;
+  margin: 0;
+  padding: 0;
+}
+
+.site-nav a {
+  display: inline-block;
+  color: var(--color-on-gradient);
+  padding: 0.5rem 0.9rem;
+  border-radius: 6rem;
+  font-weight: 600;
+  font-size: 0.92rem;
+  transition: background-color 0.2s ease-in-out;
+}
+
+.site-nav a:hover { background: rgba(255, 255, 255, 0.18); text-decoration: none; }
+
+.site-nav a.active { background: rgba(0, 0, 0, 0.16); }
+
+/* ---------- hero ---------- */
+
+.hero {
+  background: var(--gradient-header);
+  color: var(--color-on-gradient);
+  text-align: center;
+  padding: 3.5rem 1.5rem 4.5rem;
+}
+
+.hero h1 {
+  margin: 0 0 0.6rem;
+  font-size: 2.75rem;
+  font-weight: 700;
+  letter-spacing: -0.01em;
+}
+
+.hero p {
+  margin: 0 auto;
+  max-width: 40rem;
+  font-size: 1.1rem;
+  color: rgba(255, 255, 255, 0.92);
+}
+
+/* ---------- stats strip ---------- */
+
+.stats {
+  max-width: var(--content-max-width);
+  margin: -2.75rem auto 3rem;
+  padding: 0 1.5rem;
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 1rem;
+}
+
+.stat-card {
+  background: #fff;
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-card);
+  padding: 1.25rem 1rem;
+  text-align: center;
+}
+
+.stat-card .stat-number {
+  display: block;
+  font-size: 1.6rem;
+  font-weight: 700;
+  color: var(--color-accent-coral);
+  margin-bottom: 0.15rem;
+}
+
+.stat-card .stat-label {
+  font-size: 0.8rem;
+  color: var(--color-text-muted);
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+}
+
+/* ---------- main content ---------- */
+
+main { padding: 0 0 4rem; }
+
+.section {
+  max-width: var(--content-max-width);
+  margin: 0 auto 2rem;
+  padding: 0 1.5rem;
+}
+
+.card {
+  background: #fff;
+  border: 1px solid var(--color-border-soft);
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-card);
+  padding: 2.25rem 2.5rem;
+}
+
+.card + .card { margin-top: 1.5rem; }
+
+.section-eyebrow {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 2.2rem;
+  height: 2.2rem;
+  border-radius: 50%;
+  background: var(--color-accent-coral);
+  color: #fff;
+  font-weight: 700;
+  font-size: 0.95rem;
+  margin-bottom: 1rem;
+}
+
+.card h2 {
+  margin: 0 0 0.9rem;
+  font-size: 1.6rem;
+  font-weight: 700;
+  color: var(--color-text-strong);
+}
+
+.card p { margin: 0 0 1rem; }
+.card p:last-child { margin-bottom: 0; }
+
+.card a.inline-link { font-weight: 600; }
+
+.callout {
+  border-left: 3px solid var(--color-accent-blue);
+  background: rgba(97, 139, 241, 0.06);
+  border-radius: 0 var(--radius) var(--radius) 0;
+  padding: 1rem 1.25rem;
+  margin-top: 1.25rem;
+  font-size: 0.95rem;
+}
+
+/* ---------- footer ---------- */
+
+.site-footer {
+  background: var(--gradient-header);
+  color: var(--color-on-gradient);
+  padding: 2.5rem 1.5rem;
+  text-align: center;
+}
+
+.site-footer .footer-links {
+  display: flex;
+  justify-content: center;
+  gap: 1rem;
+  margin-bottom: 1rem;
+  flex-wrap: wrap;
+}
+
+.site-footer .footer-links a {
+  color: var(--color-on-gradient);
+  font-weight: 600;
+  opacity: 0.95;
+}
+
+.site-footer .footer-links a:hover { opacity: 1; }
+
+.btn-primary {
+  display: inline-block;
+  margin-top: 0.75rem;
+  background: #fff;
+  color: #ff7b50;
+  font-weight: 700;
+  padding: 0.65rem 1.6rem;
+  border-radius: 6rem;
+  transition: transform 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
+}
+
+.btn-primary:hover {
+  text-decoration: none;
+  transform: translateY(-1px);
+  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.18);
+}
+
+.site-footer .copyright {
+  margin-top: 1.5rem;
+  font-size: 0.8rem;
+  color: rgba(255, 255, 255, 0.85);
+}
+
+/* ---------- responsive ---------- */
+
+@media (max-width: 640px) {
+  .site-header .wrap { height: auto; padding: 0.85rem 1.25rem; flex-wrap: wrap; }
+  .site-nav ul { gap: 0; }
+  .site-nav a { padding: 0.4rem 0.6rem; font-size: 0.85rem; }
+  .hero { padding: 2.5rem 1.25rem 3.5rem; }
+  .hero h1 { font-size: 2rem; }
+  .stats { grid-template-columns: repeat(2, 1fr); margin-top: -2rem; }
+  .card { padding: 1.5rem 1.35rem; }
+}
