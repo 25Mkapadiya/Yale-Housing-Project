@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Week 5 · Code Haven Curriculum</title>
+  <meta name="description" content="Code Haven Week 5: Coordinate Plane, Movement">
+  <link rel="icon" href="../assets/favicon.ico">
+  <link rel="stylesheet" href="../styles.css">
+</head>
+<body>
+  <header class="site-header">
+    <div class="wrap">
+      <a class="brand" href="../index.html">
+        <img src="../assets/logo.png" alt="Code Haven logo">
+        <span>Code Haven Curriculum</span>
+      </a>
+      <nav class="site-nav">
+        <ul>
+          <li><a href="../lessons.html" class="active">Lesson Plans</a></li>
+          <li><a href="../about.html">About</a></li>
+          <li><a href="../faq.html">FAQs</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+  <section class="lesson-hero">
+    <div class="wrap">
+      <p class="breadcrumb"><a href="../lessons.html">Lesson Plans</a><span>/</span>Week 5</p>
+      <span class="topic-badge">Topics: Coordinate Plane, Movement</span>
+      <h1>Code Haven Week 5</h1>
+    </div>
+  </section>
+
+  <div class="lesson-body">
+    <div class="card">
+      <h2>Week 5 Overview</h2>
+      <h3>Objectives</h3>
+      <ul class="obj-list">
+        <li>Introduce and practice the concept of coordinates</li>
+        <li>Understand how we can change x and y coordinates to make a Sprite (character) move</li>
+      </ul>
+
+      <h3>Materials and Resources</h3>
+      <ul class="materials-list">
+        <li>Materials needed: Treasure Hunt worksheet</li>
+        <li><a href="https://drive.google.com/open?id=170rc8PcbMsOjUpwzcACI3NwAf2seUrZuRN2DMWgh-Ks" target="_blank" rel="noopener">Treasure Hunt worksheet</a></li>
+        <li><a href="https://drive.google.com/open?id=11OWAQwI0b0nw6I13je9Ji5EUYoS6kw6xUHnMzigRA8c" target="_blank" rel="noopener">Lesson Plan</a></li>
+        <li><a href="https://drive.google.com/open?id=1rnJdg4q1quKC4zpIRGiU5O_dDDt8XFMo9Gyw_Gm15Nc" target="_blank" rel="noopener">Worksheet</a></li>
+        <li><a href="https://scratch.mit.edu/projects/379936362/" target="_blank" rel="noopener">Worksheet Solution — Part 1</a></li>
+        <li><a href="https://scratch.mit.edu/projects/379938822/" target="_blank" rel="noopener">Worksheet Solution — Part 2</a></li>
+        <li><a href="https://drive.google.com/open?id=1ET4Xll4KaG6YiNtz6cbxUDlPvIzTVhyPYRxgvkfljvw" target="_blank" rel="noopener">Presentation</a></li>
+      </ul>
+
+      <h3>Lesson Plan Overview</h3>
+      <ol class="agenda-list">
+        <li><span class="agenda-time">5 min</span><span><strong>Introduction:</strong> Review variables</span></li>
+        <li><span class="agenda-time">10 min</span><span><strong>Unplugged Activity:</strong> Review coordinates and do Treasure Hunt activity</span></li>
+        <li><span class="agenda-time">5 min</span><span><strong>Live Coding:</strong> Show how to use coordinates in Scratch</span></li>
+        <li><span class="agenda-time">30 min</span><span><strong>Worksheet:</strong> Log into Scratch accounts and work on the worksheet</span></li>
+        <li><span class="agenda-time">5 min</span><span><strong>Wrap up:</strong> See how coordinates fit with the maze activity</span></li>
+      </ol>
+    </div>
+
+    <div class="card">
+      <h2>Worksheet</h2>
+      <div class="worksheet-part">
+        <h3>Part 1: Moving in Scratch!</h3>
+        <p>Let’s make the Scratch cat move up, down, left, and right with arrows!</p>
+        <div class="worksheet-figure">
+          <img src="../assets/images/week5/img1.png" alt="Part 1: Moving in Scratch! screenshot">
+        </div>
+        <ol class="worksheet-steps">
+          <li>Make the program run forever when the flag is pressed</li>
+          <li>Make four conditionals, one for each arrow button that can be pressed</li>
+          <li>Add the correct direction inside each arrow conditional</li>
+        </ol>
+        <div class="worksheet-figure">
+          <figure><figcaption>Here's the Block Bank:</figcaption><img src="../assets/images/week5/bb1.png" alt="Scratch block bank"></figure>
+        </div>
+        <div class="worksheet-question">Question: How are we using coordinates to make the Scratch cat move?</div>
+      </div>
+      <div class="worksheet-part">
+        <h3>Part 2: Splatter Painting!</h3>
+        <p>Let's keep working on the last part! When we press the spacebar, Scratch should go somewhere random. Also, Scratch should use the pen to make cool drawings as he moves!</p>
+        <div class="worksheet-figure">
+          <img src="../assets/images/week5/img2.png" alt="Part 2: Splatter Painting! screenshot">
+        </div>
+        <ol class="worksheet-steps">
+          <li>Click the + button to give Scratch a pen.</li>
+          <li>Inside our loop from the last activity, add one more conditional to check if the spacebar is pressed!</li>
+          <li>When it is, Scratch should move randomly.</li>
+          <li>Outside our loop, make Scratch put the pen down!</li>
+        </ol>
+        <div class="worksheet-figure">
+          <figure><figcaption>Here's the Block Bank:</figcaption><img src="../assets/images/week5/bb2.png" alt="Scratch block bank"></figure>
+        </div>
+      </div>
+      <div class="worksheet-part">
+        <h3>Part 3: Apple Chasing!</h3>
+        <p>Don't get rid of your last project yet — it's time to make a game! Whenever Scratch runs into the apple, he should get a point, and the apple should run away from him!</p>
+        <div class="worksheet-figure">
+          <img src="../assets/images/week5/img3.png" alt="Part 3: Apple Chasing! screenshot">
+        </div>
+        <ol class="worksheet-steps">
+          <li>Add a new sprite with the + Sprite button!</li>
+          <li>We need a new variable 'score.' When we click the flag, the score should be set to 0.</li>
+          <li>Then, we should have a loop that runs forever, checking each time if Scratch is touching the apple.</li>
+          <li>When he is, he should get a point and the apple should move!</li>
+        </ol>
+        <div class="worksheet-figure">
+          <img src="../assets/images/week5/bb3.png" alt="Scratch block bank">
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="lesson-pager">
+    <a class="prev" href="week-4.html"><span class="pager-label">Previous</span>Week 4</a>
+    <a class="next" href="week-6.html"><span class="pager-label">Next</span>Week 6</a>
+  </div>
+
+  <footer class="site-footer">
+    <div class="footer-links">
+      <a href="../lessons.html">Lesson Plans</a>
+      <a href="../about.html">About</a>
+      <a href="../faq.html">FAQs</a>
+      <a href="../guestbook.html">Guestbook</a>
+    </div>
+    <a class="btn-primary" href="https://www.codehavenyale.com">Code Haven Website</a>
+    <div class="copyright">© Code Haven Curriculum, Powered by Jekyll &amp; TeXt Theme.</div>
+  </footer>
+</body>
+</html>

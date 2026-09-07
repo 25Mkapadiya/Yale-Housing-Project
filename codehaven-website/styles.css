@@ -286,3 +286,394 @@ main { padding: 0 0 4rem; }
   .stats { grid-template-columns: repeat(2, 1fr); margin-top: -2rem; }
   .card { padding: 1.5rem 1.35rem; }
 }
+
+/* ================================================================
+   Home hero
+   ================================================================ */
+
+.home-hero {
+  background: var(--gradient-header);
+  color: var(--color-on-gradient);
+  text-align: center;
+  padding: 4.5rem 1.5rem 5.5rem;
+}
+
+.home-hero h1 {
+  margin: 0 0 0.75rem;
+  font-size: 3rem;
+  font-weight: 700;
+  text-wrap: balance;
+}
+
+.home-hero p.lede {
+  max-width: 36rem;
+  margin: 0 auto 1.75rem;
+  font-size: 1.15rem;
+  color: rgba(255, 255, 255, 0.92);
+}
+
+.home-cta {
+  display: flex;
+  gap: 0.75rem;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+.home-cta a {
+  padding: 0.75rem 1.5rem;
+  border-radius: 6rem;
+  font-weight: 700;
+  transition: transform 0.15s ease-in-out;
+}
+
+.home-cta a:hover { text-decoration: none; transform: translateY(-1px); }
+
+.home-cta a.primary { background: #fff; color: #ff7b50; }
+.home-cta a.secondary { background: rgba(255, 255, 255, 0.14); color: #fff; border: 1px solid rgba(255, 255, 255, 0.5); }
+
+.section-heading {
+  max-width: var(--content-max-width);
+  margin: 0 auto;
+  padding: 0 1.5rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  gap: 1rem;
+}
+
+.section-heading h2 { font-size: 1.6rem; margin: 0; color: var(--color-text-strong); }
+.section-heading a { font-weight: 600; font-size: 0.9rem; white-space: nowrap; }
+
+.home-section { padding: 3rem 0; }
+.home-section.alt { background: #fff5ec; }
+
+.home-section > .section-heading { margin-bottom: 1.5rem; }
+
+.home-blurb {
+  max-width: var(--content-max-width);
+  margin: 0 auto;
+  padding: 0 1.5rem;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1.25rem;
+}
+
+.blurb-card {
+  background: #fff;
+  border: 1px solid var(--color-border-soft);
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-card);
+  padding: 1.5rem;
+}
+
+.blurb-card .blurb-icon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 2.2rem;
+  height: 2.2rem;
+  border-radius: 50%;
+  background: rgba(97, 139, 241, 0.12);
+  color: var(--color-accent-blue);
+  font-weight: 700;
+  margin-bottom: 0.85rem;
+}
+
+.blurb-card h3 { margin: 0 0 0.4rem; font-size: 1.05rem; color: var(--color-text-strong); }
+.blurb-card p { margin: 0; font-size: 0.92rem; color: var(--color-text); }
+
+/* ================================================================
+   Lesson grid (used on lessons.html + home preview)
+   ================================================================ */
+
+.lesson-grid {
+  max-width: var(--content-max-width);
+  margin: 0 auto;
+  padding: 0 1.5rem;
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+  gap: 1.25rem;
+}
+
+.lesson-card {
+  background: #fff;
+  border: 1px solid var(--color-border-soft);
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-card);
+  padding: 1.5rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.6rem;
+  transition: transform 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
+  color: var(--color-text);
+}
+
+.lesson-card:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.08), 0 16px 32px rgba(0, 0, 0, 0.1);
+  text-decoration: none;
+}
+
+.lesson-card .week-num {
+  font-size: 0.75rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  color: var(--color-accent-coral);
+}
+
+.lesson-card h3 { margin: 0; font-size: 1.15rem; color: var(--color-text-strong); }
+.lesson-card .lesson-topic { font-size: 0.85rem; color: var(--color-text-muted); }
+.lesson-card .lesson-link { margin-top: auto; font-weight: 700; font-size: 0.85rem; }
+
+.guestbook-card .lesson-topic { margin-bottom: 0.2rem; }
+
+/* ================================================================
+   Lesson detail pages
+   ================================================================ */
+
+.lesson-hero {
+  background: linear-gradient(160deg, #16213a 0%, #1f2b4d 55%, #2c2f57 100%);
+  color: #fff;
+  padding: 2.75rem 1.5rem 3.25rem;
+}
+
+.lesson-hero .wrap { max-width: var(--content-max-width); margin: 0 auto; padding: 0; }
+
+.breadcrumb {
+  font-size: 0.82rem;
+  opacity: 0.8;
+  margin: 0 0 1rem;
+}
+
+.breadcrumb a { color: rgba(255, 255, 255, 0.88); }
+.breadcrumb span { color: rgba(255, 255, 255, 0.5); margin: 0 0.35rem; }
+
+.topic-badge {
+  display: inline-block;
+  background: rgba(255, 138, 100, 0.18);
+  color: #ffb494;
+  border: 1px solid rgba(255, 138, 100, 0.4);
+  border-radius: 6rem;
+  padding: 0.3rem 0.9rem;
+  font-size: 0.75rem;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  font-weight: 700;
+  margin-bottom: 0.9rem;
+}
+
+.lesson-hero h1 { margin: 0; font-size: 2.25rem; font-weight: 700; }
+
+.lesson-body {
+  max-width: var(--content-max-width);
+  margin: 0 auto;
+  padding: 2.5rem 1.5rem 3.5rem;
+}
+
+.lesson-body .card + .card { margin-top: 1.5rem; }
+
+.lesson-body h2 {
+  margin: 0 0 1rem;
+  font-size: 1.35rem;
+  font-weight: 700;
+  color: var(--color-text-strong);
+}
+
+.lesson-body h3 {
+  margin: 1.5rem 0 0.6rem;
+  font-size: 1.1rem;
+  font-weight: 700;
+  color: var(--color-text-strong);
+}
+
+.lesson-body .card > h3:first-child { margin-top: 0; }
+
+.obj-list, .materials-list, .worksheet-steps {
+  margin: 0 0 1rem;
+  padding-left: 1.25rem;
+}
+
+.obj-list li, .materials-list li, .worksheet-steps li { margin-bottom: 0.4rem; }
+
+.agenda-list {
+  list-style: none;
+  margin: 0 0 0.5rem;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 0.6rem;
+}
+
+.agenda-list li { display: flex; gap: 0.85rem; align-items: baseline; }
+
+.agenda-time {
+  flex: 0 0 auto;
+  min-width: 4.5rem;
+  font-variant-numeric: tabular-nums;
+  font-weight: 700;
+  color: var(--color-accent-coral);
+  font-size: 0.85rem;
+}
+
+.video-list { list-style: none; margin: 0; padding: 0; display: flex; flex-direction: column; gap: 0.55rem; }
+.video-list a { font-weight: 600; }
+.video-list .video-length { color: var(--color-text-muted); font-size: 0.85rem; }
+
+.worksheet-part + .worksheet-part {
+  margin-top: 1.75rem;
+  padding-top: 1.75rem;
+  border-top: 1px solid var(--color-border-soft);
+}
+
+.worksheet-figure {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+  margin: 0.9rem 0;
+}
+
+.worksheet-figure img {
+  max-width: 260px;
+  width: 100%;
+  height: auto;
+  border-radius: var(--radius);
+  border: 1px solid var(--color-border-soft);
+  box-shadow: var(--shadow-card);
+}
+
+.worksheet-question {
+  border-left: 3px solid var(--color-accent-gold);
+  background: rgba(253, 184, 36, 0.08);
+  padding: 0.85rem 1.1rem;
+  border-radius: 0 var(--radius) var(--radius) 0;
+  font-size: 0.95rem;
+  margin-top: 0.9rem;
+}
+
+.lesson-pager {
+  display: flex;
+  justify-content: space-between;
+  gap: 1rem;
+  max-width: var(--content-max-width);
+  margin: 0 auto;
+  padding: 0 1.5rem 3.5rem;
+}
+
+.lesson-pager a {
+  flex: 1;
+  background: #fff;
+  border: 1px solid var(--color-border-soft);
+  border-radius: var(--radius-lg);
+  padding: 1rem 1.25rem;
+  box-shadow: var(--shadow-card);
+  font-weight: 700;
+  color: var(--color-text-strong);
+}
+
+.lesson-pager a:hover { text-decoration: none; box-shadow: 0 4px 10px rgba(0, 0, 0, 0.08), 0 16px 32px rgba(0, 0, 0, 0.1); }
+.lesson-pager a.next { text-align: right; }
+.lesson-pager .pager-label {
+  display: block;
+  font-size: 0.72rem;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  color: var(--color-text-muted);
+  font-weight: 600;
+  margin-bottom: 0.2rem;
+}
+
+/* ================================================================
+   FAQ accordion
+   ================================================================ */
+
+.faq-list {
+  max-width: var(--content-max-width);
+  margin: 0 auto;
+  padding: 0 1.5rem 4rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+
+details.faq-item {
+  background: #fff;
+  border: 1px solid var(--color-border-soft);
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-card);
+  padding: 0.25rem 1.5rem;
+}
+
+details.faq-item summary {
+  cursor: pointer;
+  padding: 1.1rem 0;
+  font-weight: 700;
+  color: var(--color-text-strong);
+  list-style: none;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 1rem;
+}
+
+details.faq-item summary::-webkit-details-marker { display: none; }
+details.faq-item summary::after {
+  content: '+';
+  font-size: 1.4rem;
+  font-weight: 400;
+  color: var(--color-accent-coral);
+  flex: 0 0 auto;
+}
+details.faq-item[open] summary::after { content: '\2212'; }
+
+details.faq-item p, details.faq-item ul { margin: 0 0 1.1rem; color: var(--color-text); }
+details.faq-item p:last-child, details.faq-item ul:last-child { margin-bottom: 1.4rem; }
+
+/* ================================================================
+   Guestbook / sandbox page
+   ================================================================ */
+
+.sandbox-panel {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1.5rem;
+}
+
+.sandbox-panel .panel-label {
+  font-size: 0.72rem;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  color: var(--color-text-muted);
+  font-weight: 700;
+  margin-bottom: 0.6rem;
+  display: block;
+}
+
+.sandbox-panel pre {
+  background: #fbf8f3;
+  border: 1px solid var(--color-border-soft);
+  border-radius: var(--radius);
+  padding: 1rem;
+  font-size: 0.85rem;
+  line-height: 1.55;
+  overflow-x: auto;
+  margin: 0;
+  font-family: Menlo, Monaco, Consolas, "Andale Mono", "Courier New", monospace;
+}
+
+/* ================================================================
+   Responsive: subpages
+   ================================================================ */
+
+@media (max-width: 720px) {
+  .home-blurb { grid-template-columns: 1fr; }
+  .lesson-body { padding: 1.75rem 1.25rem 2.5rem; }
+  .lesson-hero { padding: 2rem 1.25rem 2.5rem; }
+  .lesson-hero h1 { font-size: 1.75rem; }
+  .home-hero h1 { font-size: 2.1rem; }
+  .sandbox-panel { grid-template-columns: 1fr; }
+}
+
+@media (max-width: 640px) {
+  .lesson-pager span.pager-label + span { display: none; }
+}

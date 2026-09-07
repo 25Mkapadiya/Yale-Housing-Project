@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>FAQs · Code Haven Curriculum</title>
+  <meta name="description" content="Frequently asked questions about the Code Haven curriculum.">
+  <link rel="icon" href="assets/favicon.ico">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <header class="site-header">
+    <div class="wrap">
+      <a class="brand" href="index.html">
+        <img src="assets/logo.png" alt="Code Haven logo">
+        <span>Code Haven Curriculum</span>
+      </a>
+      <nav class="site-nav">
+        <ul>
+          <li><a href="lessons.html">Lesson Plans</a></li>
+          <li><a href="about.html">About</a></li>
+          <li><a href="faq.html" class="active">FAQs</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+  <section class="hero">
+    <h1>Frequently Asked Questions</h1>
+    <p>Everything teachers and mentors ask us before bringing this curriculum into their own classroom.</p>
+  </section>
+
+  <div class="faq-list" style="margin-top: 3rem;">
+    <details class="faq-item" id="who-do-you-recommend-this-curriculum-for" open>
+      <summary>Who do you recommend this curriculum for?</summary>
+      <p>This curriculum was designed for students with no previous computer science experience. We believe that the pace of the curriculum is a good fit for students in the middle school age range, and older students may need more of a challenge. We still hope that teachers with younger or older students will find this resource useful and make the appropriate modifications for their students.</p><p>We created this website with the intended audience of K-12 educators, student groups at other universities interested in using our curriculum to teach computer science, and individual students who want to learn CS on their own.</p>
+    </details>
+    <details class="faq-item" id="do-i-need-to-have-prior-computer-science-knowledge-to-use-this-curriculum">
+      <summary>Do I need to have prior computer science knowledge to use this curriculum?</summary>
+      <p>While any previous experience with computer science will be beneficial, it is definitely possible to learn alongside the students and use our curriculum without it. We would encourage you to spend more time reading through our detailed lesson plans which provide explanations of how to teach the weekly concepts, and be sure to work through the worksheets ahead of time and review our solutions in Scratch. We will also be coming out with tutorial videos soon!</p>
+    </details>
+    <details class="faq-item" id="how-can-i-modify-this-curriculum-to-work-in-a-classroom-without-several-mentors">
+      <summary>How can I modify this curriculum to work in a classroom without several mentors?</summary>
+      <p>Here are some ways to make the curriculum more usable for teachers who don't have mentors in their classroom:</p><ul><li>Spend more time on the lecture and unplugged activities</li><li>Do more live coding examples, and consider working through parts of the worksheet as a whole class</li><li>Talk through the entire worksheet as a class and address potential challenges before allowing students to start coding on their own</li><li>Change the pacing of the curriculum and spend more than one hour per week on each lesson</li></ul>
+    </details>
+    <details class="faq-item" id="how-can-i-make-changes-to-this-curriculum-or-give-you-feedback">
+      <summary>How can I make changes to this curriculum or give you feedback?</summary>
+      <p>To edit one of our lessons, click on the pencil edit button next to the title (ex: "Code Haven Week 1"). That will bring you to a GitHub Markdown editor, where you can edit the page and submit your changes as a pull request.</p><p>If that sounds like nonsense to you, but you still want to submit feedback, no problem! <a href="mailto:codehavenyale@gmail.com">Shoot us an email!</a></p>
+    </details>
+    <details class="faq-item" id="how-has-code-haven-used-this-curriculum-in-a-classroom">
+      <summary>How has Code Haven used this curriculum in a classroom?</summary>
+      <p>In classrooms where Code Haven teaches, we typically divide students into groups of around 4 and assign a mentor to each group. All of our small group discussions take place in these groups with the mentor facilitating, and each mentor also helps the students in their group as they work individually on the worksheet. All of our lectures, live coding, and unplugged activities are led by the classroom lead and bring the entire class together.</p>
+    </details>
+    <details class="faq-item" id="what-are-unplugged-activities-and-debugging-activities">
+      <summary>What are unplugged activities and debugging activities?</summary>
+      <p>Unplugged activities are fun exercises that we do during our fall semester to teach students fundamental computer science concepts, without the use of a computer! We design these activities to relate each new concept with ideas that students already know from the real world. For example, we teach loops with a dance that repeats the same steps several times.</p><p>We do debugging activities during the spring, when students start to work on their own projects. We believe that debugging is one of the most crucial skills that students can develop. We present the class with a version of an app that is clearly broken in some way, and encourage the students to think about where the code might be going wrong. Then we fix the broken code and show the students the functional app.</p>
+    </details>
+    <div class="card" style="text-align:center;">
+      <p style="margin:0;">Still have questions? Send us an email at <a href="mailto:codehavenyale@gmail.com">codehavenyale@gmail.com</a>.</p>
+    </div>
+  </div>
+
+  <footer class="site-footer">
+    <div class="footer-links">
+      <a href="lessons.html">Lesson Plans</a>
+      <a href="about.html">About</a>
+      <a href="faq.html">FAQs</a>
+      <a href="guestbook.html">Guestbook</a>
+    </div>
+    <a class="btn-primary" href="https://www.codehavenyale.com">Code Haven Website</a>
+    <div class="copyright">© Code Haven Curriculum, Powered by Jekyll &amp; TeXt Theme.</div>
+  </footer>
+  <script>
+    if (location.hash) {
+      var target = document.querySelector(location.hash);
+      if (target && target.tagName === 'DETAILS') {
+        target.open = true;
+        target.scrollIntoView({ block: 'center' });
+      }
+    }
+  </script>
+</body>
+</html>
