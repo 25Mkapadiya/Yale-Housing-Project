@@ -17,13 +17,13 @@
       <span class="brand-mark">Y</span>
       <span>
         <strong>Yale Housing Catalog</strong>
-        <small>Room directory starter</small>
+        <small>Student room guide</small>
       </span>
     </a>
     <nav class="header-nav" aria-label="Primary navigation">
       <a href="#colleges">Colleges</a>
       <a href="catalog.html">Room Catalog</a>
-      <a href="catalog.html#admin">Admin Upload</a>
+      <a href="#how-it-works">How it works</a>
       <button class="theme-toggle" id="themeToggle" type="button" aria-label="Switch to dark mode">Dark mode</button>
     </nav>
   </header>
@@ -31,61 +31,72 @@
   <main>
     <section class="hero-shell hero-grid">
       <div class="hero-copy">
-        <p class="eyebrow">Residential housing directory</p>
-        <h1>Explore Yale rooms by college, entrance, floor, and suite setup.</h1>
-        <p class="hero-text">A clean starter catalog for comparing rooms, viewing mock layouts, and preparing an admin-only upload flow for future login and database integration.</p>
+        <p class="eyebrow">Yale student housing, made legible</p>
+        <h1>Find a room that feels like yours.</h1>
+        <p class="hero-text">Compare room details across residential colleges—from floor and entry to suite setup, dimensions, and shared spaces.</p>
         <div class="hero-actions">
-          <a class="button primary" href="#colleges">Select a college</a>
+          <a class="button primary" href="#colleges">Explore colleges</a>
           <a class="button ghost" href="catalog.html">Browse all rooms</a>
         </div>
       </div>
       <div class="hero-panel" aria-label="Featured catalog preview">
         <div class="mini-window">
-          <div class="window-dots" aria-hidden="true"><span></span><span></span><span></span></div>
           <div class="preview-card active">
             <span class="pill">Berkeley College</span>
             <h2>B-312</h2>
-            <p>4-person suite • 2 bedrooms • common room</p>
+            <p>4-person suite · 560 sq ft</p>
             <div class="preview-grid">
               <span>Entry B</span>
               <span>Floor 3</span>
-              <span>560 sq ft</span>
+              <span>2 bedrooms</span>
             </div>
-          </div>
-          <div class="preview-card muted">
-            <span class="pill">Grace Hopper</span>
-            <h2>GH-204</h2>
-            <p>Double • shared bath nearby</p>
           </div>
         </div>
       </div>
     </section>
 
+    <section class="home-search" aria-labelledby="homeSearchTitle">
+      <div>
+        <p class="eyebrow">Start with what you know</p>
+        <h2 id="homeSearchTitle">Search rooms directly</h2>
+      </div>
+      <form class="home-search-form" action="catalog.html" method="get">
+        <label class="home-search-input">
+          <span class="sr-only">Search rooms</span>
+          <span aria-hidden="true">⌕</span>
+          <input type="search" name="q" placeholder="Room, suite type, floor…" />
+        </label>
+        <button class="button search-button" type="submit">Search catalog</button>
+      </form>
+      <nav class="quick-filters" aria-label="Popular room filters">
+        <a href="catalog.html?q=single">Single</a>
+        <a href="catalog.html?q=suite">Suite</a>
+        <a href="catalog.html?q=accessible">Accessible</a>
+      </nav>
+    </section>
+
     <section class="section-wrap" id="colleges">
       <div class="section-heading">
-        <p class="eyebrow">Start here</p>
-        <h2>Select a residential college</h2>
-        <p>Each college now uses a visual palette inspired by its shield and identity.</p>
+        <div>
+          <p class="eyebrow">Explore by college</p>
+          <h2>Four colleges, one clearer way to compare.</h2>
+        </div>
+        <p>Scan the essentials first, then open a college to explore its rooms and entries.</p>
       </div>
       <div class="college-grid" id="collegeGrid" aria-live="polite"></div>
     </section>
 
-    <section class="section-wrap feature-strip">
-      <article>
-        <span class="feature-icon">⌕</span>
-        <h3>Fast room search</h3>
-        <p>Search by room number, notes, suite type, entrance, or college.</p>
-      </article>
-      <article>
-        <span class="feature-icon">▦</span>
-        <h3>Structured room cards</h3>
-        <p>Each card includes dimensions, photo placeholders, suite details, and notes.</p>
-      </article>
-      <article>
-        <span class="feature-icon">↥</span>
-        <h3>Admin upload ready</h3>
-        <p>A protected mock upload flow is included for future backend connection.</p>
-      </article>
+    <section class="section-wrap confidence-strip" id="how-it-works">
+      <div class="confidence-copy">
+        <p class="eyebrow">Decision-ready details</p>
+        <h2>Know what you’re walking into.</h2>
+        <p>Structured details make room comparison faster and calmer.</p>
+      </div>
+      <dl class="catalog-stats">
+        <div><dt>11</dt><dd>rooms cataloged</dd></div>
+        <div><dt>4</dt><dd>colleges included</dd></div>
+        <div><dt>9</dt><dd>details per room</dd></div>
+      </dl>
     </section>
   </main>
 

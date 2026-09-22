@@ -1,5 +1,6 @@
 const params = new URLSearchParams(window.location.search);
 const initialCollegeId = params.get("college");
+const initialQuery = params.get("q") || "";
 
 const elements = {
   catalogTitle: document.querySelector("#catalogTitle"),
@@ -311,6 +312,7 @@ function saveRoomDraft(event) {
 
 function initCatalog() {
   hydrateSelects();
+  elements.searchInput.value = initialQuery;
   elements.collegeFilter.value = activeCollegeId;
   updateDependentFilters();
   renderSelectedCollege();

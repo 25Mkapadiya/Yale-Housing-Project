@@ -21,8 +21,8 @@
 
 .college-card {
   background:
-    linear-gradient(180deg, color-mix(in srgb, var(--college-accent) 8%, var(--paper)), var(--paper) 72%) !important;
-  border-color: color-mix(in srgb, var(--college-accent) 26%, var(--line)) !important;
+    linear-gradient(155deg, color-mix(in srgb, var(--college-accent-dark) 82%, #15233a), var(--college-accent) 145%) !important;
+  border-color: color-mix(in srgb, var(--college-accent) 65%, rgba(255,255,255,0.25)) !important;
 }
 
 .college-card::before {
@@ -35,22 +35,22 @@
 
 .college-card[data-college-id="berkeley"] {
   background:
-    linear-gradient(180deg, color-mix(in srgb, #ed1b2f 10%, var(--paper)), var(--paper) 74%) !important;
+    linear-gradient(155deg, #6f1f24, #b03a3d) !important;
 }
 
 .college-card[data-college-id="branford"] {
   background:
-    linear-gradient(180deg, color-mix(in srgb, #005da8 9%, var(--paper)), color-mix(in srgb, #f0c400 5%, var(--paper)) 74%) !important;
+    linear-gradient(155deg, #0c4966, #25758d) !important;
 }
 
 .college-card[data-college-id="grace-hopper"] {
   background:
-    linear-gradient(180deg, color-mix(in srgb, #005da8 10%, var(--paper)), color-mix(in srgb, #111111 3%, var(--paper)) 74%) !important;
+    linear-gradient(155deg, #2e6643, #4a8a61) !important;
 }
 
 .college-card[data-college-id="pauli-murray"] {
   background:
-    linear-gradient(180deg, color-mix(in srgb, #005da8 9%, var(--paper)), color-mix(in srgb, #f0182d 4%, var(--paper)) 74%) !important;
+    linear-gradient(155deg, #4d256b, #744190) !important;
 }
 
 .accent-swatch {

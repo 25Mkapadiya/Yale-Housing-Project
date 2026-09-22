@@ -20,15 +20,15 @@ function renderCollegeCards() {
       >
         <div>
           <div class="accent-swatch" aria-hidden="true">${logo}</div>
+          <span class="college-count">${String(roomCount).padStart(2, "0")} starter rooms</span>
           <h3>${college.name}</h3>
           <p>${college.description}</p>
           <div class="college-meta" aria-label="College details">
-            <span>${roomCount} starter rooms</span>
             <span>${entrances} entrances</span>
             <span>Floors ${floors}</span>
           </div>
         </div>
-        <a class="button primary" href="catalog.html?college=${college.id}">View rooms</a>
+        <a class="college-link" href="catalog.html?college=${college.id}">Explore rooms <span aria-hidden="true">→</span></a>
       </article>
     `;
   }).join("");
