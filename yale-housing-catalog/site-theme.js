@@ -48,11 +48,12 @@ function getCollegePalette(collegeId, college = {}) {
 
 function getCollegeLogo(college) {
   if (!college) return "";
-  return collegeLogoOverrides[college.id] || college.logo || "";
+  return college.hallImage || collegeLogoOverrides[college.id] || college.logo || "";
 }
 
 function collegeLogoMarkup(college, className = "college-logo-img") {
   const logo = getCollegeLogo(college);
+  const isHallPhoto = Boolean(college?.hallImage);
   if (!logo) {
     return `<span class="college-monogram" aria-hidden="true">${themeEscapeHtml(college?.abbreviation || "Y")}</span>`;
   }
@@ -60,8 +61,8 @@ function collegeLogoMarkup(college, className = "college-logo-img") {
   return `
     <img
       src="${themeEscapeHtml(logo)}"
-      alt="${themeEscapeHtml(college.name)} shield"
-      class="${themeEscapeHtml(className)}"
+      alt="${themeEscapeHtml(college.name)} ${isHallPhoto ? "exterior" : "shield"}"
+      class="${themeEscapeHtml(className)}${isHallPhoto ? " hall-logo-photo" : ""}"
       loading="lazy"
     />
   `;

@@ -1,6 +1,8 @@
 const collegeGrid = document.querySelector("#collegeGrid");
 const oldCampusGrid = document.querySelector("#oldCampusGrid");
 const oldCampusIntro = document.querySelector("#oldCampusIntro");
+const oldCampusCredits = document.querySelector("#oldCampusCredits");
+const oldCampusCreditList = document.querySelector("#oldCampusCreditList");
 const directoryTabs = [...document.querySelectorAll("[data-directory-tab]")];
 
 function residenceCardMarkup(residence) {
@@ -12,6 +14,16 @@ function residenceCardMarkup(residence) {
     ? getCollegePalette(residence.id, residence)
     : { accent: residence.accent, accentDark: residence.accentDark, accentAlt: residence.accent };
   const logo = typeof collegeLogoMarkup === "function" ? collegeLogoMarkup(residence) : "";
+  const visual = residence.hallImage
+    ? `<figure class="hall-card-visual">
+        <img src="${residence.hallImage}" alt="${residence.name} exterior" loading="lazy" />
+        <span class="hall-initials" aria-hidden="true">${residence.abbreviation}</span>
+        <span class="college-count">${residence.entrances.length} entryways</span>
+      </figure>`
+    : `<div class="college-card-heading">
+        <div class="accent-swatch" aria-hidden="true">${logo}</div>
+        <span class="college-count">${residence.entrances.length} entryways</span>
+      </div>`;
   const entrywayRange = residence.entrances.length > 1
     ? `${residence.entrances[0].replace("Entryway ", "")}–${residence.entrances.at(-1).replace("Entryway ", "")}`
     : residence.entrances[0]?.replace("Entryway ", "") || "—";
@@ -23,10 +35,7 @@ function residenceCardMarkup(residence) {
       style="--college-accent: ${palette.accent}; --college-accent-dark: ${palette.accentDark}; --college-accent-alt: ${palette.accentAlt};"
     >
       <div>
-        <div class="college-card-heading">
-          <div class="accent-swatch" aria-hidden="true">${logo}</div>
-          <span class="college-count">${residence.entrances.length} entryways</span>
-        </div>
+        ${visual}
         <h3>${residence.name}</h3>
         <div class="college-meta" aria-label="Residence details">
           ${residence.residenceLabel ? `<span class="residence-label">${residence.residenceLabel}</span>` : ""}
@@ -47,6 +56,12 @@ function renderResidenceCards() {
   if (oldCampusGrid) {
     oldCampusGrid.innerHTML = yaleHousingData.oldCampusHalls.map(residenceCardMarkup).join("");
   }
+
+  if (oldCampusCreditList) {
+    oldCampusCreditList.innerHTML = yaleHousingData.oldCampusHalls.map((hall) => `
+      <li><a href="${hall.imageSourceUrl}" target="_blank" rel="noopener">${hall.name}</a> — ${hall.imageCredit}, ${hall.imageLicense}</li>
+    `).join("");
+  }
 }
 
 function selectDirectoryTab(tabName, syncUrl = false) {
@@ -54,6 +69,7 @@ function selectDirectoryTab(tabName, syncUrl = false) {
   collegeGrid?.classList.toggle("hidden", showOldCampus);
   oldCampusGrid?.classList.toggle("hidden", !showOldCampus);
   oldCampusIntro?.classList.toggle("hidden", !showOldCampus);
+  oldCampusCredits?.classList.toggle("hidden", !showOldCampus);
 
   directoryTabs.forEach((tab) => {
     const isActive = tab.dataset.directoryTab === tabName;
