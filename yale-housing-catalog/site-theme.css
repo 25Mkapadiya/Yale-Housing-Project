@@ -41,6 +41,10 @@
   background: var(--paper) !important;
 }
 
+.college-card[data-college-id="grace-hopper"] .college-count {
+  color: var(--college-accent);
+}
+
 .college-card[data-college-id="pauli-murray"] {
   background: var(--paper) !important;
 }
@@ -212,10 +216,6 @@
 :root[data-theme="dark"] .residence-kicker,
 :root[data-theme="dark"] .college-link {
   color: #b8d8f4;
-}
-
-:root[data-theme="dark"] .college-card-heading .college-count {
-  color: #d9ebfb;
 }
 
 :root[data-theme="dark"] .old-campus-intro {
