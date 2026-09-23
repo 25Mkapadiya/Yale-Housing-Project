@@ -1,6 +1,7 @@
 const params = new URLSearchParams(window.location.search);
 const initialCollegeId = params.get("college");
 const initialQuery = params.get("q") || "";
+const initialEntrance = params.get("entrance") || "";
 
 const elements = {
   catalogTitle: document.querySelector("#catalogTitle"),
@@ -341,6 +342,9 @@ function initCatalog() {
   elements.searchInput.value = initialQuery;
   elements.collegeFilter.value = activeCollegeId;
   updateDependentFilters();
+  if ([...elements.entranceFilter.options].some((option) => option.value === initialEntrance)) {
+    elements.entranceFilter.value = initialEntrance;
+  }
   renderSelectedCollege();
   renderRooms();
   setupAdminState();

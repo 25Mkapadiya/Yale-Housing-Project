@@ -202,6 +202,18 @@
   color: var(--ink);
 }
 
+:root[data-theme="dark"] .home-search-input,
+:root[data-theme="dark"] .home-search-suggestions {
+  background: #101a2b;
+  border-color: rgba(184, 216, 244, 0.24);
+}
+
+:root[data-theme="dark"] .home-search-suggestion:hover,
+:root[data-theme="dark"] .home-search-suggestion.active {
+  color: #d9ebfb;
+  background: rgba(184, 216, 244, 0.09);
+}
+
 :root[data-theme="dark"] .fact {
   background: rgba(232, 239, 250, 0.07);
 }

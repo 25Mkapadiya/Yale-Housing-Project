@@ -5,8 +5,8 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <meta name="description" content="Yale Housing Catalog starter directory for browsing residential college rooms and suite details." />
   <title>Yale Housing Catalog</title>
-  <link rel="stylesheet" href="styles.css?v=20260923-hall-photos" />
-  <link rel="stylesheet" href="site-theme.css?v=20260923-grace-count" />
+  <link rel="stylesheet" href="styles.css?v=20260923-entryway-search" />
+  <link rel="stylesheet" href="site-theme.css?v=20260923-entryway-search" />
 </head>
 <body class="home-page">
   <header class="site-header">
@@ -55,12 +55,24 @@
         <p class="eyebrow">Start with what you know</p>
         <h2 id="homeSearchTitle">Search rooms directly</h2>
       </div>
-      <form class="home-search-form" action="catalog.html" method="get">
-        <label class="home-search-input">
-          <span class="sr-only">Search rooms</span>
-          <span aria-hidden="true">⌕</span>
-          <input type="search" name="q" placeholder="Room, suite type, floor…" />
-        </label>
+      <form class="home-search-form" id="homeSearchForm" action="catalog.html" method="get" autocomplete="off">
+        <div class="home-search-combobox">
+          <label class="home-search-input">
+            <span class="sr-only">Search residences, entryways, and rooms</span>
+            <span class="search-icon" aria-hidden="true"></span>
+            <input
+              id="homeSearchInput"
+              type="search"
+              name="q"
+              placeholder="College, hall, entryway, or room"
+              role="combobox"
+              aria-autocomplete="list"
+              aria-expanded="false"
+              aria-controls="homeSearchSuggestions"
+            />
+          </label>
+          <div class="home-search-suggestions" id="homeSearchSuggestions" role="listbox" hidden></div>
+        </div>
         <button class="button search-button" type="submit">Search catalog</button>
       </form>
       <nav class="quick-filters" aria-label="Popular room filters">
@@ -109,7 +121,7 @@
         <div><dt>14</dt><dd>residential colleges</dd></div>
         <div><dt>7</dt><dd>first-year halls</dd></div>
         <div><dt>1</dt><dd>Old Campus annex</dd></div>
-        <div><dt>181</dt><dd>entryways indexed</dd></div>
+        <div><dt>191</dt><dd>entryways indexed</dd></div>
       </dl>
     </section>
   </main>
@@ -119,8 +131,8 @@
     <a href="catalog.html#admin">Admin upload</a>
   </footer>
 
-  <script src="data.js?v=20260923-hall-photos"></script>
-  <script src="site-theme.js?v=20260923-hall-photos"></script>
-  <script src="home.js?v=20260923-hall-photos"></script>
+  <script src="data.js?v=20260923-entryway-search"></script>
+  <script src="site-theme.js?v=20260923-entryway-search"></script>
+  <script src="home.js?v=20260923-entryway-search"></script>
 </body>
 </html>

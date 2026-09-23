@@ -14,7 +14,7 @@ const yaleHousingData = {
       accent: "#8f6c2d",
       accentDark: "#674b18",
       description: "Yale residential college on Prospect Street.",
-      entrances: letteredEntryways("H"),
+      entrances: letteredEntryways("M"),
       floors: ["1", "2", "3", "4", "5"],
       image: "assets/rooms/room-gold.svg",
       sourceUrl: "https://benjaminfranklin.yale.edu/"
@@ -118,7 +118,7 @@ const yaleHousingData = {
       accentDark: "#1c5a45",
       logo: "assets/college-shields/pauli.murray.color.png",
       description: "A newer residential college with modern rooms, shared lounges, and accessible circulation.",
-      entrances: letteredEntryways("H"),
+      entrances: letteredEntryways("M"),
       floors: ["1", "2", "3", "4", "5"],
       image: "assets/rooms/room-green.svg",
       sourceUrl: "https://paulimurray.yalecollege.yale.edu/"
