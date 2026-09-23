@@ -196,11 +196,12 @@ const yaleHousingData = {
       abbreviation: "BI",
       accent: "#6a7890",
       accentDark: "#39465b",
-      entrances: letteredEntryways("E"),
+      entrances: letteredEntryways("D"),
       floors: ["1", "2", "3", "4", "5", "6", "7", "8", "9"],
       image: "assets/rooms/room-blue.svg",
-      sourceUrl: "https://college.yale.edu/welcome-yale-college/new-student-faqs",
-      group: "Old Campus"
+      sourceUrl: "https://college.yale.edu/resource/camp-yale-old-campus-map",
+      group: "Old Campus residence",
+      residenceLabel: "First-year hall"
     },
     {
       id: "old-campus-durfee",
@@ -208,11 +209,12 @@ const yaleHousingData = {
       abbreviation: "DU",
       accent: "#876e52",
       accentDark: "#55412d",
-      entrances: letteredEntryways("F"),
+      entrances: letteredEntryways("E"),
       floors: ["1", "2", "3", "4", "5"],
       image: "assets/rooms/room-gold.svg",
-      sourceUrl: "https://college.yale.edu/welcome-yale-college/new-student-faqs",
-      group: "Old Campus"
+      sourceUrl: "https://college.yale.edu/resource/camp-yale-old-campus-map",
+      group: "Old Campus residence",
+      residenceLabel: "First-year hall"
     },
     {
       id: "old-campus-farnam",
@@ -223,8 +225,9 @@ const yaleHousingData = {
       entrances: letteredEntryways("C"),
       floors: ["Basement", "1", "2", "3", "4"],
       image: "assets/rooms/room-red.svg",
-      sourceUrl: "https://je.yalecollege.yale.edu/sites/default/files/files/JE%202019-2020%20First-Year-Handbook%281%29.pdf",
-      group: "Old Campus"
+      sourceUrl: "https://college.yale.edu/resource/camp-yale-old-campus-map",
+      group: "Old Campus residence",
+      residenceLabel: "First-year hall"
     },
     {
       id: "old-campus-lanman-wright",
@@ -235,8 +238,9 @@ const yaleHousingData = {
       entrances: letteredEntryways("F"),
       floors: ["1", "2", "3", "4", "5"],
       image: "assets/rooms/room-green.svg",
-      sourceUrl: "https://college.yale.edu/welcome-yale-college/new-student-faqs",
-      group: "Old Campus"
+      sourceUrl: "https://college.yale.edu/resource/camp-yale-old-campus-map",
+      group: "Old Campus residence",
+      residenceLabel: "First-year hall"
     },
     {
       id: "old-campus-lawrance",
@@ -247,8 +251,9 @@ const yaleHousingData = {
       entrances: letteredEntryways("D"),
       floors: ["1", "2", "3", "4", "5"],
       image: "assets/rooms/room-blue.svg",
-      sourceUrl: "https://college.yale.edu/welcome-yale-college/new-student-faqs",
-      group: "Old Campus"
+      sourceUrl: "https://college.yale.edu/resource/camp-yale-old-campus-map",
+      group: "Old Campus residence",
+      residenceLabel: "First-year hall"
     },
     {
       id: "old-campus-vanderbilt",
@@ -259,8 +264,9 @@ const yaleHousingData = {
       entrances: letteredEntryways("F"),
       floors: ["Basement", "1", "2", "3", "4", "5"],
       image: "assets/rooms/room-blue.svg",
-      sourceUrl: "https://college.yale.edu/welcome-yale-college/new-student-faqs",
-      group: "Old Campus"
+      sourceUrl: "https://college.yale.edu/resource/camp-yale-old-campus-map",
+      group: "Old Campus residence",
+      residenceLabel: "First-year hall"
     },
     {
       id: "old-campus-welch",
@@ -268,11 +274,25 @@ const yaleHousingData = {
       abbreviation: "WE",
       accent: "#8a623d",
       accentDark: "#573a21",
-      entrances: letteredEntryways("D"),
+      entrances: letteredEntryways("C"),
       floors: ["1", "2", "3", "4"],
       image: "assets/rooms/room-gold.svg",
-      sourceUrl: "https://college.yale.edu/welcome-yale-college/new-student-faqs",
-      group: "Old Campus"
+      sourceUrl: "https://college.yale.edu/resource/camp-yale-old-campus-map",
+      group: "Old Campus residence",
+      residenceLabel: "First-year hall"
+    },
+    {
+      id: "old-campus-mcclellan",
+      name: "McClellan Hall",
+      abbreviation: "MC",
+      accent: "#315d8b",
+      accentDark: "#183b60",
+      entrances: letteredEntryways("B"),
+      floors: ["1", "2", "3", "4"],
+      image: "assets/rooms/room-blue.svg",
+      sourceUrl: "https://college.yale.edu/resource/camp-yale-old-campus-map",
+      group: "Old Campus annex",
+      residenceLabel: "Residential annex"
     }
   ],
   rooms: [

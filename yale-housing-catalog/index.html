@@ -5,8 +5,8 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <meta name="description" content="Yale Housing Catalog starter directory for browsing residential college rooms and suite details." />
   <title>Yale Housing Catalog</title>
-  <link rel="stylesheet" href="styles.css?v=20260922-shields" />
-  <link rel="stylesheet" href="site-theme.css?v=20260922-shields" />
+  <link rel="stylesheet" href="styles.css?v=20260923-old-campus" />
+  <link rel="stylesheet" href="site-theme.css?v=20260923-old-campus" />
 </head>
 <body class="home-page">
   <header class="site-header">
@@ -18,8 +18,8 @@
     </a>
     <nav class="header-nav" aria-label="Primary navigation">
       <a href="#colleges">Colleges</a>
+      <a href="?directory=old-campus#colleges">Old Campus</a>
       <a href="catalog.html">Room Catalog</a>
-      <a href="#how-it-works">How it works</a>
       <button class="theme-toggle" id="themeToggle" type="button" aria-label="Switch to dark mode">Dark mode</button>
     </nav>
   </header>
@@ -31,7 +31,7 @@
         <h1>Find a room that feels like yours.</h1>
         <div class="hero-actions">
           <a class="button primary" href="#colleges">Explore colleges</a>
-          <a class="button ghost" href="catalog.html">Browse all rooms</a>
+          <a class="button ghost" href="?directory=old-campus#colleges">Old Campus halls</a>
         </div>
       </div>
       <div class="hero-panel" aria-label="Featured catalog preview">
@@ -82,10 +82,17 @@
           Residential colleges <span>14</span>
         </button>
         <button class="directory-tab" id="oldCampusTab" type="button" role="tab" aria-selected="false" aria-controls="oldCampusGrid" data-directory-tab="old-campus">
-          Old Campus <span>7 halls</span>
+          Old Campus <span>7 halls + 1 annex</span>
         </button>
       </div>
       <div class="college-grid" id="collegeGrid" role="tabpanel" aria-labelledby="collegeTab" aria-live="polite"></div>
+      <div class="old-campus-intro hidden" id="oldCampusIntro">
+        <div>
+          <strong>Complete Old Campus housing directory</strong>
+          <span>Seven first-year residence halls plus McClellan, a residential annex shown on Yale’s current map.</span>
+        </div>
+        <a href="https://college.yale.edu/resource/camp-yale-old-campus-map" target="_blank" rel="noopener">View Yale’s map <span aria-hidden="true">↗</span></a>
+      </div>
       <div class="college-grid hidden" id="oldCampusGrid" role="tabpanel" aria-labelledby="oldCampusTab" aria-live="polite"></div>
     </section>
 
@@ -96,8 +103,9 @@
       </div>
       <dl class="catalog-stats">
         <div><dt>14</dt><dd>residential colleges</dd></div>
-        <div><dt>7</dt><dd>Old Campus halls</dd></div>
-        <div><dt>182</dt><dd>entryways indexed</dd></div>
+        <div><dt>7</dt><dd>first-year halls</dd></div>
+        <div><dt>1</dt><dd>Old Campus annex</dd></div>
+        <div><dt>181</dt><dd>entryways indexed</dd></div>
       </dl>
     </section>
   </main>
@@ -107,8 +115,8 @@
     <a href="catalog.html#admin">Admin upload</a>
   </footer>
 
-  <script src="data.js?v=20260922-shields"></script>
-  <script src="site-theme.js?v=20260922-shields"></script>
-  <script src="home.js?v=20260922-shields"></script>
+  <script src="data.js?v=20260923-old-campus"></script>
+  <script src="site-theme.js?v=20260923-old-campus"></script>
+  <script src="home.js?v=20260923-old-campus"></script>
 </body>
 </html>

@@ -189,15 +189,30 @@
   color: var(--ink);
 }
 
-:root[data-theme="dark"] .college-meta span,
 :root[data-theme="dark"] .fact {
   background: rgba(232, 239, 250, 0.07);
+}
+
+:root[data-theme="dark"] .college-meta span {
+  color: var(--ink);
+  background: transparent;
 }
 
 :root[data-theme="dark"] .directory-tab.active,
 :root[data-theme="dark"] .source-link,
 :root[data-theme="dark"] .residence-kicker {
   color: #b8d8f4;
+}
+
+:root[data-theme="dark"] .old-campus-intro {
+  background: #101a2b;
+  border-left-color: #8bb8df;
+}
+
+:root[data-theme="dark"] .old-campus-intro a,
+:root[data-theme="dark"] .college-meta .residence-label {
+  color: #b8d8f4;
+  background: transparent;
 }
 
 :root[data-theme="dark"] .entryway-list span {

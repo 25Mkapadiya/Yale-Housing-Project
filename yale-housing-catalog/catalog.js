@@ -62,12 +62,12 @@ function hydrateSelects() {
   elements.collegeFilter.innerHTML = `
     ${optionMarkup("all", "All residences", activeCollegeId)}
     <optgroup label="Residential colleges">${collegeOptions}</optgroup>
-    <optgroup label="Old Campus residence halls">${oldCampusOptions}</optgroup>
+    <optgroup label="Old Campus halls and annex">${oldCampusOptions}</optgroup>
   `;
 
   elements.uploadCollege.innerHTML = `
     <optgroup label="Residential colleges">${yaleHousingData.colleges.map((college) => optionMarkup(college.id, college.name, "")).join("")}</optgroup>
-    <optgroup label="Old Campus residence halls">${yaleHousingData.oldCampusHalls.map((hall) => optionMarkup(hall.id, hall.name, "")).join("")}</optgroup>
+    <optgroup label="Old Campus halls and annex">${yaleHousingData.oldCampusHalls.map((hall) => optionMarkup(hall.id, hall.name, "")).join("")}</optgroup>
   `;
 
   updateDependentFilters();
@@ -120,7 +120,7 @@ function renderSelectedCollege() {
     elements.selectedCollegeCard.innerHTML = `
       <div class="accent-swatch" aria-hidden="true"></div>
       <span class="residence-kicker">Complete directory</span>
-      <h3>14 colleges + 7 Old Campus halls</h3>
+      <h3>14 colleges + 7 Old Campus halls + 1 annex</h3>
     `;
     return;
   }
@@ -128,7 +128,11 @@ function renderSelectedCollege() {
   const entrywayMarkup = college.entrances
     .map((entryway) => `<span>${escapeHtml(entryway.replace("Entryway ", ""))}</span>`)
     .join("");
-  const residenceType = college.group === "Old Campus" ? "Old Campus residence hall" : "Residential college";
+  const residenceType = college.group === "Old Campus annex"
+    ? "Old Campus residential annex"
+    : college.group === "Old Campus residence"
+      ? "Old Campus residence hall"
+      : "Residential college";
   elements.catalogTitle.textContent = college.name;
   elements.selectedCollegeCard.innerHTML = `
     <div class="accent-swatch" aria-hidden="true"></div>
