@@ -10,10 +10,10 @@
   --gray: #978d85;
   --accent: #7c9abf;
   --accent-dark: #315d8b;
-  --shadow: 0 22px 70px rgba(15, 32, 58, 0.14);
-  --radius-xl: 30px;
-  --radius-lg: 22px;
-  --radius-md: 16px;
+  --shadow: 0 10px 28px rgba(15, 32, 58, 0.08);
+  --radius-xl: 8px;
+  --radius-lg: 6px;
+  --radius-md: 4px;
 }
 
 * {
@@ -28,23 +28,12 @@ body {
   margin: 0;
   font-family: Inter, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
   color: var(--ink);
-  background:
-    radial-gradient(circle at top left, rgba(0, 53, 107, 0.12), transparent 36rem),
-    linear-gradient(180deg, #fbfcff 0%, #f4f7fb 48%, #ffffff 100%);
+  background: #f4f2ec;
   min-height: 100vh;
 }
 
 body::before {
-  content: "";
-  position: fixed;
-  inset: 0;
-  pointer-events: none;
-  background-image:
-    linear-gradient(rgba(18, 32, 51, 0.025) 1px, transparent 1px),
-    linear-gradient(90deg, rgba(18, 32, 51, 0.025) 1px, transparent 1px);
-  background-size: 44px 44px;
-  mask-image: linear-gradient(to bottom, rgba(0,0,0,0.8), transparent 70%);
-  z-index: -1;
+  content: none;
 }
 
 img {
@@ -86,11 +75,11 @@ a {
 .site-header::before {
   content: "";
   position: absolute;
-  inset: 0.6rem 0.8rem;
-  background: rgba(255,255,255,0.76);
-  border: 1px solid rgba(255,255,255,0.72);
-  box-shadow: 0 12px 50px rgba(0, 53, 107, 0.08);
-  border-radius: 999px;
+  inset: 0.55rem 0;
+  background: rgba(255,255,255,0.96);
+  border: 1px solid var(--line);
+  box-shadow: none;
+  border-radius: 4px;
   z-index: -1;
 }
 
@@ -104,14 +93,14 @@ a {
 .brand-mark {
   width: 42px;
   height: 42px;
-  border-radius: 14px;
+  border-radius: 2px;
   display: grid;
   place-items: center;
   background: var(--yale-blue);
   color: white;
   font-weight: 800;
   letter-spacing: -0.04em;
-  box-shadow: 0 8px 22px rgba(0, 53, 107, 0.24);
+  box-shadow: none;
 }
 
 .brand-lockup strong,
@@ -179,16 +168,7 @@ main {
 
 .hero-shell::after,
 .catalog-hero::after {
-  content: "";
-  position: absolute;
-  width: 26rem;
-  height: 26rem;
-  border-radius: 50%;
-  right: -10rem;
-  top: -10rem;
-  background: radial-gradient(circle, color-mix(in srgb, var(--accent) 55%, transparent), transparent 68%);
-  opacity: 0.55;
-  pointer-events: none;
+  content: none;
 }
 
 .hero-grid {
@@ -263,7 +243,7 @@ h3 {
 
 .button {
   border: 0;
-  border-radius: 999px;
+  border-radius: 4px;
   padding: 0.86rem 1.18rem;
   font-weight: 800;
   cursor: pointer;
@@ -280,8 +260,8 @@ h3 {
 
 .button.primary {
   color: #fff;
-  background: linear-gradient(135deg, var(--yale-blue), var(--accent-dark));
-  box-shadow: 0 12px 28px rgba(0, 53, 107, 0.22);
+  background: var(--yale-blue);
+  box-shadow: none;
 }
 
 .button.ghost {
@@ -294,11 +274,11 @@ h3 {
 }
 
 .mini-window {
-  background: linear-gradient(180deg, #10213a, #061426);
+  background: #061f3a;
   border: 1px solid rgba(255,255,255,0.16);
   padding: 1.4rem;
-  border-radius: 28px;
-  box-shadow: 0 34px 70px rgba(0, 23, 52, 0.28);
+  border-radius: 4px;
+  box-shadow: 0 18px 36px rgba(0, 23, 52, 0.18);
   transform: none;
 }
 
@@ -316,7 +296,7 @@ h3 {
 }
 
 .preview-card {
-  border-radius: 22px;
+  border-radius: 2px;
   padding: 1.3rem;
   background: rgba(255,255,255,0.1);
   color: white;
@@ -328,9 +308,7 @@ h3 {
   display: flex;
   flex-direction: column;
   justify-content: end;
-  background:
-    linear-gradient(135deg, rgba(255,255,255,0.12), rgba(255,255,255,0.04)),
-    radial-gradient(circle at top left, var(--accent), transparent 60%);
+  background: #2f5878;
 }
 
 .preview-card.muted {
@@ -359,7 +337,7 @@ h3 {
 .preview-grid span,
 .pill,
 .room-pill {
-  border-radius: 999px;
+  border-radius: 2px;
   padding: 0.46rem 0.66rem;
   font-size: 0.77rem;
   font-weight: 800;
@@ -404,20 +382,22 @@ h3 {
   gap: 1.25rem;
   padding: 1.35rem 1.55rem;
   margin: 1.25rem 0;
-  color: white;
-  background: var(--yale-blue);
-  border-radius: var(--radius-xl);
-  box-shadow: 0 18px 50px rgba(0, 53, 107, 0.18);
+  color: var(--ink);
+  background: var(--paper);
+  border-top: 2px solid var(--yale-blue);
+  border-bottom: 1px solid var(--line);
+  border-radius: 0;
+  box-shadow: none;
 }
 
 .home-search .eyebrow {
-  color: rgba(255,255,255,0.68);
+  color: var(--yale-blue);
   margin-bottom: 0.3rem;
 }
 
 .home-search h2 {
   margin: 0;
-  color: white;
+  color: var(--ink);
   font-size: 1.25rem;
   letter-spacing: -0.025em;
 }
@@ -436,7 +416,8 @@ h3 {
   padding-left: 1rem;
   color: var(--yale-blue);
   background: white;
-  border-radius: 16px;
+  border: 1px solid var(--line);
+  border-radius: 4px;
 }
 
 .home-search-input input {
@@ -460,8 +441,9 @@ h3 {
 
 .quick-filters a {
   padding: 0.62rem 0.8rem;
-  border: 1px solid rgba(255,255,255,0.28);
-  border-radius: 999px;
+  border: 1px solid var(--yale-blue);
+  border-radius: 3px;
+  color: var(--yale-blue);
   font-size: 0.78rem;
   font-weight: 800;
 }
@@ -495,20 +477,12 @@ h3 {
   overflow: hidden;
   background: var(--paper);
   border: 1px solid var(--line);
-  border-radius: 24px;
-  box-shadow: 0 14px 34px rgba(18, 32, 51, 0.08);
+  border-radius: 4px;
+  box-shadow: none;
 }
 
 .college-card::before {
-  content: "";
-  position: absolute;
-  width: 11rem;
-  height: 11rem;
-  border-radius: 50%;
-  top: -4rem;
-  right: -4rem;
-  background: color-mix(in srgb, var(--college-accent), transparent 12%);
-  opacity: 0.18;
+  content: none;
 }
 
 .college-card h3 {
@@ -517,7 +491,7 @@ h3 {
 }
 
 .college-card p {
-  color: rgba(255,255,255,0.78);
+  color: var(--muted);
   line-height: 1.5;
   font-size: 0.92rem;
 }
@@ -530,10 +504,10 @@ h3 {
 }
 
 .college-meta span {
-  background: rgba(255,255,255,0.12);
-  border-radius: 999px;
-  padding: 0.4rem 0.55rem;
-  color: rgba(255,255,255,0.86);
+  background: transparent;
+  border-radius: 0;
+  padding: 0;
+  color: var(--muted);
   font-size: 0.76rem;
   font-weight: 750;
 }
@@ -541,7 +515,7 @@ h3 {
 .college-count {
   display: block;
   margin: 1rem 0 0.65rem;
-  color: rgba(255,255,255,0.66);
+  color: var(--college-accent-dark);
   font-size: 0.7rem;
   font-weight: 850;
   letter-spacing: 0.11em;
@@ -549,7 +523,7 @@ h3 {
 }
 
 .college-card h3 {
-  color: white;
+  color: var(--ink);
 }
 
 .college-link {
@@ -559,7 +533,7 @@ h3 {
   align-items: center;
   justify-content: space-between;
   gap: 0.75rem;
-  color: white;
+  color: var(--college-accent-dark);
   font-size: 0.86rem;
   font-weight: 850;
 }
@@ -568,7 +542,7 @@ h3 {
   width: 3.2rem;
   height: 3.2rem;
   border-radius: 1.1rem;
-  background: linear-gradient(135deg, var(--college-accent), color-mix(in srgb, var(--college-accent) 45%, white));
+  background: var(--college-accent);
   box-shadow: inset 0 0 0 1px rgba(255,255,255,0.32), 0 10px 24px color-mix(in srgb, var(--college-accent) 30%, transparent);
 }
 
@@ -585,7 +559,14 @@ h3 {
   grid-template-columns: minmax(0, 1fr) auto;
   align-items: center;
   gap: 2rem;
-  background: var(--warm);
+  color: white;
+  background: var(--yale-blue);
+  border-radius: 0;
+  box-shadow: none;
+}
+
+.confidence-strip .eyebrow {
+  color: rgba(255,255,255,0.68);
 }
 
 .confidence-copy h2 {
@@ -594,7 +575,7 @@ h3 {
 
 .confidence-copy p:last-child {
   margin-bottom: 0;
-  color: var(--muted);
+  color: rgba(255,255,255,0.7);
 }
 
 .catalog-stats {
@@ -610,7 +591,7 @@ h3 {
 }
 
 .catalog-stats dt {
-  color: var(--yale-blue);
+  color: white;
   font-size: 2.15rem;
   font-weight: 850;
   letter-spacing: -0.06em;
@@ -618,7 +599,7 @@ h3 {
 
 .catalog-stats dd {
   margin: 0;
-  color: var(--muted);
+  color: rgba(255,255,255,0.68);
   font-size: 0.78rem;
   font-weight: 700;
 }
@@ -665,9 +646,9 @@ h3 {
 .selected-college-card {
   position: relative;
   z-index: 1;
-  background: linear-gradient(135deg, rgba(255,255,255,0.9), rgba(255,255,255,0.58));
+  background: var(--paper);
   border: 1px solid var(--line);
-  border-radius: 24px;
+  border-radius: 4px;
   padding: 1.2rem;
 }
 
@@ -711,7 +692,7 @@ textarea {
   width: 100%;
   border: 1px solid var(--line);
   background: rgba(255,255,255,0.88);
-  border-radius: 15px;
+  border-radius: 3px;
   padding: 0.86rem 0.92rem;
   color: var(--ink);
   outline: none;
@@ -756,9 +737,9 @@ textarea:focus {
 .room-card {
   background: rgba(255,255,255,0.86);
   border: 1px solid rgba(18, 32, 51, 0.1);
-  border-radius: 26px;
+  border-radius: 4px;
   overflow: hidden;
-  box-shadow: 0 16px 42px rgba(18, 32, 51, 0.08);
+  box-shadow: 0 8px 20px rgba(18, 32, 51, 0.06);
   cursor: pointer;
   transition: transform 180ms ease, box-shadow 180ms ease, border-color 180ms ease;
 }
@@ -789,7 +770,7 @@ textarea:focus {
   content: "";
   position: absolute;
   inset: 0;
-  background: linear-gradient(180deg, transparent 48%, rgba(8, 20, 36, 0.24));
+  background: rgba(8, 20, 36, 0.08);
 }
 
 .room-body {
@@ -831,7 +812,7 @@ textarea:focus {
 
 .fact {
   background: rgba(18, 32, 51, 0.045);
-  border-radius: 15px;
+  border-radius: 2px;
   padding: 0.7rem;
 }
 
@@ -879,7 +860,7 @@ textarea:focus {
 .admin-gate,
 .upload-form {
   border: 1px solid var(--line);
-  border-radius: 24px;
+  border-radius: 4px;
   padding: 1rem;
   background: rgba(255,255,255,0.64);
 }
@@ -928,7 +909,7 @@ textarea:focus {
 .room-modal {
   width: min(920px, calc(100vw - 2rem));
   border: 0;
-  border-radius: 28px;
+  border-radius: 4px;
   padding: 0;
   box-shadow: 0 34px 90px rgba(0, 12, 28, 0.35);
   background: white;
@@ -947,7 +928,7 @@ textarea:focus {
   right: 0.75rem;
   width: 42px;
   height: 42px;
-  border-radius: 50%;
+  border-radius: 2px;
   border: 0;
   background: rgba(255,255,255,0.9);
   color: var(--ink);
@@ -990,7 +971,7 @@ textarea:focus {
 
 .modal-detail {
   background: rgba(18, 32, 51, 0.055);
-  border-radius: 16px;
+  border-radius: 2px;
   padding: 0.8rem;
 }
 
@@ -1075,7 +1056,7 @@ textarea:focus {
   }
 
   .site-header::before {
-    border-radius: 28px;
+    border-radius: 4px;
   }
 
   .header-nav {
