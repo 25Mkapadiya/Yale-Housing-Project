@@ -5,8 +5,8 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <meta name="description" content="Yale Housing Catalog starter directory for browsing residential college rooms and suite details." />
   <title>Yale Housing Catalog</title>
-  <link rel="stylesheet" href="styles.css?v=20260922-typography" />
-  <link rel="stylesheet" href="site-theme.css" />
+  <link rel="stylesheet" href="styles.css?v=20260922-directory" />
+  <link rel="stylesheet" href="site-theme.css?v=20260922-directory" />
 </head>
 <body class="home-page">
   <header class="site-header">
@@ -73,11 +73,20 @@
     <section class="section-wrap" id="colleges">
       <div class="section-heading">
         <div>
-          <p class="eyebrow">Explore by college</p>
-          <h2>Four colleges, one clearer way to compare.</h2>
+          <p class="eyebrow">Yale undergraduate residences</p>
+          <h2>All fourteen colleges, plus Old Campus.</h2>
         </div>
       </div>
-      <div class="college-grid" id="collegeGrid" aria-live="polite"></div>
+      <div class="directory-tabs" role="tablist" aria-label="Housing directories">
+        <button class="directory-tab active" id="collegeTab" type="button" role="tab" aria-selected="true" aria-controls="collegeGrid" data-directory-tab="colleges">
+          Residential colleges <span>14</span>
+        </button>
+        <button class="directory-tab" id="oldCampusTab" type="button" role="tab" aria-selected="false" aria-controls="oldCampusGrid" data-directory-tab="old-campus">
+          Old Campus <span>7 halls</span>
+        </button>
+      </div>
+      <div class="college-grid" id="collegeGrid" role="tabpanel" aria-labelledby="collegeTab" aria-live="polite"></div>
+      <div class="college-grid hidden" id="oldCampusGrid" role="tabpanel" aria-labelledby="oldCampusTab" aria-live="polite"></div>
     </section>
 
     <section class="section-wrap confidence-strip" id="how-it-works">
@@ -86,9 +95,9 @@
         <h2>Know what you’re walking into.</h2>
       </div>
       <dl class="catalog-stats">
-        <div><dt>11</dt><dd>rooms cataloged</dd></div>
-        <div><dt>4</dt><dd>colleges included</dd></div>
-        <div><dt>9</dt><dd>details per room</dd></div>
+        <div><dt>14</dt><dd>residential colleges</dd></div>
+        <div><dt>7</dt><dd>Old Campus halls</dd></div>
+        <div><dt>182</dt><dd>entryways indexed</dd></div>
       </dl>
     </section>
   </main>
@@ -98,8 +107,8 @@
     <a href="catalog.html#admin">Admin upload</a>
   </footer>
 
-  <script src="data.js"></script>
-  <script src="site-theme.js"></script>
-  <script src="home.js?v=20260922-typography"></script>
+  <script src="data.js?v=20260922-directory"></script>
+  <script src="site-theme.js?v=20260922-directory"></script>
+  <script src="home.js?v=20260922-directory"></script>
 </body>
 </html>

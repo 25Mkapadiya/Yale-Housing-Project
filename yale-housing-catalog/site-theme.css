@@ -194,6 +194,17 @@
   background: rgba(232, 239, 250, 0.07);
 }
 
+:root[data-theme="dark"] .directory-tab.active,
+:root[data-theme="dark"] .source-link,
+:root[data-theme="dark"] .residence-kicker {
+  color: #b8d8f4;
+}
+
+:root[data-theme="dark"] .entryway-list span {
+  background: rgba(232, 239, 250, 0.06);
+  border-color: rgba(232, 239, 250, 0.14);
+}
+
 :root[data-theme="dark"] .button.ghost,
 :root[data-theme="dark"] .theme-toggle {
   color: var(--ink);

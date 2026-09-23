@@ -55,7 +55,9 @@ function getCollegeLogo(college) {
 
 function collegeLogoMarkup(college, className = "college-logo-img") {
   const logo = getCollegeLogo(college);
-  if (!logo) return "";
+  if (!logo) {
+    return `<span class="college-monogram" aria-hidden="true">${themeEscapeHtml(college?.abbreviation || "Y")}</span>`;
+  }
 
   return `
     <img

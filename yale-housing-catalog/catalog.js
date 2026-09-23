@@ -52,14 +52,23 @@ function optionMarkup(value, label, selectedValue) {
 }
 
 function hydrateSelects() {
-  elements.collegeFilter.innerHTML = [
-    optionMarkup("all", "All colleges", activeCollegeId),
-    ...yaleHousingData.colleges.map((college) => optionMarkup(college.id, college.name, activeCollegeId))
-  ].join("");
-
-  elements.uploadCollege.innerHTML = yaleHousingData.colleges
-    .map((college) => optionMarkup(college.id, college.name, ""))
+  const collegeOptions = yaleHousingData.colleges
+    .map((college) => optionMarkup(college.id, college.name, activeCollegeId))
     .join("");
+  const oldCampusOptions = yaleHousingData.oldCampusHalls
+    .map((hall) => optionMarkup(hall.id, hall.name, activeCollegeId))
+    .join("");
+
+  elements.collegeFilter.innerHTML = `
+    ${optionMarkup("all", "All residences", activeCollegeId)}
+    <optgroup label="Residential colleges">${collegeOptions}</optgroup>
+    <optgroup label="Old Campus residence halls">${oldCampusOptions}</optgroup>
+  `;
+
+  elements.uploadCollege.innerHTML = `
+    <optgroup label="Residential colleges">${yaleHousingData.colleges.map((college) => optionMarkup(college.id, college.name, "")).join("")}</optgroup>
+    <optgroup label="Old Campus residence halls">${yaleHousingData.oldCampusHalls.map((hall) => optionMarkup(hall.id, hall.name, "")).join("")}</optgroup>
+  `;
 
   updateDependentFilters();
 }
@@ -74,9 +83,14 @@ function updateDependentFilters() {
   const currentEntrance = elements.entranceFilter.value || "all";
   const currentFloor = elements.floorFilter.value || "all";
   const baseRooms = getFilteredBaseRooms();
+  const selectedResidence = getCollegeById(elements.collegeFilter.value);
 
-  const entrances = [...new Set(baseRooms.map((room) => room.entrance))].sort();
-  const floors = [...new Set(baseRooms.map((room) => room.floor))].sort((a, b) => {
+  const entrances = selectedResidence
+    ? selectedResidence.entrances
+    : [...new Set(baseRooms.map((room) => room.entrance))].sort();
+  const floors = (selectedResidence
+    ? [...selectedResidence.floors]
+    : [...new Set(baseRooms.map((room) => room.floor))]).sort((a, b) => {
     if (a === "Basement") return -1;
     if (b === "Basement") return 1;
     return Number(a) - Number(b);
@@ -102,18 +116,27 @@ function renderSelectedCollege() {
   setAccent(selectedCollegeId);
 
   if (!college) {
-    elements.catalogTitle.textContent = "All rooms";
+    elements.catalogTitle.textContent = "All residences";
     elements.selectedCollegeCard.innerHTML = `
       <div class="accent-swatch" aria-hidden="true"></div>
-      <h3>All residential colleges</h3>
+      <span class="residence-kicker">Complete directory</span>
+      <h3>14 colleges + 7 Old Campus halls</h3>
     `;
     return;
   }
 
-  elements.catalogTitle.textContent = `${college.name} rooms`;
+  const entrywayMarkup = college.entrances
+    .map((entryway) => `<span>${escapeHtml(entryway.replace("Entryway ", ""))}</span>`)
+    .join("");
+  const residenceType = college.group === "Old Campus" ? "Old Campus residence hall" : "Residential college";
+  elements.catalogTitle.textContent = college.name;
   elements.selectedCollegeCard.innerHTML = `
     <div class="accent-swatch" aria-hidden="true"></div>
+    <span class="residence-kicker">${residenceType}</span>
     <h3>${escapeHtml(college.name)}</h3>
+    <div class="entryway-heading"><strong>${college.entrances.length}</strong> entryways</div>
+    <div class="entryway-list" aria-label="${escapeHtml(college.name)} entryways">${entrywayMarkup}</div>
+    <a class="source-link" href="${escapeHtml(college.sourceUrl)}" target="_blank" rel="noopener">Yale reference <span aria-hidden="true">↗</span></a>
   `;
 }
 
@@ -151,7 +174,11 @@ function getFilteredRooms() {
 
 function renderRooms() {
   const filteredRooms = getFilteredRooms();
+  const selectedResidence = getCollegeById(elements.collegeFilter.value);
   elements.resultCount.textContent = `Showing ${filteredRooms.length} ${filteredRooms.length === 1 ? "room" : "rooms"}`;
+  elements.emptyState.querySelector("h2").textContent = selectedResidence
+    ? "No room records yet"
+    : "No rooms found";
   elements.emptyState.classList.toggle("hidden", filteredRooms.length > 0);
   elements.roomGrid.classList.toggle("hidden", filteredRooms.length === 0);
 

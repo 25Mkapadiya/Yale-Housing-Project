@@ -1,6 +1,23 @@
+function letteredEntryways(lastLetter) {
+  const lastCode = lastLetter.charCodeAt(0);
+  return Array.from({ length: lastCode - 64 }, (_, index) => `Entryway ${String.fromCharCode(65 + index)}`);
+}
+
 const yaleHousingData = {
   adminDemoKey: "YALE-ADMIN",
   colleges: [
+    {
+      id: "benjamin-franklin",
+      name: "Benjamin Franklin College",
+      abbreviation: "BF",
+      accent: "#8f6c2d",
+      accentDark: "#674b18",
+      description: "Yale residential college on Prospect Street.",
+      entrances: letteredEntryways("H"),
+      floors: ["1", "2", "3", "4", "5"],
+      image: "assets/rooms/room-gold.svg",
+      sourceUrl: "https://benjaminfranklin.yale.edu/"
+    },
     {
       id: "berkeley",
       name: "Berkeley College",
@@ -9,9 +26,10 @@ const yaleHousingData = {
       accentDark: "#8b641d",
       logo: "https://upload.wikimedia.org/wikipedia/en/1/13/Berkeleyshield.png",
       description: "A warm, central college with suite-style housing and active courtyard energy.",
-      entrances: ["Entry A", "Entry B", "Entry C"],
+      entrances: letteredEntryways("H"),
       floors: ["1", "2", "3", "4"],
-      image: "assets/rooms/room-gold.svg"
+      image: "assets/rooms/room-gold.svg",
+      sourceUrl: "https://berkeley.yale.edu/"
     },
     {
       id: "branford",
@@ -21,9 +39,34 @@ const yaleHousingData = {
       accentDark: "#78211f",
       logo: "https://upload.wikimedia.org/wikipedia/en/thumb/3/30/Branford_College_shield.png/250px-Branford_College_shield.png",
       description: "A classic residential college with cozy entries, common spaces, and historic character.",
-      entrances: ["Entry C", "Entry D", "Entry E"],
+      entrances: letteredEntryways("P"),
       floors: ["1", "2", "3", "4"],
-      image: "assets/rooms/room-red.svg"
+      image: "assets/rooms/room-red.svg",
+      sourceUrl: "https://branford.yale.edu/about/history"
+    },
+    {
+      id: "davenport",
+      name: "Davenport College",
+      abbreviation: "DC",
+      accent: "#7b2d2d",
+      accentDark: "#551c1c",
+      description: "Yale residential college on York Street.",
+      entrances: letteredEntryways("N"),
+      floors: ["1", "2", "3", "4", "5"],
+      image: "assets/rooms/room-red.svg",
+      sourceUrl: "https://davenport.yale.edu/"
+    },
+    {
+      id: "ezra-stiles",
+      name: "Ezra Stiles College",
+      abbreviation: "ES",
+      accent: "#b08a3e",
+      accentDark: "#70551f",
+      description: "Yale residential college on York Street.",
+      entrances: letteredEntryways("J"),
+      floors: ["1", "2", "3", "4", "5"],
+      image: "assets/rooms/room-gold.svg",
+      sourceUrl: "https://ezrastiles.yale.edu/"
     },
     {
       id: "grace-hopper",
@@ -33,9 +76,34 @@ const yaleHousingData = {
       accentDark: "#23527f",
       logo: "https://upload.wikimedia.org/wikipedia/en/thumb/6/64/The_Coat_of_Arms_of_Grace_Hopper_College%2C_Yale_University.png/250px-The_Coat_of_Arms_of_Grace_Hopper_College%2C_Yale_University.png",
       description: "A bright college with practical layouts, doubles, singles, and flexible suite configurations.",
-      entrances: ["Entry A", "Entry B", "Entry North"],
+      entrances: letteredEntryways("H"),
       floors: ["1", "2", "3", "4", "5"],
-      image: "assets/rooms/room-blue.svg"
+      image: "assets/rooms/room-blue.svg",
+      sourceUrl: "https://gracehopper.yale.edu/"
+    },
+    {
+      id: "jonathan-edwards",
+      name: "Jonathan Edwards College",
+      abbreviation: "JE",
+      accent: "#2d6a4f",
+      accentDark: "#17432f",
+      description: "Yale residential college on High Street.",
+      entrances: letteredEntryways("L"),
+      floors: ["1", "2", "3", "4"],
+      image: "assets/rooms/room-green.svg",
+      sourceUrl: "https://jonathanedwards.yale.edu/"
+    },
+    {
+      id: "morse",
+      name: "Morse College",
+      abbreviation: "MC",
+      accent: "#aa1f2d",
+      accentDark: "#72121c",
+      description: "Yale residential college designed by Eero Saarinen.",
+      entrances: letteredEntryways("H"),
+      floors: ["1", "2", "3", "4", "5"],
+      image: "assets/rooms/room-red.svg",
+      sourceUrl: "https://morse.yale.edu/"
     },
     {
       id: "pauli-murray",
@@ -45,9 +113,156 @@ const yaleHousingData = {
       accentDark: "#1c5a45",
       logo: "https://upload.wikimedia.org/wikipedia/en/thumb/3/37/PauliMurrayShield.jpg/250px-PauliMurrayShield.jpg",
       description: "A newer residential college with modern rooms, shared lounges, and accessible circulation.",
-      entrances: ["South Entry", "North Entry", "Tower Entry"],
+      entrances: letteredEntryways("H"),
       floors: ["1", "2", "3", "4", "5"],
-      image: "assets/rooms/room-green.svg"
+      image: "assets/rooms/room-green.svg",
+      sourceUrl: "https://paulimurray.yalecollege.yale.edu/"
+    },
+    {
+      id: "pierson",
+      name: "Pierson College",
+      abbreviation: "PC",
+      accent: "#c7a11a",
+      accentDark: "#745c08",
+      description: "Yale residential college on York Street.",
+      entrances: letteredEntryways("H"),
+      floors: ["1", "2", "3", "4"],
+      image: "assets/rooms/room-gold.svg",
+      sourceUrl: "https://pierson.yalecollege.yale.edu/"
+    },
+    {
+      id: "saybrook",
+      name: "Saybrook College",
+      abbreviation: "SY",
+      accent: "#315b89",
+      accentDark: "#193b61",
+      description: "Yale residential college in Memorial Quadrangle.",
+      entrances: letteredEntryways("O"),
+      floors: ["1", "2", "3", "4", "5"],
+      image: "assets/rooms/room-blue.svg",
+      sourceUrl: "https://saybrook.yale.edu/"
+    },
+    {
+      id: "silliman",
+      name: "Silliman College",
+      abbreviation: "SM",
+      accent: "#c78b2f",
+      accentDark: "#795018",
+      description: "Yale's largest residential college by footprint.",
+      entrances: letteredEntryways("M"),
+      floors: ["1", "2", "3", "4"],
+      image: "assets/rooms/room-gold.svg",
+      sourceUrl: "https://silliman.yale.edu/"
+    },
+    {
+      id: "timothy-dwight",
+      name: "Timothy Dwight College",
+      abbreviation: "TD",
+      accent: "#8d2636",
+      accentDark: "#591522",
+      description: "Yale residential college on Temple Street.",
+      entrances: letteredEntryways("I"),
+      floors: ["1", "2", "3", "4"],
+      image: "assets/rooms/room-red.svg",
+      sourceUrl: "https://timothydwight.yale.edu/"
+    },
+    {
+      id: "trumbull",
+      name: "Trumbull College",
+      abbreviation: "TC",
+      accent: "#315d8b",
+      accentDark: "#183b60",
+      description: "Yale residential college on Elm Street.",
+      entrances: letteredEntryways("K"),
+      floors: ["1", "2", "3", "4"],
+      image: "assets/rooms/room-blue.svg",
+      sourceUrl: "https://trumbull.yalecollege.yale.edu/"
+    }
+  ],
+  oldCampusHalls: [
+    {
+      id: "old-campus-bingham",
+      name: "Bingham Hall",
+      abbreviation: "BI",
+      accent: "#6a7890",
+      accentDark: "#39465b",
+      entrances: letteredEntryways("E"),
+      floors: ["1", "2", "3", "4", "5", "6", "7", "8", "9"],
+      image: "assets/rooms/room-blue.svg",
+      sourceUrl: "https://college.yale.edu/welcome-yale-college/new-student-faqs",
+      group: "Old Campus"
+    },
+    {
+      id: "old-campus-durfee",
+      name: "Durfee Hall",
+      abbreviation: "DU",
+      accent: "#876e52",
+      accentDark: "#55412d",
+      entrances: letteredEntryways("F"),
+      floors: ["1", "2", "3", "4", "5"],
+      image: "assets/rooms/room-gold.svg",
+      sourceUrl: "https://college.yale.edu/welcome-yale-college/new-student-faqs",
+      group: "Old Campus"
+    },
+    {
+      id: "old-campus-farnam",
+      name: "Farnam Hall",
+      abbreviation: "FA",
+      accent: "#8c4f45",
+      accentDark: "#5b2d27",
+      entrances: letteredEntryways("C"),
+      floors: ["Basement", "1", "2", "3", "4"],
+      image: "assets/rooms/room-red.svg",
+      sourceUrl: "https://je.yalecollege.yale.edu/sites/default/files/files/JE%202019-2020%20First-Year-Handbook%281%29.pdf",
+      group: "Old Campus"
+    },
+    {
+      id: "old-campus-lanman-wright",
+      name: "Lanman-Wright Hall",
+      abbreviation: "LW",
+      accent: "#506b5e",
+      accentDark: "#2e453a",
+      entrances: letteredEntryways("F"),
+      floors: ["1", "2", "3", "4", "5"],
+      image: "assets/rooms/room-green.svg",
+      sourceUrl: "https://college.yale.edu/welcome-yale-college/new-student-faqs",
+      group: "Old Campus"
+    },
+    {
+      id: "old-campus-lawrance",
+      name: "Lawrance Hall",
+      abbreviation: "LA",
+      accent: "#6f5687",
+      accentDark: "#48335e",
+      entrances: letteredEntryways("D"),
+      floors: ["1", "2", "3", "4", "5"],
+      image: "assets/rooms/room-blue.svg",
+      sourceUrl: "https://college.yale.edu/welcome-yale-college/new-student-faqs",
+      group: "Old Campus"
+    },
+    {
+      id: "old-campus-vanderbilt",
+      name: "Vanderbilt Hall",
+      abbreviation: "VA",
+      accent: "#53728c",
+      accentDark: "#304d66",
+      entrances: letteredEntryways("F"),
+      floors: ["Basement", "1", "2", "3", "4", "5"],
+      image: "assets/rooms/room-blue.svg",
+      sourceUrl: "https://college.yale.edu/welcome-yale-college/new-student-faqs",
+      group: "Old Campus"
+    },
+    {
+      id: "old-campus-welch",
+      name: "Welch Hall",
+      abbreviation: "WE",
+      accent: "#8a623d",
+      accentDark: "#573a21",
+      entrances: letteredEntryways("D"),
+      floors: ["1", "2", "3", "4"],
+      image: "assets/rooms/room-gold.svg",
+      sourceUrl: "https://college.yale.edu/welcome-yale-college/new-student-faqs",
+      group: "Old Campus"
     }
   ],
   rooms: [
@@ -55,7 +270,7 @@ const yaleHousingData = {
       id: "bk-b312",
       collegeId: "berkeley",
       roomNumber: "B-312",
-      entrance: "Entry B",
+      entrance: "Entryway B",
       floor: "3",
       dimensions: "22 ft × 25 ft total suite",
       squareFeet: "560 sq ft",
@@ -70,7 +285,7 @@ const yaleHousingData = {
       id: "bk-a118",
       collegeId: "berkeley",
       roomNumber: "A-118",
-      entrance: "Entry A",
+      entrance: "Entryway A",
       floor: "1",
       dimensions: "15 ft × 13 ft",
       squareFeet: "195 sq ft",
@@ -85,7 +300,7 @@ const yaleHousingData = {
       id: "bk-c426",
       collegeId: "berkeley",
       roomNumber: "C-426",
-      entrance: "Entry C",
+      entrance: "Entryway C",
       floor: "4",
       dimensions: "11 ft × 14 ft",
       squareFeet: "154 sq ft",
@@ -100,7 +315,7 @@ const yaleHousingData = {
       id: "br-d204",
       collegeId: "branford",
       roomNumber: "D-204",
-      entrance: "Entry D",
+      entrance: "Entryway D",
       floor: "2",
       dimensions: "18 ft × 12 ft",
       squareFeet: "216 sq ft",
@@ -115,7 +330,7 @@ const yaleHousingData = {
       id: "br-e331",
       collegeId: "branford",
       roomNumber: "E-331",
-      entrance: "Entry E",
+      entrance: "Entryway E",
       floor: "3",
       dimensions: "24 ft × 21 ft total suite",
       squareFeet: "504 sq ft",
@@ -130,7 +345,7 @@ const yaleHousingData = {
       id: "br-c410",
       collegeId: "branford",
       roomNumber: "C-410",
-      entrance: "Entry C",
+      entrance: "Entryway C",
       floor: "4",
       dimensions: "13 ft × 12 ft",
       squareFeet: "156 sq ft",
@@ -145,7 +360,7 @@ const yaleHousingData = {
       id: "gh-a204",
       collegeId: "grace-hopper",
       roomNumber: "GH-204",
-      entrance: "Entry A",
+      entrance: "Entryway A",
       floor: "2",
       dimensions: "16 ft × 12 ft",
       squareFeet: "192 sq ft",
@@ -160,7 +375,7 @@ const yaleHousingData = {
       id: "gh-n512",
       collegeId: "grace-hopper",
       roomNumber: "N-512",
-      entrance: "Entry North",
+      entrance: "Entryway H",
       floor: "5",
       dimensions: "28 ft × 22 ft total suite",
       squareFeet: "616 sq ft",
@@ -175,7 +390,7 @@ const yaleHousingData = {
       id: "pm-s102",
       collegeId: "pauli-murray",
       roomNumber: "S-102",
-      entrance: "South Entry",
+      entrance: "Entryway A",
       floor: "1",
       dimensions: "17 ft × 13 ft",
       squareFeet: "221 sq ft",
@@ -190,7 +405,7 @@ const yaleHousingData = {
       id: "pm-t421",
       collegeId: "pauli-murray",
       roomNumber: "T-421",
-      entrance: "Tower Entry",
+      entrance: "Entryway F",
       floor: "4",
       dimensions: "26 ft × 24 ft total suite",
       squareFeet: "624 sq ft",
@@ -205,7 +420,7 @@ const yaleHousingData = {
       id: "pm-n305",
       collegeId: "pauli-murray",
       roomNumber: "N-305",
-      entrance: "North Entry",
+      entrance: "Entryway B",
       floor: "3",
       dimensions: "12 ft × 13 ft",
       squareFeet: "156 sq ft",
@@ -220,7 +435,12 @@ const yaleHousingData = {
 };
 
 function getCollegeById(id) {
-  return yaleHousingData.colleges.find((college) => college.id === id);
+  return [...yaleHousingData.colleges, ...yaleHousingData.oldCampusHalls]
+    .find((college) => college.id === id);
+}
+
+function getAllResidences() {
+  return [...yaleHousingData.colleges, ...yaleHousingData.oldCampusHalls];
 }
 
 function getStoredRoomDrafts() {
