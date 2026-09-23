@@ -22,7 +22,6 @@ function renderCollegeCards() {
           <div class="accent-swatch" aria-hidden="true">${logo}</div>
           <span class="college-count">${String(roomCount).padStart(2, "0")} starter rooms</span>
           <h3>${college.name}</h3>
-          <p>${college.description}</p>
           <div class="college-meta" aria-label="College details">
             <span>${entrances} entrances</span>
             <span>Floors ${floors}</span>

@@ -4,7 +4,6 @@ const initialQuery = params.get("q") || "";
 
 const elements = {
   catalogTitle: document.querySelector("#catalogTitle"),
-  catalogSubtitle: document.querySelector("#catalogSubtitle"),
   catalogHero: document.querySelector("#catalogHero"),
   selectedCollegeCard: document.querySelector("#selectedCollegeCard"),
   searchInput: document.querySelector("#searchInput"),
@@ -104,21 +103,17 @@ function renderSelectedCollege() {
 
   if (!college) {
     elements.catalogTitle.textContent = "All rooms";
-    elements.catalogSubtitle.textContent = "Search the starter room set by college, entrance, floor level, or room details.";
     elements.selectedCollegeCard.innerHTML = `
       <div class="accent-swatch" aria-hidden="true"></div>
       <h3>All residential colleges</h3>
-      <p>Browse the full starter set or use filters to narrow the catalog.</p>
     `;
     return;
   }
 
   elements.catalogTitle.textContent = `${college.name} rooms`;
-  elements.catalogSubtitle.textContent = `Browse mock room data for ${college.name}, including suite details, dimensions, and notes.`;
   elements.selectedCollegeCard.innerHTML = `
     <div class="accent-swatch" aria-hidden="true"></div>
     <h3>${escapeHtml(college.name)}</h3>
-    <p>${escapeHtml(college.description)}</p>
   `;
 }
 

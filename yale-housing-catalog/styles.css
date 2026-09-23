@@ -11,6 +11,8 @@
   --accent: #7c9abf;
   --accent-dark: #315d8b;
   --shadow: 0 10px 28px rgba(15, 32, 58, 0.08);
+  --font-serif: "Yale 2024", YaleNew, Georgia, "Times New Roman", serif;
+  --font-sans: Mallory, Arial, Helvetica, sans-serif;
   --radius-xl: 8px;
   --radius-lg: 6px;
   --radius-md: 4px;
@@ -26,7 +28,7 @@ html {
 
 body {
   margin: 0;
-  font-family: Inter, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  font-family: var(--font-sans);
   color: var(--ink);
   background: #f4f2ec;
   min-height: 100vh;
@@ -109,14 +111,11 @@ a {
 }
 
 .brand-lockup strong {
-  font-size: 0.98rem;
-  line-height: 1.1;
-}
-
-.brand-lockup small {
-  color: var(--muted);
-  font-size: 0.75rem;
-  margin-top: 0.1rem;
+  font-family: var(--font-serif);
+  font-size: 1.08rem;
+  font-weight: 400;
+  letter-spacing: -0.015em;
+  line-height: 1.15;
 }
 
 .header-nav {
@@ -189,6 +188,13 @@ main {
 
 h1,
 h2,
+h3 {
+  font-family: var(--font-serif);
+  font-weight: 400;
+}
+
+h1,
+h2,
 h3,
 p {
   margin-top: 0;
@@ -196,28 +202,24 @@ p {
 
 h1 {
   font-size: clamp(3rem, 6vw, 5rem);
-  line-height: 0.94;
-  letter-spacing: -0.065em;
+  line-height: 0.98;
+  letter-spacing: -0.035em;
   margin-bottom: 1.3rem;
   color: var(--ink);
 }
 
 h2 {
   font-size: clamp(2rem, 4vw, 3.2rem);
-  letter-spacing: -0.055em;
-  line-height: 1;
+  letter-spacing: -0.025em;
+  line-height: 1.04;
   margin-bottom: 0.75rem;
 }
 
 h3 {
   margin-bottom: 0.45rem;
-  letter-spacing: -0.025em;
+  letter-spacing: -0.015em;
 }
 
-.hero-text,
-.section-heading p,
-.admin-intro p,
-.catalog-hero p,
 .feature-strip p,
 .room-meta,
 .room-notes,
@@ -226,11 +228,6 @@ h3 {
 .empty-state p {
   color: var(--muted);
   line-height: 1.6;
-}
-
-.hero-text {
-  max-width: 620px;
-  font-size: 1.08rem;
 }
 
 .hero-actions,
@@ -449,16 +446,7 @@ h3 {
 }
 
 .section-heading {
-  display: flex;
-  justify-content: space-between;
-  gap: 1.5rem;
-  align-items: end;
   margin-bottom: 1.45rem;
-}
-
-.section-heading p:last-child {
-  max-width: 420px;
-  margin-bottom: 0.25rem;
 }
 
 .college-grid {
@@ -488,12 +476,6 @@ h3 {
 .college-card h3 {
   font-size: 1.55rem;
   margin-bottom: 0.45rem;
-}
-
-.college-card p {
-  color: var(--muted);
-  line-height: 1.5;
-  font-size: 0.92rem;
 }
 
 .college-meta {
@@ -571,11 +553,6 @@ h3 {
 
 .confidence-copy h2 {
   font-size: clamp(1.9rem, 3vw, 2.7rem);
-}
-
-.confidence-copy p:last-child {
-  margin-bottom: 0;
-  color: rgba(255,255,255,0.7);
 }
 
 .catalog-stats {
