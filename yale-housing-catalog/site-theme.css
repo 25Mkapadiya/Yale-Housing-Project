@@ -214,6 +214,10 @@
   color: #b8d8f4;
 }
 
+:root[data-theme="dark"] .college-card-heading .college-count {
+  color: #d9ebfb;
+}
+
 :root[data-theme="dark"] .old-campus-intro {
   background: #101a2b;
   border-left-color: #8bb8df;
