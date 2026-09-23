@@ -22,8 +22,10 @@ function residenceCardMarkup(residence) {
       style="--college-accent: ${palette.accent}; --college-accent-dark: ${palette.accentDark}; --college-accent-alt: ${palette.accentAlt};"
     >
       <div>
-        <div class="accent-swatch" aria-hidden="true">${logo}</div>
-        <span class="college-count">${residence.entrances.length} entryways</span>
+        <div class="college-card-heading">
+          <div class="accent-swatch" aria-hidden="true">${logo}</div>
+          <span class="college-count">${residence.entrances.length} entryways</span>
+        </div>
         <h3>${residence.name}</h3>
         <div class="college-meta" aria-label="Residence details">
           <span>Entries ${entrywayRange}</span>

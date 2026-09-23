@@ -46,10 +46,10 @@
 }
 
 .accent-swatch {
-  width: 3.65rem !important;
-  height: 3.65rem !important;
+  width: 4.75rem !important;
+  height: 4.75rem !important;
   box-sizing: border-box !important;
-  padding: 0.5rem !important;
+  padding: 0.38rem !important;
   border-radius: 2px;
   display: grid !important;
   place-items: center !important;
@@ -57,7 +57,7 @@
   position: relative;
   isolation: isolate;
   background: #ffffff !important;
-  border: 1px solid color-mix(in srgb, var(--college-accent) 48%, var(--line)) !important;
+  border: 1px solid color-mix(in srgb, var(--college-accent) 35%, var(--line)) !important;
   box-shadow: none !important;
 }
 
@@ -94,7 +94,7 @@
 .selected-college-card[data-college-id="grace-hopper"] .accent-swatch,
 .college-card[data-college-id="pauli-murray"] .accent-swatch,
 .selected-college-card[data-college-id="pauli-murray"] .accent-swatch {
-  padding: 0.5rem !important;
+  padding: 0.38rem !important;
 }
 
 .college-card[data-college-id="berkeley"] .accent-swatch img,
@@ -113,8 +113,8 @@
 }
 
 .selected-college-card .accent-swatch {
-  width: 4.25rem !important;
-  height: 4.25rem !important;
+  width: 5.5rem !important;
+  height: 5.5rem !important;
   border-radius: 2px;
   margin-bottom: 1rem;
 }

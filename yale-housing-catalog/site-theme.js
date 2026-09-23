@@ -25,9 +25,7 @@ const collegeThemeConfig = {
   }
 };
 
-const collegeLogoOverrides = {
-  "pauli-murray": "assets/colleges/pauli-murray-shield.svg?v=transparent-4"
-};
+const collegeLogoOverrides = {};
 
 function themeEscapeHtml(value = "") {
   return String(value)
