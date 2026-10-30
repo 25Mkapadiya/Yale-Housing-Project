@@ -25,7 +25,9 @@ const collegeThemeConfig = {
   }
 };
 
-const collegeLogoOverrides = {};
+const collegeLogoOverrides = {
+  "pauli-murray": "assets/colleges/pauli-murray-shield.svg?v=transparent-4"
+};
 
 function themeEscapeHtml(value = "") {
   return String(value)
@@ -48,21 +50,18 @@ function getCollegePalette(collegeId, college = {}) {
 
 function getCollegeLogo(college) {
   if (!college) return "";
-  return college.hallImage || collegeLogoOverrides[college.id] || college.logo || "";
+  return collegeLogoOverrides[college.id] || college.logo || "";
 }
 
 function collegeLogoMarkup(college, className = "college-logo-img") {
   const logo = getCollegeLogo(college);
-  const isHallPhoto = Boolean(college?.hallImage);
-  if (!logo) {
-    return `<span class="college-monogram" aria-hidden="true">${themeEscapeHtml(college?.abbreviation || "Y")}</span>`;
-  }
+  if (!logo) return "";
 
   return `
     <img
       src="${themeEscapeHtml(logo)}"
-      alt="${themeEscapeHtml(college.name)} ${isHallPhoto ? "exterior" : "shield"}"
-      class="${themeEscapeHtml(className)}${isHallPhoto ? " hall-logo-photo" : ""}"
+      alt="${themeEscapeHtml(college.name)} shield"
+      class="${themeEscapeHtml(className)}"
       loading="lazy"
     />
   `;

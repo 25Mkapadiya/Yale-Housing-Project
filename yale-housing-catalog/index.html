@@ -5,8 +5,11 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <meta name="description" content="Yale Housing Catalog starter directory for browsing residential college rooms and suite details." />
   <title>Yale Housing Catalog</title>
-  <link rel="stylesheet" href="styles.css?v=20260923-entryway-search" />
-  <link rel="stylesheet" href="site-theme.css?v=20260923-entryway-search" />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css" />
+  <link rel="stylesheet" href="site-theme.css" />
 </head>
 <body class="home-page">
   <header class="site-header">
@@ -14,12 +17,13 @@
       <span class="brand-mark">Y</span>
       <span>
         <strong>Yale Housing Catalog</strong>
+        <small>Room directory starter</small>
       </span>
     </a>
     <nav class="header-nav" aria-label="Primary navigation">
       <a href="#colleges">Colleges</a>
-      <a href="?directory=old-campus#colleges">Old Campus</a>
       <a href="catalog.html">Room Catalog</a>
+      <a href="catalog.html#admin">Admin Upload</a>
       <button class="theme-toggle" id="themeToggle" type="button" aria-label="Switch to dark mode">Dark mode</button>
     </nav>
   </header>
@@ -27,102 +31,61 @@
   <main>
     <section class="hero-shell hero-grid">
       <div class="hero-copy">
-        <p class="eyebrow">Yale student housing, made legible</p>
-        <h1>Find a room that feels like yours.</h1>
+        <p class="eyebrow">Residential housing directory</p>
+        <h1>Explore Yale rooms by college, entrance, floor, and suite setup.</h1>
+        <p class="hero-text">A clean starter catalog for comparing rooms, viewing mock layouts, and preparing an admin-only upload flow for future login and database integration.</p>
         <div class="hero-actions">
-          <a class="button primary" href="#colleges">Explore colleges</a>
-          <a class="button ghost" href="?directory=old-campus#colleges">Old Campus halls</a>
+          <a class="button primary" href="#colleges">Select a college</a>
+          <a class="button ghost" href="catalog.html">Browse all rooms</a>
         </div>
       </div>
       <div class="hero-panel" aria-label="Featured catalog preview">
         <div class="mini-window">
+          <div class="window-dots" aria-hidden="true"><span></span><span></span><span></span></div>
           <div class="preview-card active">
             <span class="pill">Berkeley College</span>
             <h2>B-312</h2>
-            <p>4-person suite · 560 sq ft</p>
+            <p>4-person suite • 2 bedrooms • common room</p>
             <div class="preview-grid">
               <span>Entry B</span>
               <span>Floor 3</span>
-              <span>2 bedrooms</span>
+              <span>560 sq ft</span>
             </div>
+          </div>
+          <div class="preview-card muted">
+            <span class="pill">Grace Hopper</span>
+            <h2>GH-204</h2>
+            <p>Double • shared bath nearby</p>
           </div>
         </div>
       </div>
     </section>
 
-    <section class="home-search" aria-labelledby="homeSearchTitle">
-      <div>
-        <p class="eyebrow">Start with what you know</p>
-        <h2 id="homeSearchTitle">Search rooms directly</h2>
-      </div>
-      <form class="home-search-form" id="homeSearchForm" action="catalog.html" method="get" autocomplete="off">
-        <div class="home-search-combobox">
-          <label class="home-search-input">
-            <span class="sr-only">Search residences, entryways, and rooms</span>
-            <span class="search-icon" aria-hidden="true"></span>
-            <input
-              id="homeSearchInput"
-              type="search"
-              name="q"
-              placeholder="College, hall, entryway, or room"
-              role="combobox"
-              aria-autocomplete="list"
-              aria-expanded="false"
-              aria-controls="homeSearchSuggestions"
-            />
-          </label>
-          <div class="home-search-suggestions" id="homeSearchSuggestions" role="listbox" hidden></div>
-        </div>
-        <button class="button search-button" type="submit">Search catalog</button>
-      </form>
-      <nav class="quick-filters" aria-label="Popular room filters">
-        <a href="catalog.html?q=single">Single</a>
-        <a href="catalog.html?q=suite">Suite</a>
-        <a href="catalog.html?q=accessible">Accessible</a>
-      </nav>
-    </section>
-
     <section class="section-wrap" id="colleges">
       <div class="section-heading">
-        <div>
-          <p class="eyebrow">Yale undergraduate residences</p>
-          <h2>All fourteen colleges, plus Old Campus.</h2>
-        </div>
+        <p class="eyebrow">Start here</p>
+        <h2>Select a residential college</h2>
+        <p>Each college now uses a visual palette inspired by its shield and identity.</p>
       </div>
-      <div class="directory-tabs" role="tablist" aria-label="Housing directories">
-        <button class="directory-tab active" id="collegeTab" type="button" role="tab" aria-selected="true" aria-controls="collegeGrid" data-directory-tab="colleges">
-          Residential colleges <span>14</span>
-        </button>
-        <button class="directory-tab" id="oldCampusTab" type="button" role="tab" aria-selected="false" aria-controls="oldCampusGrid" data-directory-tab="old-campus">
-          Old Campus <span>7 halls + 1 annex</span>
-        </button>
-      </div>
-      <div class="college-grid" id="collegeGrid" role="tabpanel" aria-labelledby="collegeTab" aria-live="polite"></div>
-      <div class="old-campus-intro hidden" id="oldCampusIntro">
-        <div>
-          <strong>Complete Old Campus housing directory</strong>
-          <span>Seven first-year residence halls plus McClellan, a residential annex shown on Yale’s current map.</span>
-        </div>
-        <a href="https://college.yale.edu/resource/camp-yale-old-campus-map" target="_blank" rel="noopener">View Yale’s map <span aria-hidden="true">↗</span></a>
-      </div>
-      <div class="college-grid hidden" id="oldCampusGrid" role="tabpanel" aria-labelledby="oldCampusTab" aria-live="polite"></div>
-      <details class="photo-credits hidden" id="oldCampusCredits">
-        <summary>Old Campus photo credits</summary>
-        <ul id="oldCampusCreditList"></ul>
-      </details>
+      <div class="college-grid" id="collegeGrid" aria-live="polite"></div>
     </section>
 
-    <section class="section-wrap confidence-strip" id="how-it-works">
-      <div class="confidence-copy">
-        <p class="eyebrow">Decision-ready details</p>
-        <h2>Know what you’re walking into.</h2>
-      </div>
-      <dl class="catalog-stats">
-        <div><dt>14</dt><dd>residential colleges</dd></div>
-        <div><dt>7</dt><dd>first-year halls</dd></div>
-        <div><dt>1</dt><dd>Old Campus annex</dd></div>
-        <div><dt>191</dt><dd>entryways indexed</dd></div>
-      </dl>
+    <section class="section-wrap feature-strip">
+      <article>
+        <span class="feature-icon">⌕</span>
+        <h3>Fast room search</h3>
+        <p>Search by room number, notes, suite type, entrance, or college.</p>
+      </article>
+      <article>
+        <span class="feature-icon">▦</span>
+        <h3>Structured room cards</h3>
+        <p>Each card includes dimensions, photo placeholders, suite details, and notes.</p>
+      </article>
+      <article>
+        <span class="feature-icon">↥</span>
+        <h3>Admin upload ready</h3>
+        <p>A protected mock upload flow is included for future backend connection.</p>
+      </article>
     </section>
   </main>
 
@@ -131,8 +94,8 @@
     <a href="catalog.html#admin">Admin upload</a>
   </footer>
 
-  <script src="data.js?v=20260923-entryway-search"></script>
-  <script src="site-theme.js?v=20260923-entryway-search"></script>
-  <script src="home.js?v=20260923-entryway-search"></script>
+  <script src="data.js"></script>
+  <script src="site-theme.js"></script>
+  <script src="home.js"></script>
 </body>
 </html>

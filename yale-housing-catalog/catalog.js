@@ -1,10 +1,9 @@
 const params = new URLSearchParams(window.location.search);
 const initialCollegeId = params.get("college");
-const initialQuery = params.get("q") || "";
-const initialEntrance = params.get("entrance") || "";
 
 const elements = {
   catalogTitle: document.querySelector("#catalogTitle"),
+  catalogSubtitle: document.querySelector("#catalogSubtitle"),
   catalogHero: document.querySelector("#catalogHero"),
   selectedCollegeCard: document.querySelector("#selectedCollegeCard"),
   searchInput: document.querySelector("#searchInput"),
@@ -53,23 +52,14 @@ function optionMarkup(value, label, selectedValue) {
 }
 
 function hydrateSelects() {
-  const collegeOptions = yaleHousingData.colleges
-    .map((college) => optionMarkup(college.id, college.name, activeCollegeId))
-    .join("");
-  const oldCampusOptions = yaleHousingData.oldCampusHalls
-    .map((hall) => optionMarkup(hall.id, hall.name, activeCollegeId))
-    .join("");
+  elements.collegeFilter.innerHTML = [
+    optionMarkup("all", "All colleges", activeCollegeId),
+    ...yaleHousingData.colleges.map((college) => optionMarkup(college.id, college.name, activeCollegeId))
+  ].join("");
 
-  elements.collegeFilter.innerHTML = `
-    ${optionMarkup("all", "All residences", activeCollegeId)}
-    <optgroup label="Residential colleges">${collegeOptions}</optgroup>
-    <optgroup label="Old Campus halls and annex">${oldCampusOptions}</optgroup>
-  `;
-
-  elements.uploadCollege.innerHTML = `
-    <optgroup label="Residential colleges">${yaleHousingData.colleges.map((college) => optionMarkup(college.id, college.name, "")).join("")}</optgroup>
-    <optgroup label="Old Campus halls and annex">${yaleHousingData.oldCampusHalls.map((hall) => optionMarkup(hall.id, hall.name, "")).join("")}</optgroup>
-  `;
+  elements.uploadCollege.innerHTML = yaleHousingData.colleges
+    .map((college) => optionMarkup(college.id, college.name, ""))
+    .join("");
 
   updateDependentFilters();
 }
@@ -84,14 +74,9 @@ function updateDependentFilters() {
   const currentEntrance = elements.entranceFilter.value || "all";
   const currentFloor = elements.floorFilter.value || "all";
   const baseRooms = getFilteredBaseRooms();
-  const selectedResidence = getCollegeById(elements.collegeFilter.value);
 
-  const entrances = selectedResidence
-    ? selectedResidence.entrances
-    : [...new Set(baseRooms.map((room) => room.entrance))].sort();
-  const floors = (selectedResidence
-    ? [...selectedResidence.floors]
-    : [...new Set(baseRooms.map((room) => room.floor))]).sort((a, b) => {
+  const entrances = [...new Set(baseRooms.map((room) => room.entrance))].sort();
+  const floors = [...new Set(baseRooms.map((room) => room.floor))].sort((a, b) => {
     if (a === "Basement") return -1;
     if (b === "Basement") return 1;
     return Number(a) - Number(b);
@@ -117,31 +102,22 @@ function renderSelectedCollege() {
   setAccent(selectedCollegeId);
 
   if (!college) {
-    elements.catalogTitle.textContent = "All residences";
+    elements.catalogTitle.textContent = "All rooms";
+    elements.catalogSubtitle.textContent = "Search the starter room set by college, entrance, floor level, or room details.";
     elements.selectedCollegeCard.innerHTML = `
       <div class="accent-swatch" aria-hidden="true"></div>
-      <span class="residence-kicker">Complete directory</span>
-      <h3>14 colleges + 7 Old Campus halls + 1 annex</h3>
+      <h3>All residential colleges</h3>
+      <p>Browse the full starter set or use filters to narrow the catalog.</p>
     `;
     return;
   }
 
-  const entrywayMarkup = college.entrances
-    .map((entryway) => `<span>${escapeHtml(entryway.replace("Entryway ", ""))}</span>`)
-    .join("");
-  const residenceType = college.group === "Old Campus annex"
-    ? "Old Campus residential annex"
-    : college.group === "Old Campus residence"
-      ? "Old Campus residence hall"
-      : "Residential college";
-  elements.catalogTitle.textContent = college.name;
+  elements.catalogTitle.textContent = `${college.name} rooms`;
+  elements.catalogSubtitle.textContent = `Browse mock room data for ${college.name}, including suite details, dimensions, and notes.`;
   elements.selectedCollegeCard.innerHTML = `
     <div class="accent-swatch" aria-hidden="true"></div>
-    <span class="residence-kicker">${residenceType}</span>
     <h3>${escapeHtml(college.name)}</h3>
-    <div class="entryway-heading"><strong>${college.entrances.length}</strong> entryways</div>
-    <div class="entryway-list" aria-label="${escapeHtml(college.name)} entryways">${entrywayMarkup}</div>
-    <a class="source-link" href="${escapeHtml(college.sourceUrl)}" target="_blank" rel="noopener">Yale reference <span aria-hidden="true">↗</span></a>
+    <p>${escapeHtml(college.description)}</p>
   `;
 }
 
@@ -179,11 +155,7 @@ function getFilteredRooms() {
 
 function renderRooms() {
   const filteredRooms = getFilteredRooms();
-  const selectedResidence = getCollegeById(elements.collegeFilter.value);
   elements.resultCount.textContent = `Showing ${filteredRooms.length} ${filteredRooms.length === 1 ? "room" : "rooms"}`;
-  elements.emptyState.querySelector("h2").textContent = selectedResidence
-    ? "No room records yet"
-    : "No rooms found";
   elements.emptyState.classList.toggle("hidden", filteredRooms.length > 0);
   elements.roomGrid.classList.toggle("hidden", filteredRooms.length === 0);
 
@@ -339,12 +311,8 @@ function saveRoomDraft(event) {
 
 function initCatalog() {
   hydrateSelects();
-  elements.searchInput.value = initialQuery;
   elements.collegeFilter.value = activeCollegeId;
   updateDependentFilters();
-  if ([...elements.entranceFilter.options].some((option) => option.value === initialEntrance)) {
-    elements.entranceFilter.value = initialEntrance;
-  }
   renderSelectedCollege();
   renderRooms();
   setupAdminState();
