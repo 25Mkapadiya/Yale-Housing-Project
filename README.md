@@ -16,6 +16,7 @@ A modern clean starter directory website built with plain HTML, CSS, and JavaScr
 - Room cards with college, room number, dimensions, pictures, suite details, occupancy, bathroom info, and notes
 - Yale-inspired visual system using Yale Blue as the broad base color
 - Residential college accent colors applied when a college or room is selected
+- All 14 residential colleges and the 8 Old Campus halls, each with a building photo
 - Admin sign-in for adding and deleting rooms, with photo uploads
 - Rooms and photos stored in Supabase
 
@@ -64,7 +65,14 @@ http://localhost:8000
 ## Where to edit data
 
 - Add or delete rooms from the admin section of `catalog.html`, or in the Supabase table editor.
-- Colleges (names, colors, shields, entrances, floors) are in `data.js`.
+- Colleges and Old Campus halls (names, colors, shields, entryways, floors, building photos) are in `data.js`.
+
+## Images
+
+- `assets/college-shields/`: official residential college shields.
+- `assets/colleges/photos/` and `assets/halls/`: building photos from Wikimedia Commons, resized to 960px wide.
+  Each one's author, license, and source page are stored in `data.js` (`photoCredit`, `photoLicense`,
+  `photoSourceUrl`) and listed under "Photo credits" on the home page. Keep that attribution if you swap a photo.
 
 ## Old links
 

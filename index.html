@@ -22,6 +22,7 @@
     </a>
     <nav class="header-nav" aria-label="Primary navigation">
       <a href="#colleges">Colleges</a>
+      <a href="index.html?view=old-campus#colleges">Old Campus</a>
       <a href="catalog.html">Room Catalog</a>
       <a href="catalog.html#admin">Admin Upload</a>
       <button class="theme-toggle" id="themeToggle" type="button" aria-label="Switch to dark mode">Dark mode</button>
@@ -64,10 +65,20 @@
     <section class="section-wrap" id="colleges">
       <div class="section-heading">
         <p class="eyebrow">Start here</p>
-        <h2>Select a residential college</h2>
-        <p>Each college now uses a visual palette inspired by its shield and identity.</p>
+        <h2>Select a residence</h2>
+        <p>Browse all 14 residential colleges, or the Old Campus halls where first-years live.</p>
       </div>
-      <div class="college-grid" id="collegeGrid" aria-live="polite"></div>
+      <div class="directory-tabs" role="tablist" aria-label="Residence type">
+        <button class="directory-tab active" id="collegesTab" type="button" role="tab" aria-selected="true" aria-controls="collegeGrid" data-directory-tab="colleges">Residential colleges</button>
+        <button class="directory-tab" id="oldCampusTab" type="button" role="tab" aria-selected="false" aria-controls="oldCampusGrid" data-directory-tab="old-campus">Old Campus</button>
+      </div>
+      <div class="college-grid" id="collegeGrid" role="tabpanel" aria-labelledby="collegesTab" aria-live="polite"></div>
+      <div class="college-grid hidden" id="oldCampusGrid" role="tabpanel" aria-labelledby="oldCampusTab" aria-live="polite"></div>
+      <details class="photo-credits">
+        <summary>Photo credits</summary>
+        <p>Building photos are from Wikimedia Commons and used under the licenses listed.</p>
+        <ul id="photoCreditList"></ul>
+      </details>
     </section>
 
     <section class="section-wrap feature-strip">

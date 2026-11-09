@@ -213,6 +213,24 @@
   color: var(--ink);
 }
 
+:root[data-theme="dark"] .directory-tabs {
+  background: rgba(232, 239, 250, 0.07);
+}
+
+:root[data-theme="dark"] .directory-tab.active {
+  background: #1b2a42;
+  color: var(--ink);
+}
+
+:root[data-theme="dark"] .photo-credits a {
+  color: #9cc3f0;
+}
+
+:root[data-theme="dark"] .college-photo .accent-swatch,
+:root[data-theme="dark"] .selected-college-photo + .accent-swatch {
+  outline-color: #101a2b;
+}
+
 :root[data-theme="dark"] .college-meta span,
 :root[data-theme="dark"] .fact {
   background: rgba(232, 239, 250, 0.07);

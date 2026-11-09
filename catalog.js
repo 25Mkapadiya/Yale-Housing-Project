@@ -57,15 +57,17 @@ function optionMarkup(value, label, selectedValue) {
   return `<option value="${escapeHtml(value)}" ${value === selectedValue ? "selected" : ""}>${escapeHtml(label)}</option>`;
 }
 
-function hydrateSelects() {
-  elements.collegeFilter.innerHTML = [
-    optionMarkup("all", "All colleges", activeCollegeId),
-    ...yaleHousingData.colleges.map((college) => optionMarkup(college.id, college.name, activeCollegeId))
-  ].join("");
+function residenceOptionGroups(selectedValue) {
+  const group = (label, residences) => `
+    <optgroup label="${escapeHtml(label)}">
+      ${residences.map((residence) => optionMarkup(residence.id, residence.name, selectedValue)).join("")}
+    </optgroup>`;
+  return group("Residential colleges", yaleHousingData.colleges) + group("Old Campus", yaleHousingData.oldCampusHalls);
+}
 
-  elements.uploadCollege.innerHTML = yaleHousingData.colleges
-    .map((college) => optionMarkup(college.id, college.name, ""))
-    .join("");
+function hydrateSelects() {
+  elements.collegeFilter.innerHTML = optionMarkup("all", "All residences", activeCollegeId) + residenceOptionGroups(activeCollegeId);
+  elements.uploadCollege.innerHTML = residenceOptionGroups("");
 
   updateDependentFilters();
 }
@@ -109,7 +111,7 @@ function renderSelectedCollege() {
 
   if (!college) {
     elements.catalogTitle.textContent = "All rooms";
-    elements.catalogSubtitle.textContent = "Search the starter room set by college, entrance, floor level, or room details.";
+    elements.catalogSubtitle.textContent = "Search rooms across every residential college and Old Campus hall by entrance, floor level, or room details.";
     elements.selectedCollegeCard.innerHTML = `
       <div class="accent-swatch" aria-hidden="true"></div>
       <h3>All residential colleges</h3>
@@ -119,8 +121,9 @@ function renderSelectedCollege() {
   }
 
   elements.catalogTitle.textContent = `${college.name} rooms`;
-  elements.catalogSubtitle.textContent = `Browse mock room data for ${college.name}, including suite details, dimensions, and notes.`;
+  elements.catalogSubtitle.textContent = `Browse rooms in ${college.name}, including suite details, dimensions, and notes.`;
   elements.selectedCollegeCard.innerHTML = `
+    ${college.photo ? `<figure class="selected-college-photo"><img src="${escapeHtml(college.photo)}" alt="${escapeHtml(college.name)}" /></figure>` : ""}
     <div class="accent-swatch" aria-hidden="true"></div>
     <h3>${escapeHtml(college.name)}</h3>
     <p>${escapeHtml(college.description)}</p>
@@ -176,13 +179,13 @@ function renderRooms() {
     return `
       <article class="room-card" tabindex="0" role="button" data-room-id="${escapeHtml(room.id)}" aria-label="View details for room ${escapeHtml(room.roomNumber)}">
         <div class="room-image">
-          <img src="${escapeHtml(room.images?.[0] || college?.image || "assets/rooms/room-blue.svg")}" alt="Mock photo preview for ${escapeHtml(room.roomNumber)}" />
+          <img src="${escapeHtml(room.images?.[0] || getResidencePhoto(college))}" alt="Photo for room ${escapeHtml(room.roomNumber)}" loading="lazy" />
         </div>
         <div class="room-body">
           <div class="room-topline">
             <div>
               <h3 class="room-number">${escapeHtml(room.roomNumber)}</h3>
-              <div class="room-college">${escapeHtml(college?.name || "Residential College")}</div>
+              <div class="room-college">${escapeHtml(college?.name || "Yale residence")}</div>
             </div>
             <span class="room-pill">${escapeHtml(room.suiteType)}</span>
           </div>
@@ -206,7 +209,7 @@ function openRoomModal(roomId) {
   const college = getCollegeById(room.collegeId);
   setAccent(room.collegeId);
 
-  const images = room.images?.length ? room.images : [college?.image || "assets/rooms/room-blue.svg"];
+  const images = room.images?.length ? room.images : [getResidencePhoto(college)];
   const secondImage = images[1] || images[0];
 
   elements.modalContent.innerHTML = `
@@ -216,7 +219,7 @@ function openRoomModal(roomId) {
         <img src="${escapeHtml(secondImage)}" alt="Additional mock room photo for ${escapeHtml(room.roomNumber)}" />
       </div>
       <div class="modal-body">
-        <p class="eyebrow">${escapeHtml(college?.name || "Residential College")}</p>
+        <p class="eyebrow">${escapeHtml(college?.name || "Yale residence")}</p>
         <h2 id="modalRoomTitle">${escapeHtml(room.roomNumber)}</h2>
         <span class="room-pill">${escapeHtml(room.suiteType)}</span>
         <div class="modal-details">

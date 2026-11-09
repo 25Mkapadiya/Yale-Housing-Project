@@ -1,16 +1,72 @@
 const yaleHousingData = {
   colleges: [
     {
+      id: "benjamin-franklin",
+      name: "Benjamin Franklin College",
+      abbreviation: "BF",
+      accent: "#8f6c2d",
+      accentDark: "#674b18",
+      logo: "assets/college-shields/benjamin.franklin.color.png",
+      description: "Yale residential college on Prospect Street.",
+      entrances: [
+        "Entryway A",
+        "Entryway B",
+        "Entryway C",
+        "Entryway D",
+        "Entryway E",
+        "Entryway F",
+        "Entryway G",
+        "Entryway H",
+        "Entryway I",
+        "Entryway J",
+        "Entryway K",
+        "Entryway L",
+        "Entryway M"
+      ],
+      floors: [
+        "1",
+        "2",
+        "3",
+        "4",
+        "5"
+      ],
+      image: "assets/rooms/room-gold.svg",
+      photo: "assets/colleges/photos/benjamin-franklin.jpg",
+      photoCredit: "Helpfullguy99",
+      photoLicense: "CC BY-SA 4.0",
+      photoSourceUrl: "https://commons.wikimedia.org/wiki/File:Benjamin_Franklin_College_Yale.jpg",
+      sourceUrl: "https://benjaminfranklin.yale.edu/"
+    },
+    {
       id: "berkeley",
       name: "Berkeley College",
       abbreviation: "BK",
       accent: "#d29a2d",
       accentDark: "#8b641d",
-      logo: "https://upload.wikimedia.org/wikipedia/en/1/13/Berkeleyshield.png",
+      logo: "assets/college-shields/berkeley.color.png",
       description: "A warm, central college with suite-style housing and active courtyard energy.",
-      entrances: ["Entry A", "Entry B", "Entry C"],
-      floors: ["1", "2", "3", "4"],
-      image: "assets/rooms/room-gold.svg"
+      entrances: [
+        "Entryway A",
+        "Entryway B",
+        "Entryway C",
+        "Entryway D",
+        "Entryway E",
+        "Entryway F",
+        "Entryway G",
+        "Entryway H"
+      ],
+      floors: [
+        "1",
+        "2",
+        "3",
+        "4"
+      ],
+      image: "assets/rooms/room-gold.svg",
+      photo: "assets/colleges/photos/berkeley.jpg",
+      photoCredit: "Ragesoss",
+      photoLicense: "CC BY-SA 4.0",
+      photoSourceUrl: "https://commons.wikimedia.org/wiki/File:Berkeley_College_(South)_at_Yale.jpg",
+      sourceUrl: "https://berkeley.yale.edu/"
     },
     {
       id: "branford",
@@ -18,11 +74,110 @@ const yaleHousingData = {
       abbreviation: "BR",
       accent: "#a23a36",
       accentDark: "#78211f",
-      logo: "https://upload.wikimedia.org/wikipedia/en/thumb/3/30/Branford_College_shield.png/250px-Branford_College_shield.png",
+      logo: "assets/college-shields/branford.color.png",
       description: "A classic residential college with cozy entries, common spaces, and historic character.",
-      entrances: ["Entry C", "Entry D", "Entry E"],
-      floors: ["1", "2", "3", "4"],
-      image: "assets/rooms/room-red.svg"
+      entrances: [
+        "Entryway A",
+        "Entryway B",
+        "Entryway C",
+        "Entryway D",
+        "Entryway E",
+        "Entryway F",
+        "Entryway G",
+        "Entryway H",
+        "Entryway I",
+        "Entryway J",
+        "Entryway K",
+        "Entryway L",
+        "Entryway M",
+        "Entryway N",
+        "Entryway O",
+        "Entryway P"
+      ],
+      floors: [
+        "1",
+        "2",
+        "3",
+        "4"
+      ],
+      image: "assets/rooms/room-red.svg",
+      photo: "assets/colleges/photos/branford.jpg",
+      photoCredit: "Nick Allen",
+      photoLicense: "CC BY-SA 3.0",
+      photoSourceUrl: "https://commons.wikimedia.org/wiki/File:Branford_Court_spring.JPG",
+      sourceUrl: "https://branford.yale.edu/about/history"
+    },
+    {
+      id: "davenport",
+      name: "Davenport College",
+      abbreviation: "DC",
+      accent: "#7b2d2d",
+      accentDark: "#551c1c",
+      logo: "assets/college-shields/davenport.color.png",
+      description: "Yale residential college on York Street.",
+      entrances: [
+        "Entryway A",
+        "Entryway B",
+        "Entryway C",
+        "Entryway D",
+        "Entryway E",
+        "Entryway F",
+        "Entryway G",
+        "Entryway H",
+        "Entryway I",
+        "Entryway J",
+        "Entryway K",
+        "Entryway L",
+        "Entryway M",
+        "Entryway N"
+      ],
+      floors: [
+        "1",
+        "2",
+        "3",
+        "4",
+        "5"
+      ],
+      image: "assets/rooms/room-red.svg",
+      photo: "assets/colleges/photos/davenport.jpg",
+      photoCredit: "Nick Allen",
+      photoLicense: "CC BY-SA 3.0",
+      photoSourceUrl: "https://commons.wikimedia.org/wiki/File:Davenport_College_courtyard_2.JPG",
+      sourceUrl: "https://davenport.yale.edu/"
+    },
+    {
+      id: "ezra-stiles",
+      name: "Ezra Stiles College",
+      abbreviation: "ES",
+      accent: "#b08a3e",
+      accentDark: "#70551f",
+      logo: "assets/college-shields/ezra.stiles.color.png",
+      description: "Yale residential college on York Street.",
+      entrances: [
+        "Entryway A",
+        "Entryway B",
+        "Entryway C",
+        "Entryway D",
+        "Entryway E",
+        "Entryway F",
+        "Entryway G",
+        "Entryway H",
+        "Entryway I",
+        "Entryway J"
+      ],
+      floors: [
+        "1",
+        "2",
+        "3",
+        "4",
+        "5"
+      ],
+      image: "assets/rooms/room-gold.svg",
+      photo: "assets/colleges/photos/ezra-stiles.jpg",
+      photoCredit: "Tokugawapants",
+      photoLicense: "CC BY-SA 4.0",
+      photoSourceUrl: "https://commons.wikimedia.org/wiki/File:Ezra_Stiles_College_Courtyard.jpg",
+      sourceUrl: "https://ezrastiles.yale.edu/"
     },
     {
       id: "grace-hopper",
@@ -30,11 +185,98 @@ const yaleHousingData = {
       abbreviation: "GH",
       accent: "#4b83b6",
       accentDark: "#23527f",
-      logo: "https://upload.wikimedia.org/wikipedia/en/thumb/6/64/The_Coat_of_Arms_of_Grace_Hopper_College%2C_Yale_University.png/250px-The_Coat_of_Arms_of_Grace_Hopper_College%2C_Yale_University.png",
+      logo: "assets/college-shields/grace.hopper.color.png",
       description: "A bright college with practical layouts, doubles, singles, and flexible suite configurations.",
-      entrances: ["Entry A", "Entry B", "Entry North"],
-      floors: ["1", "2", "3", "4", "5"],
-      image: "assets/rooms/room-blue.svg"
+      entrances: [
+        "Entryway A",
+        "Entryway B",
+        "Entryway C",
+        "Entryway D",
+        "Entryway E",
+        "Entryway F",
+        "Entryway G",
+        "Entryway H"
+      ],
+      floors: [
+        "1",
+        "2",
+        "3",
+        "4",
+        "5"
+      ],
+      image: "assets/rooms/room-blue.svg",
+      photo: "assets/colleges/photos/grace-hopper.jpg",
+      photoCredit: "Kenneth C. Zirkel",
+      photoLicense: "CC BY-SA 4.0",
+      photoSourceUrl: "https://commons.wikimedia.org/wiki/File:Grace_Hopper_College,_Yale_University.jpg",
+      sourceUrl: "https://gracehopper.yale.edu/"
+    },
+    {
+      id: "jonathan-edwards",
+      name: "Jonathan Edwards College",
+      abbreviation: "JE",
+      accent: "#2d6a4f",
+      accentDark: "#17432f",
+      logo: "assets/college-shields/jonathan.edwards.color.png",
+      description: "Yale residential college on High Street.",
+      entrances: [
+        "Entryway A",
+        "Entryway B",
+        "Entryway C",
+        "Entryway D",
+        "Entryway E",
+        "Entryway F",
+        "Entryway G",
+        "Entryway H",
+        "Entryway I",
+        "Entryway J",
+        "Entryway K",
+        "Entryway L"
+      ],
+      floors: [
+        "1",
+        "2",
+        "3",
+        "4"
+      ],
+      image: "assets/rooms/room-green.svg",
+      photo: "assets/colleges/photos/jonathan-edwards.jpg",
+      photoCredit: "Nick Allen",
+      photoLicense: "CC BY-SA 3.0",
+      photoSourceUrl: "https://commons.wikimedia.org/wiki/File:JE_Courtyard.JPG",
+      sourceUrl: "https://jonathanedwards.yale.edu/"
+    },
+    {
+      id: "morse",
+      name: "Morse College",
+      abbreviation: "MC",
+      accent: "#aa1f2d",
+      accentDark: "#72121c",
+      logo: "assets/college-shields/morse.color.png",
+      description: "Yale residential college designed by Eero Saarinen.",
+      entrances: [
+        "Entryway A",
+        "Entryway B",
+        "Entryway C",
+        "Entryway D",
+        "Entryway E",
+        "Entryway F",
+        "Entryway G",
+        "Entryway H"
+      ],
+      floors: [
+        "1",
+        "2",
+        "3",
+        "4",
+        "5"
+      ],
+      image: "assets/rooms/room-red.svg",
+      photo: "assets/colleges/photos/morse.jpg",
+      photoCredit: "Nick Allen",
+      photoLicense: "CC BY-SA 3.0",
+      photoSourceUrl: "https://commons.wikimedia.org/wiki/File:Morse_College_courtyard.JPG",
+      sourceUrl: "https://morse.yale.edu/"
     },
     {
       id: "pauli-murray",
@@ -42,11 +284,438 @@ const yaleHousingData = {
       abbreviation: "PM",
       accent: "#367f62",
       accentDark: "#1c5a45",
-      logo: "https://upload.wikimedia.org/wikipedia/en/thumb/3/37/PauliMurrayShield.jpg/250px-PauliMurrayShield.jpg",
+      logo: "assets/college-shields/pauli.murray.color.png",
       description: "A newer residential college with modern rooms, shared lounges, and accessible circulation.",
-      entrances: ["South Entry", "North Entry", "Tower Entry"],
-      floors: ["1", "2", "3", "4", "5"],
-      image: "assets/rooms/room-green.svg"
+      entrances: [
+        "Entryway A",
+        "Entryway B",
+        "Entryway C",
+        "Entryway D",
+        "Entryway E",
+        "Entryway F",
+        "Entryway G",
+        "Entryway H",
+        "Entryway I",
+        "Entryway J",
+        "Entryway K",
+        "Entryway L",
+        "Entryway M"
+      ],
+      floors: [
+        "1",
+        "2",
+        "3",
+        "4",
+        "5"
+      ],
+      image: "assets/rooms/room-green.svg",
+      photo: "assets/colleges/photos/pauli-murray.jpg",
+      photoCredit: "ajay_suresh",
+      photoLicense: "CC BY 2.0",
+      photoSourceUrl: "https://commons.wikimedia.org/wiki/File:Pauli_Murray_College_-_Yale_University_(54105136922).jpg",
+      sourceUrl: "https://paulimurray.yalecollege.yale.edu/"
+    },
+    {
+      id: "pierson",
+      name: "Pierson College",
+      abbreviation: "PC",
+      accent: "#c7a11a",
+      accentDark: "#745c08",
+      logo: "assets/college-shields/pierson.color.png",
+      description: "Yale residential college on York Street.",
+      entrances: [
+        "Entryway A",
+        "Entryway B",
+        "Entryway C",
+        "Entryway D",
+        "Entryway E",
+        "Entryway F",
+        "Entryway G",
+        "Entryway H"
+      ],
+      floors: [
+        "1",
+        "2",
+        "3",
+        "4"
+      ],
+      image: "assets/rooms/room-gold.svg",
+      photo: "assets/colleges/photos/pierson.jpg",
+      photoCredit: "Namkota",
+      photoLicense: "CC BY-SA 4.0",
+      photoSourceUrl: "https://commons.wikimedia.org/wiki/File:Pierson_college.jpg",
+      sourceUrl: "https://pierson.yalecollege.yale.edu/"
+    },
+    {
+      id: "saybrook",
+      name: "Saybrook College",
+      abbreviation: "SY",
+      accent: "#315b89",
+      accentDark: "#193b61",
+      logo: "assets/college-shields/saybrook.color.png",
+      description: "Yale residential college in Memorial Quadrangle.",
+      entrances: [
+        "Entryway A",
+        "Entryway B",
+        "Entryway C",
+        "Entryway D",
+        "Entryway E",
+        "Entryway F",
+        "Entryway G",
+        "Entryway H",
+        "Entryway I",
+        "Entryway J",
+        "Entryway K",
+        "Entryway L",
+        "Entryway M",
+        "Entryway N",
+        "Entryway O"
+      ],
+      floors: [
+        "1",
+        "2",
+        "3",
+        "4",
+        "5"
+      ],
+      image: "assets/rooms/room-blue.svg",
+      photo: "assets/colleges/photos/saybrook.jpg",
+      photoCredit: "Helpfullguy99",
+      photoLicense: "CC BY-SA 4.0",
+      photoSourceUrl: "https://commons.wikimedia.org/wiki/File:Saybrook_College_Courtyard.jpg",
+      sourceUrl: "https://saybrook.yale.edu/"
+    },
+    {
+      id: "silliman",
+      name: "Silliman College",
+      abbreviation: "SM",
+      accent: "#c78b2f",
+      accentDark: "#795018",
+      logo: "assets/college-shields/silliman.color.png",
+      description: "Yale's largest residential college by footprint.",
+      entrances: [
+        "Entryway A",
+        "Entryway B",
+        "Entryway C",
+        "Entryway D",
+        "Entryway E",
+        "Entryway F",
+        "Entryway G",
+        "Entryway H",
+        "Entryway I",
+        "Entryway J",
+        "Entryway K",
+        "Entryway L",
+        "Entryway M"
+      ],
+      floors: [
+        "1",
+        "2",
+        "3",
+        "4"
+      ],
+      image: "assets/rooms/room-gold.svg",
+      photo: "assets/colleges/photos/silliman.jpg",
+      photoCredit: "Helpfullguy99",
+      photoLicense: "CC BY-SA 4.0",
+      photoSourceUrl: "https://commons.wikimedia.org/wiki/File:Silliman_College_Courtyard_Yale.jpg",
+      sourceUrl: "https://silliman.yale.edu/"
+    },
+    {
+      id: "timothy-dwight",
+      name: "Timothy Dwight College",
+      abbreviation: "TD",
+      accent: "#8d2636",
+      accentDark: "#591522",
+      logo: "assets/college-shields/timothy.dwight.color.png",
+      description: "Yale residential college on Temple Street.",
+      entrances: [
+        "Entryway A",
+        "Entryway B",
+        "Entryway C",
+        "Entryway D",
+        "Entryway E",
+        "Entryway F",
+        "Entryway G",
+        "Entryway H",
+        "Entryway I"
+      ],
+      floors: [
+        "1",
+        "2",
+        "3",
+        "4"
+      ],
+      image: "assets/rooms/room-red.svg",
+      photo: "assets/colleges/photos/timothy-dwight.jpg",
+      photoCredit: "Helpfullguy99",
+      photoLicense: "CC BY-SA 4.0",
+      photoSourceUrl: "https://commons.wikimedia.org/wiki/File:Timothy_Dwight_College_courtyard.jpg",
+      sourceUrl: "https://timothydwight.yale.edu/"
+    },
+    {
+      id: "trumbull",
+      name: "Trumbull College",
+      abbreviation: "TC",
+      accent: "#315d8b",
+      accentDark: "#183b60",
+      logo: "assets/college-shields/trumbull.color.png",
+      description: "Yale residential college on Elm Street.",
+      entrances: [
+        "Entryway A",
+        "Entryway B",
+        "Entryway C",
+        "Entryway D",
+        "Entryway E",
+        "Entryway F",
+        "Entryway G",
+        "Entryway H",
+        "Entryway I",
+        "Entryway J",
+        "Entryway K"
+      ],
+      floors: [
+        "1",
+        "2",
+        "3",
+        "4"
+      ],
+      image: "assets/rooms/room-blue.svg",
+      photo: "assets/colleges/photos/trumbull.jpg",
+      photoCredit: "Jdbrandt",
+      photoLicense: "CC BY 3.0",
+      photoSourceUrl: "https://commons.wikimedia.org/wiki/File:TrumbullCollegeCourtyard.jpg",
+      sourceUrl: "https://trumbull.yalecollege.yale.edu/"
+    }
+  ],
+  oldCampusHalls: [
+    {
+      id: "old-campus-bingham",
+      name: "Bingham Hall",
+      abbreviation: "BI",
+      accent: "#6a7890",
+      accentDark: "#39465b",
+      description: "First-year residence hall on Old Campus.",
+      residenceLabel: "First-year hall",
+      entrances: [
+        "Entryway A",
+        "Entryway B",
+        "Entryway C",
+        "Entryway D"
+      ],
+      floors: [
+        "1",
+        "2",
+        "3",
+        "4",
+        "5",
+        "6",
+        "7",
+        "8",
+        "9"
+      ],
+      image: "assets/rooms/room-blue.svg",
+      photo: "assets/halls/bingham.jpg",
+      photoCredit: "Gunnar Klack",
+      photoLicense: "CC BY-SA 4.0",
+      photoSourceUrl: "https://commons.wikimedia.org/wiki/File:2014-04-17-Bingham-Hall-Yale-University-Chapel-Street-College-Street-New-Haven-Connecticut.jpg",
+      sourceUrl: "https://college.yale.edu/resource/camp-yale-old-campus-map"
+    },
+    {
+      id: "old-campus-durfee",
+      name: "Durfee Hall",
+      abbreviation: "DU",
+      accent: "#876e52",
+      accentDark: "#55412d",
+      description: "First-year residence hall on Old Campus.",
+      residenceLabel: "First-year hall",
+      entrances: [
+        "Entryway A",
+        "Entryway B",
+        "Entryway C",
+        "Entryway D",
+        "Entryway E"
+      ],
+      floors: [
+        "1",
+        "2",
+        "3",
+        "4",
+        "5"
+      ],
+      image: "assets/rooms/room-gold.svg",
+      photo: "assets/halls/durfee.jpg",
+      photoCredit: "Nick Allen",
+      photoLicense: "CC BY-SA 3.0",
+      photoSourceUrl: "https://commons.wikimedia.org/wiki/File:Durfee_Hall_spring.JPG",
+      sourceUrl: "https://college.yale.edu/resource/camp-yale-old-campus-map"
+    },
+    {
+      id: "old-campus-farnam",
+      name: "Farnam Hall",
+      abbreviation: "FA",
+      accent: "#8c4f45",
+      accentDark: "#5b2d27",
+      description: "First-year residence hall on Old Campus.",
+      residenceLabel: "First-year hall",
+      entrances: [
+        "Entryway A",
+        "Entryway B",
+        "Entryway C"
+      ],
+      floors: [
+        "Basement",
+        "1",
+        "2",
+        "3",
+        "4"
+      ],
+      image: "assets/rooms/room-red.svg",
+      photo: "assets/halls/farnam.jpg",
+      photoCredit: "Nick Allen",
+      photoLicense: "CC BY-SA 3.0",
+      photoSourceUrl: "https://commons.wikimedia.org/wiki/File:Farnam_Hall_Yale_University.JPG",
+      sourceUrl: "https://college.yale.edu/resource/camp-yale-old-campus-map"
+    },
+    {
+      id: "old-campus-lanman-wright",
+      name: "Lanman-Wright Hall",
+      abbreviation: "LW",
+      accent: "#506b5e",
+      accentDark: "#2e453a",
+      description: "First-year residence hall on Old Campus.",
+      residenceLabel: "First-year hall",
+      entrances: [
+        "Entryway A",
+        "Entryway B",
+        "Entryway C",
+        "Entryway D",
+        "Entryway E",
+        "Entryway F"
+      ],
+      floors: [
+        "1",
+        "2",
+        "3",
+        "4",
+        "5"
+      ],
+      image: "assets/rooms/room-green.svg",
+      photo: "assets/halls/lanman-wright.jpg",
+      photoCredit: "Nick Allen",
+      photoLicense: "CC BY-SA 3.0",
+      photoSourceUrl: "https://commons.wikimedia.org/wiki/File:Lanam_Wright_facade_horizontal.JPG",
+      sourceUrl: "https://college.yale.edu/resource/camp-yale-old-campus-map"
+    },
+    {
+      id: "old-campus-lawrance",
+      name: "Lawrance Hall",
+      abbreviation: "LA",
+      accent: "#6f5687",
+      accentDark: "#48335e",
+      description: "First-year residence hall on Old Campus.",
+      residenceLabel: "First-year hall",
+      entrances: [
+        "Entryway A",
+        "Entryway B",
+        "Entryway C",
+        "Entryway D"
+      ],
+      floors: [
+        "1",
+        "2",
+        "3",
+        "4",
+        "5"
+      ],
+      image: "assets/rooms/room-blue.svg",
+      photo: "assets/halls/lawrance.jpg",
+      photoCredit: "Nick Allen",
+      photoLicense: "CC BY-SA 3.0",
+      photoSourceUrl: "https://commons.wikimedia.org/wiki/File:Lawrence_Hall_spring.JPG",
+      sourceUrl: "https://college.yale.edu/resource/camp-yale-old-campus-map"
+    },
+    {
+      id: "old-campus-vanderbilt",
+      name: "Vanderbilt Hall",
+      abbreviation: "VA",
+      accent: "#53728c",
+      accentDark: "#304d66",
+      description: "First-year residence hall on Old Campus.",
+      residenceLabel: "First-year hall",
+      entrances: [
+        "Entryway A",
+        "Entryway B",
+        "Entryway C",
+        "Entryway D",
+        "Entryway E",
+        "Entryway F"
+      ],
+      floors: [
+        "Basement",
+        "1",
+        "2",
+        "3",
+        "4",
+        "5"
+      ],
+      image: "assets/rooms/room-blue.svg",
+      photo: "assets/halls/vanderbilt.jpg",
+      photoCredit: "GK tramrunner229",
+      photoLicense: "CC BY-SA 3.0",
+      photoSourceUrl: "https://commons.wikimedia.org/wiki/File:Vanderbilt_Hall_at_Yale_university.jpg",
+      sourceUrl: "https://college.yale.edu/resource/camp-yale-old-campus-map"
+    },
+    {
+      id: "old-campus-welch",
+      name: "Welch Hall",
+      abbreviation: "WE",
+      accent: "#8a623d",
+      accentDark: "#573a21",
+      description: "First-year residence hall on Old Campus.",
+      residenceLabel: "First-year hall",
+      entrances: [
+        "Entryway A",
+        "Entryway B",
+        "Entryway C"
+      ],
+      floors: [
+        "1",
+        "2",
+        "3",
+        "4"
+      ],
+      image: "assets/rooms/room-gold.svg",
+      photo: "assets/halls/welch.jpg",
+      photoCredit: "GK tramrunner229",
+      photoLicense: "CC BY-SA 3.0",
+      photoSourceUrl: "https://commons.wikimedia.org/wiki/File:Welch_Hall_at_the_Old_Campus_of_the_Yale_University.jpg",
+      sourceUrl: "https://college.yale.edu/resource/camp-yale-old-campus-map"
+    },
+    {
+      id: "old-campus-mcclellan",
+      name: "McClellan Hall",
+      abbreviation: "MC",
+      accent: "#315d8b",
+      accentDark: "#183b60",
+      description: "Residential annex on Old Campus.",
+      residenceLabel: "Residential annex",
+      entrances: [
+        "Entryway A",
+        "Entryway B"
+      ],
+      floors: [
+        "1",
+        "2",
+        "3",
+        "4"
+      ],
+      image: "assets/rooms/room-blue.svg",
+      photo: "assets/halls/mcclellan.jpg",
+      photoCredit: "Nick Allen",
+      photoLicense: "CC BY-SA 3.0",
+      photoSourceUrl: "https://commons.wikimedia.org/wiki/File:McClellan_and_Connecticut_Halls_spring.JPG",
+      sourceUrl: "https://college.yale.edu/resource/camp-yale-old-campus-map"
     }
   ],
   rooms: [
@@ -218,8 +887,18 @@ const yaleHousingData = {
   ]
 };
 
+// Residential colleges and Old Campus halls together. Rooms point at either by id.
+function getAllResidences() {
+  return [...yaleHousingData.colleges, ...yaleHousingData.oldCampusHalls];
+}
+
 function getCollegeById(id) {
-  return yaleHousingData.colleges.find((college) => college.id === id);
+  return getAllResidences().find((residence) => residence.id === id);
+}
+
+// Best available photo of a residence's building, falling back to the placeholder art.
+function getResidencePhoto(residence) {
+  return residence?.photo || residence?.image || "assets/rooms/room-blue.svg";
 }
 
 // Bundled copy of the starter rooms. The live catalog reads rooms from Supabase
