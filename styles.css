@@ -748,6 +748,20 @@ textarea:focus {
   align-items: end;
 }
 
+.admin-login-form.stacked {
+  grid-template-columns: minmax(0, 1fr);
+}
+
+.admin-login-form.stacked .button {
+  justify-self: start;
+}
+
+.modal-admin {
+  margin-top: 1.25rem;
+  padding-top: 1rem;
+  border-top: 1px solid var(--line);
+}
+
 .admin-login-form .form-message {
   grid-column: 1 / -1;
 }

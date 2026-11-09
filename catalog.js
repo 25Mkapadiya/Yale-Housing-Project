@@ -20,15 +20,21 @@ const elements = {
   modalClose: document.querySelector("#modalClose"),
   adminGate: document.querySelector("#adminGate"),
   adminLoginForm: document.querySelector("#adminLoginForm"),
-  adminKey: document.querySelector("#adminKey"),
+  adminEmail: document.querySelector("#adminEmail"),
+  adminPassword: document.querySelector("#adminPassword"),
   adminMessage: document.querySelector("#adminMessage"),
+  adminStatus: document.querySelector("#adminStatus"),
   uploadForm: document.querySelector("#uploadForm"),
+  uploadSubmit: document.querySelector("#uploadSubmit"),
   lockAdmin: document.querySelector("#lockAdmin"),
   uploadCollege: document.querySelector("#uploadCollege"),
   uploadMessage: document.querySelector("#uploadMessage")
 };
 
-let rooms = getAllRooms();
+let rooms = [];
+let roomsLoaded = false;
+let roomsSource = "supabase";
+let adminSession = null;
 let activeCollegeId = initialCollegeId && getCollegeById(initialCollegeId) ? initialCollegeId : "all";
 
 function escapeHtml(value = "") {
@@ -154,6 +160,12 @@ function getFilteredRooms() {
 }
 
 function renderRooms() {
+  if (!roomsLoaded) {
+    elements.resultCount.textContent = "Loading rooms…";
+    elements.emptyState.classList.add("hidden");
+    return;
+  }
+
   const filteredRooms = getFilteredRooms();
   elements.resultCount.textContent = `Showing ${filteredRooms.length} ${filteredRooms.length === 1 ? "room" : "rooms"}`;
   elements.emptyState.classList.toggle("hidden", filteredRooms.length > 0);
@@ -219,6 +231,12 @@ function openRoomModal(roomId) {
         <p class="room-meta">${escapeHtml(room.suiteDetails)}</p>
         <h3>Notes</h3>
         <p class="room-meta">${escapeHtml(room.notes)}</p>
+        ${adminSession && roomsSource === "supabase" ? `
+          <div class="modal-admin">
+            <button class="button ghost" type="button" data-delete-room="${escapeHtml(room.id)}">Delete this room</button>
+            <p class="form-message" id="deleteMessage" role="status"></p>
+          </div>
+        ` : ""}
       </div>
     </div>
   `;
@@ -249,64 +267,190 @@ function handleFilterChange(event) {
   renderRooms();
 }
 
-function unlockAdmin() {
+function showAdminForm(session) {
+  adminSession = session;
   elements.adminGate.classList.add("hidden");
   elements.uploadForm.classList.remove("hidden");
-  window.sessionStorage.setItem("yaleHousingAdminPreview", "unlocked");
+  elements.adminStatus.textContent = `Signed in as ${session.user.email}. Rooms you save are visible to everyone.`;
 }
 
-function lockAdmin() {
+function showAdminGate() {
+  adminSession = null;
   elements.adminGate.classList.remove("hidden");
   elements.uploadForm.classList.add("hidden");
-  elements.adminKey.value = "";
-  elements.adminMessage.textContent = "";
-  window.sessionStorage.removeItem("yaleHousingAdminPreview");
+  elements.adminPassword.value = "";
 }
 
-function setupAdminState() {
-  if (window.sessionStorage.getItem("yaleHousingAdminPreview") === "unlocked") {
-    unlockAdmin();
+async function setupAdminState() {
+  if (!supabaseClient) {
+    elements.adminMessage.textContent = "Admin sign-in is unavailable because the database could not be reached.";
+    return;
+  }
+  const { data } = await supabaseClient.auth.getSession();
+  if (data.session) showAdminForm(data.session);
+  supabaseClient.auth.onAuthStateChange((_event, session) => {
+    if (session) showAdminForm(session);
+    else showAdminGate();
+  });
+}
+
+async function signIn(event) {
+  event.preventDefault();
+  if (!supabaseClient) return;
+  elements.adminMessage.textContent = "Signing in…";
+  const { data, error } = await supabaseClient.auth.signInWithPassword({
+    email: elements.adminEmail.value.trim(),
+    password: elements.adminPassword.value
+  });
+  if (error) {
+    elements.adminMessage.textContent = error.message === "Invalid login credentials"
+      ? "That email and password didn't match an account."
+      : error.message;
+    return;
+  }
+  elements.adminMessage.textContent = "";
+  showAdminForm(data.session);
+}
+
+async function signOut() {
+  if (supabaseClient) await supabaseClient.auth.signOut();
+  showAdminGate();
+  elements.adminMessage.textContent = "Signed out.";
+  elements.uploadMessage.textContent = "";
+}
+
+function describeWriteError(error) {
+  const message = error?.message || String(error);
+  if (/row-level security|violates row-level|Unauthorized|403/i.test(message)) {
+    return "This account isn't an admin, so it can't change the catalog.";
+  }
+  return message;
+}
+
+function safeFileName(name) {
+  const cleaned = name.toLowerCase().replace(/[^a-z0-9._-]+/g, "-").replace(/^-+|-+$/g, "");
+  return cleaned || "photo";
+}
+
+async function uploadRoomPhotos(roomId, files) {
+  const bucket = housingConfig.photoBucket;
+  const uploaded = [];
+  const failed = [];
+
+  for (const [index, file] of files.entries()) {
+    const path = `${roomId}/${Date.now()}-${index}-${safeFileName(file.name)}`;
+    const { error } = await supabaseClient.storage.from(bucket).upload(path, file, {
+      contentType: file.type || undefined,
+      upsert: false
+    });
+    if (error) {
+      failed.push(`${file.name} (${error.message})`);
+      continue;
+    }
+    const { data } = supabaseClient.storage.from(bucket).getPublicUrl(path);
+    uploaded.push({ room_id: roomId, url: data.publicUrl, storage_path: path, position: index });
+  }
+
+  if (uploaded.length) {
+    const { error } = await supabaseClient.from("room_photos").insert(uploaded);
+    if (error) {
+      await supabaseClient.storage.from(bucket).remove(uploaded.map((photo) => photo.storage_path));
+      throw error;
+    }
+  }
+
+  return { uploaded: uploaded.length, failed };
+}
+
+async function saveRoom(event) {
+  event.preventDefault();
+  if (!supabaseClient || !adminSession) return;
+
+  const form = event.currentTarget;
+  const collegeId = document.querySelector("#uploadCollege").value;
+  const files = [...document.querySelector("#uploadPictures").files];
+  const roomNumber = document.querySelector("#uploadRoomNumber").value.trim();
+
+  elements.uploadSubmit.disabled = true;
+  elements.uploadMessage.textContent = files.length
+    ? `Saving ${roomNumber} and uploading ${files.length} ${files.length === 1 ? "photo" : "photos"}…`
+    : `Saving ${roomNumber}…`;
+
+  try {
+    const { data: savedRoom, error } = await supabaseClient
+      .from("rooms")
+      .insert({
+        college_id: collegeId,
+        room_number: roomNumber,
+        entrance: document.querySelector("#uploadEntrance").value.trim(),
+        floor: document.querySelector("#uploadFloor").value,
+        dimensions: document.querySelector("#uploadDimensions").value.trim(),
+        square_feet: "Pending measurement",
+        occupancy: document.querySelector("#uploadOccupancy").value.trim(),
+        suite_type: document.querySelector("#uploadSuiteType").value.trim(),
+        bath: document.querySelector("#uploadBath").value.trim(),
+        suite_details: document.querySelector("#uploadSuiteDetails").value.trim(),
+        notes: document.querySelector("#uploadNotes").value.trim()
+      })
+      .select("id")
+      .single();
+    if (error) throw error;
+
+    const photoResult = files.length ? await uploadRoomPhotos(savedRoom.id, files) : { uploaded: 0, failed: [] };
+
+    let message = `${roomNumber} was added to the catalog`;
+    if (photoResult.uploaded) message += ` with ${photoResult.uploaded} ${photoResult.uploaded === 1 ? "photo" : "photos"}`;
+    message += ".";
+    if (photoResult.failed.length) message += ` These photos didn't upload: ${photoResult.failed.join(", ")}.`;
+    elements.uploadMessage.textContent = message;
+
+    form.reset();
+    hydrateSelects();
+    await refreshRooms();
+    elements.collegeFilter.value = collegeId;
+    activeCollegeId = collegeId;
+    updateDependentFilters();
+    renderSelectedCollege();
+    renderRooms();
+  } catch (error) {
+    elements.uploadMessage.textContent = `Couldn't save ${roomNumber}: ${describeWriteError(error)}`;
+  } finally {
+    elements.uploadSubmit.disabled = false;
   }
 }
 
-function saveRoomDraft(event) {
-  event.preventDefault();
-  const form = event.currentTarget;
-  const formData = new FormData(form);
-  const collegeId = document.querySelector("#uploadCollege").value;
-  const college = getCollegeById(collegeId);
-  const picturesInput = document.querySelector("#uploadPictures");
-  const fileNames = [...picturesInput.files].map((file) => file.name);
-  const roomNumber = document.querySelector("#uploadRoomNumber").value.trim();
-  const floor = document.querySelector("#uploadFloor").value;
-  const uploadedRoom = {
-    id: `draft-${Date.now()}`,
-    collegeId,
-    roomNumber,
-    entrance: document.querySelector("#uploadEntrance").value.trim(),
-    floor,
-    dimensions: document.querySelector("#uploadDimensions").value.trim(),
-    squareFeet: "Pending measurement",
-    occupancy: document.querySelector("#uploadOccupancy").value.trim(),
-    suiteType: document.querySelector("#uploadSuiteType").value.trim(),
-    bath: document.querySelector("#uploadBath").value.trim(),
-    suiteDetails: document.querySelector("#uploadSuiteDetails").value.trim(),
-    notes: `${document.querySelector("#uploadNotes").value.trim()}${fileNames.length ? ` Uploaded file names: ${fileNames.join(", ")}.` : ""}`,
-    images: [college?.image || "assets/rooms/room-blue.svg"]
-  };
+async function deleteRoom(roomId, button) {
+  const room = rooms.find((item) => item.id === roomId);
+  if (!room || !supabaseClient) return;
+  if (!window.confirm(`Delete ${room.roomNumber} and its photos? This can't be undone.`)) return;
 
-  const drafts = getStoredRoomDrafts();
-  drafts.push(uploadedRoom);
-  window.localStorage.setItem("yaleHousingRoomDrafts", JSON.stringify(drafts));
-  rooms = getAllRooms();
+  const message = document.querySelector("#deleteMessage");
+  button.disabled = true;
+  message.textContent = "Deleting…";
 
-  elements.uploadMessage.textContent = `${roomNumber} was saved as a local admin draft.`;
-  form.reset();
-  hydrateSelects();
-  elements.collegeFilter.value = collegeId;
+  const { data, error } = await supabaseClient.from("rooms").delete().eq("id", roomId).select("id");
+  if (error || !data?.length) {
+    message.textContent = error ? describeWriteError(error) : "This account isn't an admin, so it can't change the catalog.";
+    button.disabled = false;
+    return;
+  }
+
+  if (room.photoPaths?.length) {
+    await supabaseClient.storage.from(housingConfig.photoBucket).remove(room.photoPaths);
+  }
+
+  await refreshRooms();
   updateDependentFilters();
   renderSelectedCollege();
   renderRooms();
+  elements.roomModal.close();
+}
+
+async function refreshRooms() {
+  const result = await loadRooms();
+  rooms = result.rooms;
+  roomsSource = result.source;
+  roomsLoaded = true;
 }
 
 function initCatalog() {
@@ -316,6 +460,12 @@ function initCatalog() {
   renderSelectedCollege();
   renderRooms();
   setupAdminState();
+
+  refreshRooms().then(() => {
+    updateDependentFilters();
+    renderSelectedCollege();
+    renderRooms();
+  });
 
   elements.searchInput.addEventListener("input", renderRooms);
   elements.collegeFilter.addEventListener("change", handleFilterChange);
@@ -344,17 +494,14 @@ function initCatalog() {
     if (event.target === elements.roomModal) elements.roomModal.close();
   });
 
-  elements.adminLoginForm.addEventListener("submit", (event) => {
-    event.preventDefault();
-    if (elements.adminKey.value.trim() === yaleHousingData.adminDemoKey) {
-      unlockAdmin();
-    } else {
-      elements.adminMessage.textContent = "That demo key did not match. Try YALE-ADMIN.";
-    }
+  elements.modalContent.addEventListener("click", (event) => {
+    const button = event.target.closest("[data-delete-room]");
+    if (button) deleteRoom(button.dataset.deleteRoom, button);
   });
 
-  elements.lockAdmin.addEventListener("click", lockAdmin);
-  elements.uploadForm.addEventListener("submit", saveRoomDraft);
+  elements.adminLoginForm.addEventListener("submit", signIn);
+  elements.lockAdmin.addEventListener("click", signOut);
+  elements.uploadForm.addEventListener("submit", saveRoom);
 }
 
 initCatalog();

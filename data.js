@@ -1,5 +1,4 @@
 const yaleHousingData = {
-  adminDemoKey: "YALE-ADMIN",
   colleges: [
     {
       id: "berkeley",
@@ -223,16 +222,8 @@ function getCollegeById(id) {
   return yaleHousingData.colleges.find((college) => college.id === id);
 }
 
-function getStoredRoomDrafts() {
-  try {
-    const stored = window.localStorage.getItem("yaleHousingRoomDrafts");
-    return stored ? JSON.parse(stored) : [];
-  } catch (error) {
-    console.warn("Unable to load local room drafts", error);
-    return [];
-  }
-}
-
+// Bundled copy of the starter rooms. The live catalog reads rooms from Supabase
+// (see rooms-store.js); these are only used if Supabase can't be reached.
 function getAllRooms() {
-  return [...yaleHousingData.rooms, ...getStoredRoomDrafts()];
+  return [...yaleHousingData.rooms];
 }

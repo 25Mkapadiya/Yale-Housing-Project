@@ -1,10 +1,10 @@
 const collegeGrid = document.querySelector("#collegeGrid");
 
-function renderCollegeCards() {
+function renderCollegeCards(rooms) {
   if (!collegeGrid) return;
 
   collegeGrid.innerHTML = yaleHousingData.colleges.map((college) => {
-    const roomCount = getAllRooms().filter((room) => room.collegeId === college.id).length;
+    const roomCount = rooms.filter((room) => room.collegeId === college.id).length;
     const floors = college.floors.join(", ");
     const entrances = college.entrances.length;
     const palette = typeof getCollegePalette === "function"
@@ -23,7 +23,7 @@ function renderCollegeCards() {
           <h3>${college.name}</h3>
           <p>${college.description}</p>
           <div class="college-meta" aria-label="College details">
-            <span>${roomCount} starter rooms</span>
+            <span>${roomCount} ${roomCount === 1 ? "room" : "rooms"}</span>
             <span>${entrances} entrances</span>
             <span>Floors ${floors}</span>
           </div>
@@ -34,4 +34,5 @@ function renderCollegeCards() {
   }).join("");
 }
 
-renderCollegeCards();
+renderCollegeCards(getAllRooms());
+loadRooms().then(({ rooms }) => renderCollegeCards(rooms));

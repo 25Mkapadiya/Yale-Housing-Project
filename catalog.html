@@ -73,22 +73,26 @@
 
     <section class="admin-shell" id="admin">
       <div class="admin-intro">
-        <p class="eyebrow">Future admin workflow</p>
-        <h2>Protected admin-only upload section</h2>
-        <p>This front-end prototype includes a demo gate and upload form structure. In production, this would connect to real authentication, file storage, and a housing database.</p>
+        <p class="eyebrow">Admin</p>
+        <h2>Add rooms and photos</h2>
+        <p>Admins can sign in to add rooms to the catalog. Rooms are saved to the shared database and photos are uploaded to cloud storage, so they show up for everyone.</p>
       </div>
 
       <div class="admin-gate" id="adminGate">
         <div>
-          <h3>Admin access</h3>
-          <p>Use the demo key <strong>YALE-ADMIN</strong> to preview the upload flow.</p>
+          <h3>Admin sign-in</h3>
+          <p>Only approved admin accounts can add or remove rooms.</p>
         </div>
-        <form id="adminLoginForm" class="admin-login-form">
+        <form id="adminLoginForm" class="admin-login-form stacked">
           <label class="field">
-            <span>Admin key</span>
-            <input type="password" id="adminKey" placeholder="Enter demo key" autocomplete="off" />
+            <span>Email</span>
+            <input type="email" id="adminEmail" autocomplete="username" required />
           </label>
-          <button class="button primary" type="submit">Unlock upload</button>
+          <label class="field">
+            <span>Password</span>
+            <input type="password" id="adminPassword" autocomplete="current-password" required />
+          </label>
+          <button class="button primary" type="submit">Sign in</button>
           <p class="form-message" id="adminMessage" role="status"></p>
         </form>
       </div>
@@ -96,10 +100,10 @@
       <form class="upload-form hidden" id="uploadForm">
         <div class="form-banner">
           <div>
-            <h3>Add a room draft</h3>
-            <p>Saved locally in this browser as a mock admin draft. Replace this action with API/database logic later.</p>
+            <h3>Add a room</h3>
+            <p id="adminStatus">Signed in.</p>
           </div>
-          <button class="button ghost" id="lockAdmin" type="button">Lock admin</button>
+          <button class="button ghost" id="lockAdmin" type="button">Sign out</button>
         </div>
 
         <div class="form-grid">
@@ -153,10 +157,10 @@
           <label class="field wide">
             <span>Pictures</span>
             <input id="uploadPictures" type="file" accept="image/*" multiple />
-            <small>Prototype stores file names only. Use cloud storage in production.</small>
+            <small>JPEG, PNG, WebP, GIF, AVIF or HEIC, up to 10 MB each. The first photo is used on the room card.</small>
           </label>
         </div>
-        <button class="button primary" type="submit">Save room draft</button>
+        <button class="button primary" id="uploadSubmit" type="submit">Save room</button>
         <p class="form-message" id="uploadMessage" role="status"></p>
       </form>
     </section>
@@ -172,7 +176,10 @@
     <div id="modalContent"></div>
   </dialog>
 
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2.45.4/dist/umd/supabase.min.js"></script>
+  <script src="supabase-config.js"></script>
   <script src="data.js"></script>
+  <script src="rooms-store.js"></script>
   <script src="site-theme.js"></script>
   <script src="catalog.js"></script>
 </body>

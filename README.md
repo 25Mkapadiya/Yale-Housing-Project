@@ -16,18 +16,36 @@ A modern clean starter directory website built with plain HTML, CSS, and JavaScr
 - Room cards with college, room number, dimensions, pictures, suite details, occupancy, bathroom info, and notes
 - Yale-inspired visual system using Yale Blue as the broad base color
 - Residential college accent colors applied when a college or room is selected
-- Protected admin-only upload section prototype for a future login/database system
-- Small starter set of 4 colleges and mock room data
+- Admin sign-in for adding and deleting rooms, with photo uploads
+- Rooms and photos stored in Supabase
 
-## Demo admin access
+## Data storage (Supabase)
 
-Open `catalog.html#admin` and use this demo key:
+Rooms and photos live in the Supabase project `yale-housing`
+([dashboard](https://supabase.com/dashboard/project/kjcuyyhcruuxplmrzlzt)):
 
-```text
-YALE-ADMIN
-```
+- `rooms` table: one row per room.
+- `room_photos` table: photo URLs for each room, in display order.
+- `room-photos` storage bucket: uploaded photo files (public to view, 10 MB limit per file).
+- `private.admins`: the email addresses allowed to change the catalog.
 
-This is not real security. It is a front-end-only preview for the future admin workflow. In production, replace it with server-side authentication, database storage, and secure file uploads.
+Row level security lets anyone read rooms and photos, and only a signed-in admin add, edit, or delete them.
+`supabase/schema.sql` has the full setup. The browser settings are in `supabase-config.js`; the
+publishable key there is meant to be public.
+
+If Supabase can't be reached, the catalog falls back to the starter rooms bundled in `data.js`.
+
+## Admin access
+
+Open `catalog.html#admin` and sign in with an admin account.
+
+- **Create your account:** in the Supabase dashboard, go to Authentication → Users → Add user →
+  Create new user, enter your email and a password, and tick "Auto Confirm User".
+- **Add another admin:** create their account the same way, then run this in the SQL editor:
+
+  ```sql
+  insert into private.admins (email) values ('their.email@example.com');
+  ```
 
 ## How to run locally
 
@@ -43,9 +61,10 @@ Then visit:
 http://localhost:8000
 ```
 
-## Where to edit mock data
+## Where to edit data
 
-Edit `data.js` to add or change colleges and rooms. Uploaded admin drafts are stored in the browser's `localStorage` only for prototype purposes.
+- Add or delete rooms from the admin section of `catalog.html`, or in the Supabase table editor.
+- Colleges (names, colors, shields, entrances, floors) are in `data.js`.
 
 ## Old links
 
